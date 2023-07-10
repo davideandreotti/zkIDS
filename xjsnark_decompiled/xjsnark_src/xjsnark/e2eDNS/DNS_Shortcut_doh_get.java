@@ -36,8 +36,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {
-            BufferedReader br = new BufferedReader(new FileReader("test.txt"));
-
+            BufferedReader br = new BufferedReader(new FileReader("transcript_baseline.txt"));
             String psk_line = br.readLine();
             String sk_line = br.readLine();
             String Ax_line = br.readLine();
@@ -57,23 +56,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
             String dns_ct_line = br.readLine();
             String H_state_tr7_line = br.readLine();
 
-            int[] converted_url = str_to_array(allowed_url);
-            for (int i = 0; i < converted_url.length; i++) {
-              System.out.println(converted_url[i]);
-              url_bytes[i].mapValue(BigInteger.valueOf(converted_url[i]), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-            }
-            for (int i = converted_url.length; i < MAX_URL_LEN; i++) {
-              if (i == converted_url.length) {
-                url_bytes[i].mapValue(BigInteger.valueOf(13), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-              } else if (i == converted_url.length + 1) {
-                url_bytes[i].mapValue(BigInteger.valueOf(10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-              } else {
-                url_bytes[i].mapValue(BigInteger.valueOf(0), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-              }
-            }
-            url_length.mapValue(BigInteger.valueOf(converted_url.length), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             String ct3_line = enc_ext_line + cert_line + cert_verify_line + serverfinished_line;
-            System.out.println(ct3_line);
             for (int i = 0; i < HS_line.length() / 2; i = i + 1) {
               HS[i].mapValue(new BigInteger(HS_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -117,6 +100,37 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
 
           } catch (Exception ex) {
             System.out.println("Error reading TLS parameters file");
+          }
+          try {
+            // Url string conversion and assignment 
+            int[] converted_url = str_to_array(allowed_url);
+            for (int i = 0; i < converted_url.length; i++) {
+              url_bytes[i].mapValue(BigInteger.valueOf(converted_url[i]), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = converted_url.length; i < MAX_URL_LEN; i++) {
+              if (i == converted_url.length) {
+                url_bytes[i].mapValue(BigInteger.valueOf(13), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+              } else if (i == converted_url.length + 1) {
+                url_bytes[i].mapValue(BigInteger.valueOf(10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+              } else {
+                url_bytes[i].mapValue(BigInteger.valueOf(0), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+              }
+            }
+            url_length.mapValue(BigInteger.valueOf(converted_url.length), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            // token conversion and assignment 
+            int[] conv_token = str_to_array(token_str);
+            for (int i = 0; i < conv_token.length; i++) {
+              System.out.println(conv_token[i]);
+              System.out.println(token_str);
+              System.out.println(i);
+              token[i].mapValue(BigInteger.valueOf(conv_token[i]), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            token_length.mapValue(BigInteger.valueOf(conv_token.length), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            System.out.println(conv_token.length);
+
+          } catch (Exception ex) {
+            System.out.println("Error with conversions");
           }
 
           // *************************** Read inputs for Membership Testing ********************* 
@@ -167,8 +181,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {
-            BufferedReader br = new BufferedReader(new FileReader("test.txt"));
-
+            BufferedReader br = new BufferedReader(new FileReader("transcript_baseline.txt"));
             String psk_line = br.readLine();
             String sk_line = br.readLine();
             String Ax_line = br.readLine();
@@ -188,23 +201,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
             String dns_ct_line = br.readLine();
             String H_state_tr7_line = br.readLine();
 
-            int[] converted_url = str_to_array(allowed_url);
-            for (int i = 0; i < converted_url.length; i++) {
-              System.out.println(converted_url[i]);
-              url_bytes[i].mapValue(BigInteger.valueOf(converted_url[i]), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-            }
-            for (int i = converted_url.length; i < MAX_URL_LEN; i++) {
-              if (i == converted_url.length) {
-                url_bytes[i].mapValue(BigInteger.valueOf(13), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-              } else if (i == converted_url.length + 1) {
-                url_bytes[i].mapValue(BigInteger.valueOf(10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-              } else {
-                url_bytes[i].mapValue(BigInteger.valueOf(0), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-              }
-            }
-            url_length.mapValue(BigInteger.valueOf(converted_url.length), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             String ct3_line = enc_ext_line + cert_line + cert_verify_line + serverfinished_line;
-            System.out.println(ct3_line);
             for (int i = 0; i < HS_line.length() / 2; i = i + 1) {
               HS[i].mapValue(new BigInteger(HS_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -248,6 +245,37 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
 
           } catch (Exception ex) {
             System.out.println("Error reading TLS parameters file");
+          }
+          try {
+            // Url string conversion and assignment 
+            int[] converted_url = str_to_array(allowed_url);
+            for (int i = 0; i < converted_url.length; i++) {
+              url_bytes[i].mapValue(BigInteger.valueOf(converted_url[i]), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = converted_url.length; i < MAX_URL_LEN; i++) {
+              if (i == converted_url.length) {
+                url_bytes[i].mapValue(BigInteger.valueOf(13), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+              } else if (i == converted_url.length + 1) {
+                url_bytes[i].mapValue(BigInteger.valueOf(10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+              } else {
+                url_bytes[i].mapValue(BigInteger.valueOf(0), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+              }
+            }
+            url_length.mapValue(BigInteger.valueOf(converted_url.length), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            // token conversion and assignment 
+            int[] conv_token = str_to_array(token_str);
+            for (int i = 0; i < conv_token.length; i++) {
+              System.out.println(conv_token[i]);
+              System.out.println(token_str);
+              System.out.println(i);
+              token[i].mapValue(BigInteger.valueOf(conv_token[i]), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            token_length.mapValue(BigInteger.valueOf(conv_token.length), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            System.out.println(conv_token.length);
+
+          } catch (Exception ex) {
+            System.out.println("Error with conversions");
           }
 
           // *************************** Read inputs for Membership Testing ********************* 
@@ -304,6 +332,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
     membership_test_file_name = "merkle_witness.txt";
     HEIGHT = 4;
     allowed_url = "/dns-query";
+    token_str = "aabbcc";
     HS = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{32}, 8);
     SHA_H_Checkpoint = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{32}, 8);
     H2 = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{32}, 8);
@@ -320,12 +349,16 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
     leaf_length = new UnsignedInteger(8, new BigInteger("0"));
     url_bytes = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{MAX_URL_LEN}, 8);
     url_length = new UnsignedInteger(8, new BigInteger("0"));
+    token = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{TOKEN_LEN}, 8);
+    token_length = new UnsignedInteger(8, new BigInteger("0"));
+    tokencheck = new UnsignedInteger(1, new BigInteger("0"));
   }
 
   public String channel_test_file_name;
   public String membership_test_file_name;
   public int HEIGHT;
   public String allowed_url;
+  public String token_str;
   public UnsignedInteger[] HS;
   public UnsignedInteger[] SHA_H_Checkpoint;
   public UnsignedInteger[] H2;
@@ -342,11 +375,15 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
   public UnsignedInteger leaf_length;
   public UnsignedInteger[] url_bytes;
   public UnsignedInteger url_length;
+  public UnsignedInteger[] token;
+  public UnsignedInteger token_length;
   public UnsignedInteger[][] values;
+  public UnsignedInteger tokencheck;
   public UnsignedInteger[] string_http;
 
   public static final int MAX_DNS_CT_LEN = 500;
   public static final int MAX_URL_LEN = 20;
+  public static final int TOKEN_LEN = 6;
   @Override
   public void __defineInputs() {
     super.__defineInputs();
@@ -354,6 +391,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
     CertVerify_len = UnsignedInteger.createInput(this, 16);
     CertVerify_tail_len = UnsignedInteger.createInput(this, 8);
     url_length = UnsignedInteger.createInput(this, 8);
+    token_length = UnsignedInteger.createInput(this, 8);
     root = FieldElement.createInput(this, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
 
 
@@ -362,6 +400,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
     CertVerify_ct_tail = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(CertVerify_ct_tail), 8);
     ServerFinished_ct = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(ServerFinished_ct), 8);
     url_bytes = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(url_bytes), 8);
+    token = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(token), 8);
 
 
 
@@ -445,6 +484,7 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
 
     UnsignedInteger[] SHA_H_Checkpoint_32 = xjsnark.util_and_sha.Util.convert_8_to_32(SHA_H_Checkpoint);
     values = TLSKeySchedule.get1RTT_HS_new(HS, H2, TR3_len.copy(16), CertVerify_len.copy(16), CertVerify_ct_tail, ServerFinished_ct, CertVerify_tail_len.copy(8), SHA_H_Checkpoint_32, appl_ct);
+    tokencheck.assign(LabelExtraction.check_token(values[0], token, token_length.copy(8)), 1);
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
     a.assign(non_membership.membershipProofChecks(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
 
@@ -463,11 +503,8 @@ public class DNS_Shortcut_doh_get extends CircuitGenerator {
   public int[] str_to_array(String str) {
     int[] asciiVal = new int[str.length()];
     for (int i = 0; i < str.length(); i++) {
-      System.out.println(StringUtils.substring(str, i, i + 1));
       char c = str.charAt(i);
-      System.out.println(c);
       asciiVal[i] = Character.codePointAt(Character.toString(c), 0);
-      System.out.println(asciiVal[i]);
     }
     return asciiVal;
   }

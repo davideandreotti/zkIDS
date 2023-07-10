@@ -662,6 +662,15 @@ public class LabelExtraction {
     }
     return http_msg;
   }
+  public static UnsignedInteger check_token(UnsignedInteger[] http_msg, UnsignedInteger[] token, UnsignedInteger token_length) {
+    UnsignedInteger secondrow = get_first_crlf_index(http_msg).copy(8);
+    SmartMemory<UnsignedInteger> http_msg_ram = new SmartMemory(UnsignedInteger.instantiateFrom(8, http_msg), UnsignedInteger.__getClassRef(), new Object[]{"8"});
+    for (int i = 0; i < 6; i++) {
+      CircuitGenerator.__getActiveCircuitGenerator().__addDebugInstruction(http_msg_ram.read(secondrow.add(UnsignedInteger.instantiateFrom(8, i)).add(UnsignedInteger.instantiateFrom(8, 14))), "token_message");
+      CircuitGenerator.__getActiveCircuitGenerator().__addDebugInstruction(token[i], "token_saved");
+    }
+    return UnsignedInteger.instantiateFrom(1, 1);
+  }
 
 
 }
