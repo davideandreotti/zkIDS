@@ -26,7 +26,7 @@ public class Channel0RTT extends CircuitGenerator {
   public Channel0RTT(String[] s) {
     super("Channel0RTT");
     __generateCircuit();
-    if (s[0] == "pub") {
+    if (s[0].equals("pub")) {
       System.out.println("Generate public inputs only");
       this.__generatePublicInputs(new SampleRun("Sample_Run1", true) {
         public void pre() {
@@ -76,7 +76,7 @@ public class Channel0RTT extends CircuitGenerator {
         }
 
       });
-    } else {
+    } else if (s[0].equals("run")) {
       System.out.println("Normal execution");
       this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
         public void pre() {
@@ -126,6 +126,8 @@ public class Channel0RTT extends CircuitGenerator {
         }
 
       });
+    } else {
+      System.out.println("Choose pub to generate public inputs only, run to do the whole execution.");
     }
   }
 

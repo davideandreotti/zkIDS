@@ -28,7 +28,6 @@ public class ChannelShortcut extends CircuitGenerator {
 
   public ChannelShortcut(String[] s) {
     super("ChannelShortcut");
-    System.out.println("A"+s[0]+"b");
     __generateCircuit();
     if (s[0].equals("pub")) {
       System.out.println("Generate public inputs only");
@@ -125,7 +124,7 @@ public class ChannelShortcut extends CircuitGenerator {
         }
 
       });
-    } else {
+    } else if (s[0].equals("run")) {
       System.out.println("Normal execution");
       this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
         public void pre() {
@@ -220,6 +219,8 @@ public class ChannelShortcut extends CircuitGenerator {
         }
 
       });
+    } else {
+      System.out.println("Choose pub to generate public inputs only, run to do the whole execution.");
     }
   }
 

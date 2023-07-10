@@ -12,7 +12,6 @@ import backend.auxTypes.UnsignedInteger;
 import backend.auxTypes.FieldElement;
 import util.Util;
 import xjsnark.tls13_key_schedules.TLSKeySchedule;
-import xjsnark.membership_merkle.non_membership;
 import backend.eval.CircuitEvaluator;
 
 public class DNS_Shortcut_dot extends CircuitGenerator {
@@ -24,159 +23,323 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
     Config.writeCircuits = true;
     Config.outputFilesPath = ".";
 
-    new DNS_Shortcut_dot();
+    new DNS_Shortcut_dot(args);
   }
 
-  public DNS_Shortcut_dot() {
+  public DNS_Shortcut_dot(String[] s) {
     super("DNS_Shortcut_dot");
     __generateCircuit();
-    this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
-      public void pre() {
+    if (s[0].equals("pub")) {
+      System.out.println("Generate public inputs only");
+      this.__generatePublicInputs(new SampleRun("Sample_Run1", true) {
+        public void pre() {
 
 
 
-        // **************** Channel Opening Inputs ***************************************** 
+          // **************** Channel Opening Inputs ***************************************** 
 
-        try {
-          BufferedReader br = new BufferedReader(new FileReader(channel_test_file_name));
+          try {
+            BufferedReader br = new BufferedReader(new FileReader("test.txt"));
 
-          String psk_line = br.readLine();
-          String sk_line = br.readLine();
-          String Ax_line = br.readLine();
-          String Ay_line = br.readLine();
-          String Bx_line = br.readLine();
-          String By_line = br.readLine();
-          String HS_line = br.readLine();
+            String psk_line = br.readLine();
+            String sk_line = br.readLine();
+            String Ax_line = br.readLine();
+            String Ay_line = br.readLine();
+            String Bx_line = br.readLine();
+            String By_line = br.readLine();
+            String HS_line = br.readLine();
 
-          String H2_line = br.readLine();
-          String H7_line = br.readLine();
-          String H3_line = br.readLine();
+            String H2_line = br.readLine();
+            String H7_line = br.readLine();
+            String H3_line = br.readLine();
 
-          String SF_line = br.readLine();
+            String SF_line = br.readLine();
 
-          String pt2_line = br.readLine();
-          String ct3_line = br.readLine();
+            String pt2_line = br.readLine();
+            String enc_ext_line = br.readLine();
+            String cert_line = br.readLine();
+            String cert_verify_line = br.readLine();
+            String serverfinished_line = br.readLine();
 
-          String dns_ct_line = br.readLine();
+            String dns_ct_line = br.readLine();
 
-          String H_state_tr7_line = br.readLine();
+            String H_state_tr7_line = br.readLine();
+            String ct3_line = enc_ext_line + cert_line + cert_verify_line + serverfinished_line;
+
+            for (int i = 0; i < HS_line.length() / 2; i = i + 1) {
+              HS[i].mapValue(new BigInteger(HS_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < H2_line.length() / 2; i = i + 1) {
+              H2[i].mapValue(new BigInteger(H2_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            TR3_len.mapValue(BigInteger.valueOf(pt2_line.length() / 2 + ct3_line.length() / 2), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            CertVerify_len.mapValue(BigInteger.valueOf(cert_verify_line.length() / 2), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            // Compute the tail 
+            // This is used for efficient SHA computation 
+            String ct3_tail_str = get_tail_minus_36(pt2_line + ct3_line);
+            System.out.println(ct3_tail_str);
+            int upperbound = ((ct3_tail_str.length() / 2) - (serverfinished_line.length() / 2));
+
+            for (int i = 0; i < upperbound; i = i + 1) {
+              CertVerify_ct_tail[i].mapValue(new BigInteger(ct3_tail_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            CertVerify_tail_len.mapValue(BigInteger.valueOf(upperbound), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = upperbound; i < 128; i = i + 1) {
+              CertVerify_ct_tail[i].mapValue(new BigInteger("0"), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < 36; i = i + 1) {
+              ServerFinished_ct[i].mapValue(new BigInteger(serverfinished_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            // read the H_state 
+            for (int i = 0; i < H_state_tr7_line.length() / 2; i = i + 1) {
+              SHA_H_Checkpoint[i].mapValue(new BigInteger(H_state_tr7_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < dns_ct_line.length() / 2; i = i + 1) {
+              appl_ct[i].mapValue(new BigInteger(dns_ct_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = dns_ct_line.length() / 2; i < MAX_DNS_CT_LEN; i = i + 1) {
+              appl_ct[i].mapValue(new BigInteger("0"), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
 
 
-          for (int i = 0; i < HS_line.length() / 2; i = i + 1) {
-            HS[i].mapValue(new BigInteger(HS_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+          } catch (Exception ex) {
+            System.out.println("FILE NOT FOUND OR LINE NOT READ");
           }
 
-          for (int i = 0; i < H2_line.length() / 2; i = i + 1) {
-            H2[i].mapValue(new BigInteger(H2_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+          // *************************** Read inputs for Membership Testing ********************* 
+
+          String line;
+          try {
+            BufferedReader br = new BufferedReader(new FileReader(membership_test_file_name));
+
+            // there are 14 data points in the text file, only some of which are used in this circuit 
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+            }
+
+            line = br.readLine();
+            root.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              left_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              right_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              left_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              right_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            line = br.readLine();
+            left_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            line = br.readLine();
+            right_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+            line = br.readLine();
+            left_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+            line = br.readLine();
+            right_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+          } catch (Exception ex) {
+            System.out.println("FILE NOT FIND OR LINE NOT READ");
           }
 
 
-          CH_SH_len.mapValue(BigInteger.valueOf(pt2_line.length() / 2), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
 
+        }
+        public void post() {
+          System.out.println("Circuit Output: ");
 
-          ServExt_len.mapValue(BigInteger.valueOf((ct3_line.length() / 2)), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-          // Compute the tail 
-          // This is used for efficient SHA computation 
-          String ct3_tail_str = get_tail_minus_36(pt2_line + ct3_line);
-
-          for (int i = 0; i < ct3_tail_str.length() / 2; i = i + 1) {
-            ServExt_tail_ct[i].mapValue(new BigInteger(ct3_tail_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+          for (int j = 0; j < values.length; j++) {
+            for (int i = 0; i < values[j].length; i++) {
+              System.out.print(String.format("%1$02x", values[j][i].getValueFromEvaluator(CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator())));
+            }
+            System.out.print("\n");
           }
-
-          ServExt_tail_len.mapValue(BigInteger.valueOf(ct3_tail_str.length() / 2), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-          for (int i = ct3_tail_str.length() / 2; i < 128; i = i + 1) {
-            ServExt_tail_ct[i].mapValue(new BigInteger("0"), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-
-          // read the H_state 
-          for (int i = 0; i < H_state_tr7_line.length() / 2; i = i + 1) {
-            SHA_H_Checkpoint[i].mapValue(new BigInteger(H_state_tr7_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-
-          for (int i = 0; i < dns_ct_line.length() / 2; i = i + 1) {
-            dns_ct[i].mapValue(new BigInteger(dns_ct_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-          for (int i = dns_ct_line.length() / 2; i < MAX_DNS_CT_LEN; i = i + 1) {
-            dns_ct[i].mapValue(new BigInteger("0"), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-
-
-        } catch (Exception ex) {
-          System.out.println("FILE NOT FIND OR LINE NOT READ");
         }
 
+      });
+    } else if (s[0].equals("run")) {
+      System.out.println("Normal execution");
+      this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
+        public void pre() {
 
-        // *************************** Read inputs for Membership Testing ********************* 
 
-        String line;
-        try {
-          BufferedReader br = new BufferedReader(new FileReader(membership_test_file_name));
 
-          // there are 14 data points in the text file, only some of which are used in this circuit 
-          for (int i = 0; i < 255; i++) {
-            line = br.readLine();
+          // **************** Channel Opening Inputs ***************************************** 
+
+          try {
+            BufferedReader br = new BufferedReader(new FileReader("test.txt"));
+
+            String psk_line = br.readLine();
+            String sk_line = br.readLine();
+            String Ax_line = br.readLine();
+            String Ay_line = br.readLine();
+            String Bx_line = br.readLine();
+            String By_line = br.readLine();
+            String HS_line = br.readLine();
+
+            String H2_line = br.readLine();
+            String H7_line = br.readLine();
+            String H3_line = br.readLine();
+
+            String SF_line = br.readLine();
+
+            String pt2_line = br.readLine();
+            String enc_ext_line = br.readLine();
+            String cert_line = br.readLine();
+            String cert_verify_line = br.readLine();
+            String serverfinished_line = br.readLine();
+
+            String dns_ct_line = br.readLine();
+
+            String H_state_tr7_line = br.readLine();
+            String ct3_line = enc_ext_line + cert_line + cert_verify_line + serverfinished_line;
+
+            for (int i = 0; i < HS_line.length() / 2; i = i + 1) {
+              HS[i].mapValue(new BigInteger(HS_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < H2_line.length() / 2; i = i + 1) {
+              H2[i].mapValue(new BigInteger(H2_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            TR3_len.mapValue(BigInteger.valueOf(pt2_line.length() / 2 + ct3_line.length() / 2), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            CertVerify_len.mapValue(BigInteger.valueOf(cert_verify_line.length() / 2), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            // Compute the tail 
+            // This is used for efficient SHA computation 
+            String ct3_tail_str = get_tail_minus_36(pt2_line + ct3_line);
+            System.out.println(ct3_tail_str);
+            int upperbound = ((ct3_tail_str.length() / 2) - (serverfinished_line.length() / 2));
+
+            for (int i = 0; i < upperbound; i = i + 1) {
+              CertVerify_ct_tail[i].mapValue(new BigInteger(ct3_tail_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            CertVerify_tail_len.mapValue(BigInteger.valueOf(upperbound), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = upperbound; i < 128; i = i + 1) {
+              CertVerify_ct_tail[i].mapValue(new BigInteger("0"), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < 36; i = i + 1) {
+              ServerFinished_ct[i].mapValue(new BigInteger(serverfinished_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            // read the H_state 
+            for (int i = 0; i < H_state_tr7_line.length() / 2; i = i + 1) {
+              SHA_H_Checkpoint[i].mapValue(new BigInteger(H_state_tr7_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < dns_ct_line.length() / 2; i = i + 1) {
+              appl_ct[i].mapValue(new BigInteger(dns_ct_line.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = dns_ct_line.length() / 2; i < MAX_DNS_CT_LEN; i = i + 1) {
+              appl_ct[i].mapValue(new BigInteger("0"), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+
+          } catch (Exception ex) {
+            System.out.println("FILE NOT FOUND OR LINE NOT READ");
           }
 
-          line = br.readLine();
-          root.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
 
-          for (int i = 0; i < 255; i++) {
+          // *************************** Read inputs for Membership Testing ********************* 
+
+          String line;
+          try {
+            BufferedReader br = new BufferedReader(new FileReader(membership_test_file_name));
+
+            // there are 14 data points in the text file, only some of which are used in this circuit 
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+            }
+
             line = br.readLine();
-            left_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            root.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              left_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              right_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              left_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              right_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            line = br.readLine();
+            left_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            line = br.readLine();
+            right_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+            line = br.readLine();
+            left_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+            line = br.readLine();
+            right_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+          } catch (Exception ex) {
+            System.out.println("FILE NOT FIND OR LINE NOT READ");
           }
 
-          for (int i = 0; i < 255; i++) {
-            line = br.readLine();
-            right_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+        }
+        public void post() {
+          System.out.println("Circuit Output: ");
+
+          for (int j = 0; j < values.length; j++) {
+            for (int i = 0; i < values[j].length; i++) {
+              System.out.print(String.format("%1$02x", values[j][i].getValueFromEvaluator(CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator())));
+            }
+            System.out.print("\n");
           }
-
-          // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-          for (int i = 0; i < HEIGHT; i++) {
-            line = br.readLine();
-            left_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-          for (int i = 0; i < HEIGHT; i++) {
-            line = br.readLine();
-            right_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-
-          line = br.readLine();
-          left_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-          line = br.readLine();
-          right_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-
-          line = br.readLine();
-          left_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-
-          line = br.readLine();
-          right_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-
-        } catch (Exception ex) {
-          System.out.println("FILE NOT FIND OR LINE NOT READ");
         }
 
-
-
-      }
-      public void post() {
-        System.out.println("Circuit Output: ");
-
-        for (int j = 0; j < values.length; j++) {
-          for (int i = 0; i < values[j].length; i++) {
-            System.out.print(String.format("%1$02x", values[j][i].getValueFromEvaluator(CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator())));
-          }
-          System.out.print("\n");
-        }
-      }
-
-    });
-
+      });
+    } else {
+      System.out.println("Choose pub to generate public inputs only, run to do the whole execution.");
+    }
   }
 
 
@@ -188,11 +351,12 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
     HS = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{32}, 8);
     SHA_H_Checkpoint = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{32}, 8);
     H2 = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{32}, 8);
-    CH_SH_len = new UnsignedInteger(16, new BigInteger("0"));
-    ServExt_len = new UnsignedInteger(16, new BigInteger("0"));
-    ServExt_tail_ct = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{128}, 8);
-    ServExt_tail_len = new UnsignedInteger(8, new BigInteger("0"));
-    dns_ct = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{MAX_DNS_CT_LEN}, 8);
+    TR3_len = new UnsignedInteger(16, new BigInteger("0"));
+    CertVerify_len = new UnsignedInteger(16, new BigInteger("0"));
+    CertVerify_tail_len = new UnsignedInteger(8, new BigInteger("0"));
+    CertVerify_ct_tail = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{128}, 8);
+    ServerFinished_ct = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{36}, 8);
+    appl_ct = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{MAX_DNS_CT_LEN}, 8);
     root = new FieldElement(new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"), new BigInteger("0"));
     left_domain_name = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{255}, 8);
     right_domain_name = (UnsignedInteger[]) UnsignedInteger.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{255}, 8);
@@ -210,11 +374,12 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
   public UnsignedInteger[] HS;
   public UnsignedInteger[] SHA_H_Checkpoint;
   public UnsignedInteger[] H2;
-  public UnsignedInteger CH_SH_len;
-  public UnsignedInteger ServExt_len;
-  public UnsignedInteger[] ServExt_tail_ct;
-  public UnsignedInteger ServExt_tail_len;
-  public UnsignedInteger[] dns_ct;
+  public UnsignedInteger TR3_len;
+  public UnsignedInteger CertVerify_len;
+  public UnsignedInteger CertVerify_tail_len;
+  public UnsignedInteger[] CertVerify_ct_tail;
+  public UnsignedInteger[] ServerFinished_ct;
+  public UnsignedInteger[] appl_ct;
   public FieldElement root;
   public UnsignedInteger[] left_domain_name;
   public UnsignedInteger[] right_domain_name;
@@ -230,15 +395,16 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
   @Override
   public void __defineInputs() {
     super.__defineInputs();
-    CH_SH_len = UnsignedInteger.createInput(this, 16);
-    ServExt_len = UnsignedInteger.createInput(this, 16);
-    ServExt_tail_len = UnsignedInteger.createInput(this, 8);
+    TR3_len = UnsignedInteger.createInput(this, 16);
+    CertVerify_len = UnsignedInteger.createInput(this, 16);
+    CertVerify_tail_len = UnsignedInteger.createInput(this, 8);
     root = FieldElement.createInput(this, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
 
 
 
     H2 = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(H2), 8);
-    ServExt_tail_ct = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(ServExt_tail_ct), 8);
+    CertVerify_ct_tail = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(CertVerify_ct_tail), 8);
+    ServerFinished_ct = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(ServerFinished_ct), 8);
 
 
 
@@ -278,7 +444,7 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
 
     HS = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(HS), 8);
     SHA_H_Checkpoint = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(SHA_H_Checkpoint), 8);
-    dns_ct = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(dns_ct), 8);
+    appl_ct = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(appl_ct), 8);
     left_domain_name = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(left_domain_name), 8);
     right_domain_name = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(right_domain_name), 8);
 
@@ -326,7 +492,8 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
 
     UnsignedInteger[] SHA_H_Checkpoint_32 = xjsnark.util_and_sha.Util.convert_8_to_32(SHA_H_Checkpoint);
 
-    values = TLSKeySchedule.get1RTT_HS_new(HS, H2, CH_SH_len.copy(16), ServExt_len.copy(16), ServExt_tail_ct, ServExt_tail_len.copy(8), SHA_H_Checkpoint_32, dns_ct);
+    values = TLSKeySchedule.get1RTT_HS_new(HS, H2, TR3_len.copy(16), CertVerify_len.copy(16), CertVerify_ct_tail, ServerFinished_ct, CertVerify_tail_len.copy(8), SHA_H_Checkpoint_32, appl_ct);
+
 
     UnsignedInteger[] dns_query_bytes = values[0];
 
@@ -338,7 +505,6 @@ public class DNS_Shortcut_dot extends CircuitGenerator {
 
     // This tests the membership in the merkle tree 
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
-    a.assign(non_membership.check_wildcard_python_path(dns_labels, root.copy(), left_domain_name, right_domain_name, left_index.copy(8), right_index.copy(8), left_path_array, right_path_array, left_dir.copy(64), right_dir.copy(64)), 1);
 
   }
   public String get_tail_minus_36(String line) {

@@ -13,7 +13,6 @@ import backend.auxTypes.UnsignedInteger;
 import util.Util;
 import xjsnark.poseidon.PoseidonHash;
 import xjsnark.aes_gcm.AES_GCM;
-import xjsnark.membership_merkle.non_membership;
 import backend.eval.CircuitEvaluator;
 
 public class DNS_Amortized_dot extends CircuitGenerator {
@@ -28,113 +27,219 @@ public class DNS_Amortized_dot extends CircuitGenerator {
     Config.writeCircuits = true;
     Config.outputFilesPath = ".";
 
-    new DNS_Amortized_dot();
+    new DNS_Amortized_dot(args);
   }
 
-  public DNS_Amortized_dot() {
+  public DNS_Amortized_dot(String[] s) {
     super("DNS_Amortized_dot");
     __generateCircuit();
-    this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
-      public void pre() {
-        try {
+    if (s[0].equals("pub")) {
+      System.out.println("Generate public inputs only");
+      this.__generatePublicInputs(new SampleRun("Sample_Run1", true) {
+        public void pre() {
+          try {
 
-          // Example commitment string 
-          String comm_str = "2db24a9a876fc5395a0a087137c4d73de25a4f2002f384513d8427959247c4cd";
+            // Example commitment string 
+            String comm_str = "2db24a9a876fc5395a0a087137c4d73de25a4f2002f384513d8427959247c4cd";
 
-          // Key, iv that were committed to 
-          String key_str = "e1a1786a0c146f4b172192141df6ffd9";
-          String iv_str = "cf73d63f3ac141740b84c7fd";
+            // Key, iv that were committed to 
+            String key_str = "e1a1786a0c146f4b172192141df6ffd9";
+            String iv_str = "cf73d63f3ac141740b84c7fd";
 
-          // query is amazon.com 
-          String dns_ct_str = "50e2daf49a12e78a4eed77fa7bb76e462287446b510f61f50c3f1c";
+            // query is amazon.com 
+            String dns_ct_str = "50e2daf49a12e78a4eed77fa7bb76e462287446b510f61f50c3f1c";
 
-          // Convert the strings to circuit input types 
+            // Convert the strings to circuit input types 
 
-          comm.mapValue(new BigInteger(comm_str, 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            comm.mapValue(new BigInteger(comm_str, 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
 
-          for (int i = 0; i < key_str.length() / 2; i = i + 1) {
-            key[i].mapValue(new BigInteger(key_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            for (int i = 0; i < key_str.length() / 2; i = i + 1) {
+              key[i].mapValue(new BigInteger(key_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < iv_str.length() / 2; i = i + 1) {
+              iv[i].mapValue(new BigInteger(iv_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            SN.mapValue(BigInteger.ZERO, CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < dns_ct_str.length() / 2; i = i + 1) {
+              dns_ct[i].mapValue(new BigInteger(dns_ct_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = dns_ct_str.length() / 2; i < 255; i = i + 1) {
+              dns_ct[i].mapValue(new BigInteger("0", 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+          } catch (Exception ex) {
+            System.out.println("Error: Issue with entering inputs.");
           }
 
-          for (int i = 0; i < iv_str.length() / 2; i = i + 1) {
-            iv[i].mapValue(new BigInteger(iv_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+          // *************************** Membership Testing Inputs ************************** 
+          String line;
+          try {
+            BufferedReader br = new BufferedReader(new FileReader(membership_test_file_name));
+
+            // there are 14 data points in the text file, only some of which are used in this circuit 
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+            }
+
+            line = br.readLine();
+            root.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              left_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              right_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              left_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              right_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            line = br.readLine();
+            left_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            line = br.readLine();
+            right_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+            line = br.readLine();
+            left_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            line = br.readLine();
+            right_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+          } catch (Exception ex) {
+            System.out.println("FILE NOT FIND OR LINE NOT READ");
           }
 
-          SN.mapValue(BigInteger.ZERO, CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
 
-          for (int i = 0; i < dns_ct_str.length() / 2; i = i + 1) {
-            dns_ct[i].mapValue(new BigInteger(dns_ct_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-          for (int i = dns_ct_str.length() / 2; i < 255; i = i + 1) {
-            dns_ct[i].mapValue(new BigInteger("0", 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
+        }
+        public void post() {
+          System.out.println("Circuit Output: ");
 
-        } catch (Exception ex) {
-          System.out.println("Error: Issue with entering inputs.");
+          System.out.print(output_Fp.getValueFromEvaluator(CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator()).toString(16));
+
         }
 
-        // *************************** Membership Testing Inputs ************************** 
-        String line;
-        try {
-          BufferedReader br = new BufferedReader(new FileReader(membership_test_file_name));
+      });
+    } else if (s[0].equals("run")) {
+      System.out.println("Normal execution");
+      this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
+        public void pre() {
+          try {
 
-          // there are 14 data points in the text file, only some of which are used in this circuit 
-          for (int i = 0; i < 255; i++) {
-            line = br.readLine();
+            // Example commitment string 
+            String comm_str = "2db24a9a876fc5395a0a087137c4d73de25a4f2002f384513d8427959247c4cd";
+
+            // Key, iv that were committed to 
+            String key_str = "e1a1786a0c146f4b172192141df6ffd9";
+            String iv_str = "cf73d63f3ac141740b84c7fd";
+
+            // query is amazon.com 
+            String dns_ct_str = "50e2daf49a12e78a4eed77fa7bb76e462287446b510f61f50c3f1c";
+
+            // Convert the strings to circuit input types 
+
+            comm.mapValue(new BigInteger(comm_str, 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < key_str.length() / 2; i = i + 1) {
+              key[i].mapValue(new BigInteger(key_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < iv_str.length() / 2; i = i + 1) {
+              iv[i].mapValue(new BigInteger(iv_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            SN.mapValue(BigInteger.ZERO, CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < dns_ct_str.length() / 2; i = i + 1) {
+              dns_ct[i].mapValue(new BigInteger(dns_ct_str.substring(2 * i, 2 * i + 2), 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = dns_ct_str.length() / 2; i < 255; i = i + 1) {
+              dns_ct[i].mapValue(new BigInteger("0", 16), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+          } catch (Exception ex) {
+            System.out.println("Error: Issue with entering inputs.");
           }
 
-          line = br.readLine();
-          root.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+          // *************************** Membership Testing Inputs ************************** 
+          String line;
+          try {
+            BufferedReader br = new BufferedReader(new FileReader(membership_test_file_name));
 
-          for (int i = 0; i < 255; i++) {
+            // there are 14 data points in the text file, only some of which are used in this circuit 
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+            }
+
             line = br.readLine();
-            left_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            root.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              left_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            for (int i = 0; i < 255; i++) {
+              line = br.readLine();
+              right_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              left_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+            for (int i = 0; i < HEIGHT; i++) {
+              line = br.readLine();
+              right_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+            }
+
+            line = br.readLine();
+            left_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            line = br.readLine();
+            right_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+            line = br.readLine();
+            left_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+            line = br.readLine();
+            right_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+
+
+          } catch (Exception ex) {
+            System.out.println("FILE NOT FIND OR LINE NOT READ");
           }
 
-          for (int i = 0; i < 255; i++) {
-            line = br.readLine();
-            right_domain_name[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
 
-          // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-          for (int i = 0; i < HEIGHT; i++) {
-            line = br.readLine();
-            left_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
-          for (int i = 0; i < HEIGHT; i++) {
-            line = br.readLine();
-            right_path_array[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-          }
+        }
+        public void post() {
+          System.out.println("Circuit Output: ");
 
-          line = br.readLine();
-          left_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
+          System.out.print(output_Fp.getValueFromEvaluator(CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator()).toString(16));
 
-          line = br.readLine();
-          right_dir.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-
-          line = br.readLine();
-          left_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-          line = br.readLine();
-          right_index.mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
-
-
-        } catch (Exception ex) {
-          System.out.println("FILE NOT FIND OR LINE NOT READ");
         }
 
-
-      }
-      public void post() {
-        System.out.println("Circuit Output: ");
-
-        System.out.print(output_Fp.getValueFromEvaluator(CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator()).toString(16));
-
-      }
-
-    });
-
+      });
+    } else {
+      System.out.println("Choose pub to generate public inputs only, run to do the whole execution.");
+    }
   }
 
 
@@ -304,7 +409,6 @@ public class DNS_Amortized_dot extends CircuitGenerator {
 
     // Merkle tree non-membership testing 
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
-    a.assign(non_membership.check_wildcard_python_path(dns_labels_rev, root.copy(), left_domain_name, right_domain_name, left_index.copy(8), right_index.copy(8), left_path_array, right_path_array, left_dir.copy(64), right_dir.copy(64)), 1);
 
 
 
