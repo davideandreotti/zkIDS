@@ -7,7 +7,6 @@ status={}
 tcp_streams={}
 transcripts={}
 threads = list()
-
 append=False
 now = str(datetime.timestamp(datetime.now())).split(".")[0]
 
