@@ -25,7 +25,7 @@ def encrypt_aes_gcm(key, iv, plaintext):
 # Given a TLS connection established using tlslite-ng,
 # this function extracts the required test values
 def get_test_values(tlsconn):
-    # We have configured tlsconn to store the following values
+    # We have configured tlsconn to store the following values.
     psk             = tlsconn.psk
     ec_sk           = tlsconn.clientPrivate
     ec_pk_client    = tlsconn.clientPublic
