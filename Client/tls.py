@@ -89,10 +89,10 @@ def get_test_values(tlsconn):
         # 16 bytes for tag + 1 byte for message type
         dns_ciphertext = dns_ct[0:-34]
         dns_plaintext = plaintexts[3].hex()
-    elif len(ciphertexts) == 5:
+    elif len(ciphertexts) >= 5: #NOTE: I put >=5 to support sending files; the first chunk should contain headers and url, that's enough.
         #five entries means doh post.
         dns_cts = ciphertexts[3:]
-        dns_ciphertext = list(map(lambda x : x.write().hex()[0:-17], dns_cts))
+        dns_ciphertext = list(map(lambda x : x.write().hex()[0:-34], dns_cts))
         dns_pt1 = plaintexts[3].hex()
         c_ap_iv1 = bytearray(c_ap_iv)
         c_ap_iv1[-1] ^= 1
@@ -163,10 +163,19 @@ def make_tls_connection(pathstr, keepalive):
 	oursettings.usePaddingExtension = False
 	# oursettings.eccCurves = ["x25519"]
 	# oursettings.keyShares = ["x25519"]
-
+	packetNumber = 1
 	http_conn = HTTPTLSConnection(SERVER, 443, settings=oursettings, printhandshake=True)
 	tls_conn=None
-	http_conn.request('GET', pathstr)
+	headers = {
+		"Content-type": "application/octet-stream",
+		"Accept": "text/plain"
+	}
+	http_conn.request("POST", pathstr, open("ebpf.pdf","rb"), headers)
+	#this is the correct command, uncomment after
+	#http_conn.request('GET', pathstr)
+	
+	
+	
 	resp = http_conn.getresponse()
 	resp_raw = http_conn.sock.read()
 	tls_conn=http_conn.sock
@@ -184,7 +193,7 @@ def make_tls_connection(pathstr, keepalive):
 
 	dict=get_test_values(tls_conn) #PSK is not set in the first session creation
 	original_stdout = sys.stdout
-	f = open("transcript_baseline.txt", "w")
+	f = open("files/transcript_baseline."+tls_conn._clientRandom.hex()+'.'+str(packetNumber)+".txt", "w")
 	sys.stdout = f
 	print_test(dict)
 	f.close()
@@ -207,5 +216,5 @@ def make_tls_connection(pathstr, keepalive):
 
 
 if __name__ == '__main__':
-	make_tls_connection()
+	make_tls_connection('/function/run',False)
 

@@ -3,6 +3,7 @@ from runprocess import runProcess
 from flask import Flask, request, send_file, Response, make_response
 client_list = {"7000": "asdfghc", "9088": "cvbnm", "2344": "hjklo", "5669": "qwerty"} 
 app = Flask(__name__)
+circuit = "channel_openings.ChannelShortcut"
 
 @app.route('/prove', methods=['POST'])
 def upload_file():
@@ -14,8 +15,8 @@ def upload_file():
 		print('files/verify.'+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.bin')
 		file.save('files/verify.'+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.bin')
 		print('File uploaded successfully.')
-	circuit = "DNS_Shortcut"
-	print('./libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuit+'.arith '+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.in verify')
+
+	print('./libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit.split('.')[1]+'.arith files/'+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.in verify')
 	#for line in runProcess(('./libsnark/build/libsnark/jsnark_interface/hello gg '+circuit+'.arith '+circuit+'_Sample_Run1.in verify').split()):
 	#	print(line)
 	return Response(status=200)
@@ -31,13 +32,13 @@ def return_file():
 		return Response("{'Error':'Client not in list'}", status=200, mimetype='application/json')
             
             
-circuit = "DNS_Shortcut_doh_get"
+
 #invoke java to generate the circuit:
 #TODO: change this line with the actual one
-print('java -Xmx6g -cp bin:xjsnark_backend.jar xjsnark.e2eDNS.'+circuit)
+print('java -Xmx6g -cp xjsnark_decompiled/backend_bin_mod:xjsnark_decompiled/xjsnark_bin xjsnark.'+circuit+' pub')
 #for line in runProcess(('java -Xmx6g -cp bin:xjsnark_backend.jar xjsnark.e2eDNS.'+circuit).split()):
 returned = runProcess("echo ciao".split())
-    
+print('./libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit.split('.')[1]+'.arith setup')
 #for line in runProcess(('./libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuit+'.arith setup').split()):
 returned = runProcess("echo ciao2".split())
 

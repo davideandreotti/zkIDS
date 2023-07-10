@@ -39,6 +39,8 @@ def main():
 		with open('token.txt', 'w') as token_file:
 			token_file.write(client_token)
 		print("Authentication succeeded, Client-Token obtained.")
+	else:
+		print("Error, Client-Token not found")
 
 
 	while True:
@@ -49,7 +51,7 @@ def main():
 			print("Sending HTTP request(s) to server...")
 			(random_id, numPackets) = make_tls_connection(function, keepalive)
 			for pkt in numPackets:
-				file_path = "proof.txt"		#TODO: must be replaced with proof+random_id+numpacket+.txt
+				file_path = "files/proof.txt"		#TODO: must be replaced with proof+random_id+numpacket+.txt
 				url = "http://localhost:5001/prove"
 				print("Random ID: "+random_id.hex())
 				headers = {'Client-ID': client_id, 'Random-ID':random_id.hex(), 'PacketNum': pkt}
