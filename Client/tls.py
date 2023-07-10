@@ -167,12 +167,13 @@ def make_tls_connection(pathstr, keepalive):
 	http_conn = HTTPTLSConnection(SERVER, 443, settings=oursettings, printhandshake=True)
 	tls_conn=None
 	headers = {
-		"Content-type": "application/octet-stream",
-		"Accept": "text/plain"
+		"Client-Token": "aabbcc",
+        "Host": "oo", 
+        "Accept-Encoding": "application/binary"
 	}
-	http_conn.request("POST", pathstr, open("ebpf.pdf","rb"), headers)
+	#http_conn.request("POST", pathstr, open("ebpf.pdf","rb"), headers)
 	#this is the correct command, uncomment after
-	#http_conn.request('GET', pathstr)
+	http_conn.request('GET', pathstr, body=None, headers=headers)
 	
 	
 	
