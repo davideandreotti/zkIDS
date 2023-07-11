@@ -7,7 +7,7 @@ status={}
 tcp_streams={}
 transcripts={}
 threads = list()
-appengit ad=False
+append=False
 now = str(datetime.timestamp(datetime.now())).split(".")[0]
 
 def parseApplicationData(tls_data):

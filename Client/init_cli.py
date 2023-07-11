@@ -1,7 +1,7 @@
 import requests, time
 from tls import *
 client_id = '9088'
-
+host = "172.19.0.2"
 def send_file(file_path, url, headers):
 	with open(file_path, 'rb') as file:
 		files = {'proof': file}
@@ -19,7 +19,7 @@ def save_file(response, path):
 
 def main():
 	print("Connecting to middlebox as client "+client_id)
-	url = "http://localhost:5001/prover-key"
+	url = "http://"+host+":5001/prover-key"
 	headers = {'Client-ID': client_id}
 	while True:
 		try:
@@ -52,7 +52,7 @@ def main():
 			(random_id, numPackets) = make_tls_connection(function, keepalive)
 			for pkt in numPackets:
 				file_path = "files/proof.txt"		#TODO: must be replaced with proof+random_id+numpacket+.txt
-				url = "http://localhost:5001/prove"
+				url = "http://"+host+":5001/prove"
 				print("Random ID: "+random_id.hex())
 				headers = {'Client-ID': client_id, 'Random-ID':random_id.hex(), 'PacketNum': pkt}
 				send_file(file_path, url, headers)
