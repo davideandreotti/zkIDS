@@ -19,9 +19,9 @@ public class MerkleAuthPath extends StructDefinition {
 
 
   public UnsignedInteger directionSelector = new UnsignedInteger(64, new BigInteger("0"));
-  public FieldElement[] digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{non_membership.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
+  public FieldElement[] digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{membership_proof_functions.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
   public MerkleAuthPath() {
-    digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{non_membership.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
+    digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{membership_proof_functions.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
   }
   public MerkleAuthPath(UnsignedInteger inputDS, FieldElement[] inputDigests) {
     directionSelector.assign(inputDS, 64);
@@ -32,7 +32,7 @@ public class MerkleAuthPath extends StructDefinition {
     FieldElement currentDigest = leaf.copy();
     FieldElement[] inputToNextHash = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{2}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
 
-    for (int i = 0; i < non_membership.HEIGHT; i++) {
+    for (int i = 0; i < membership_proof_functions.HEIGHT; i++) {
       for (int j = 0; j < 2; j++) {
         {
           Bit bit_a0a0e0o = directionBits[i].copy();

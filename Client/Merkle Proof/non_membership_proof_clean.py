@@ -3,7 +3,7 @@ import os
 import time
 
 allowlist_filename = "allowlist.txt"
-command = "GET /dns-query "
+command = "GET /function/run "
 witness_filename = "merkle_witness.txt"
 # read blacklist from file
 def parseFile(path):
