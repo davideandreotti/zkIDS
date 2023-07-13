@@ -1,4 +1,4 @@
-# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/gtest/googlemock
+# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/gtest/googlemock
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,27 +38,27 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/libgmock.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/libgmock.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/libgmock_main.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/libgmock_main.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/gtest/googlemock/include/gmock")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/gtest/googlemock/include/gmock")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES
-    "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/gmock.pc"
-    "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/gmock_main.pc"
+    "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/gmock.pc"
+    "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/gmock_main.pc"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/gtest/cmake_install.cmake")
+  include("/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/gtest/cmake_install.cmake")
 
 endif()
 

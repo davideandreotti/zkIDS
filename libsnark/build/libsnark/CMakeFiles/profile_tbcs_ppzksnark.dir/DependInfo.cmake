@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/relations/circuit_satisfaction_problems/tbcs/examples/tbcs_examples.cpp" "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/profile_tbcs_ppzksnark.dir/relations/circuit_satisfaction_problems/tbcs/examples/tbcs_examples.cpp.o"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/zk_proof_systems/ppzksnark/tbcs_ppzksnark/profiling/profile_tbcs_ppzksnark.cpp" "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/profile_tbcs_ppzksnark.dir/zk_proof_systems/ppzksnark/tbcs_ppzksnark/profiling/profile_tbcs_ppzksnark.cpp.o"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/relations/circuit_satisfaction_problems/tbcs/examples/tbcs_examples.cpp" "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/profile_tbcs_ppzksnark.dir/relations/circuit_satisfaction_problems/tbcs/examples/tbcs_examples.cpp.o"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/zk_proof_systems/ppzksnark/tbcs_ppzksnark/profiling/profile_tbcs_ppzksnark.cpp" "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/profile_tbcs_ppzksnark.dir/zk_proof_systems/ppzksnark/tbcs_ppzksnark/profiling/profile_tbcs_ppzksnark.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,7 +15,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "BN_SUPPORT_SNARK=1"
   "CURVE_BN128"
   "MONTGOMERY_OUTPUT"
-  "MULTICORE=1"
   "USE_ASM"
   )
 
@@ -29,9 +28,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/snark.dir/DependInfo.cmake"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/libff/libff/CMakeFiles/ff.dir/DependInfo.cmake"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/snark.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/libff/libff/CMakeFiles/ff.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

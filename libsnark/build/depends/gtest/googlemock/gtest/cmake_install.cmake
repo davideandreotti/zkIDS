@@ -1,4 +1,4 @@
-# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/gtest/googletest
+# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/gtest/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,21 +38,21 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/gtest/libgtest.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/gtest/libgtest.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/gtest/libgtest_main.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/gtest/libgtest_main.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/gtest/googletest/include/gtest")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/gtest/googletest/include/gtest")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES
-    "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/gtest.pc"
-    "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/gtest_main.pc"
+    "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/gtest.pc"
+    "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/gtest_main.pc"
     )
 endif()
 

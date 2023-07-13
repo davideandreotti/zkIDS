@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Utility rule file for ExperimentalSubmit.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
 include libsnark/CMakeFiles/ExperimentalSubmit.dir/progress.make
 
 libsnark/CMakeFiles/ExperimentalSubmit:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/ctest -D ExperimentalSubmit
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/ctest -D ExperimentalSubmit
 
 ExperimentalSubmit: libsnark/CMakeFiles/ExperimentalSubmit
 ExperimentalSubmit: libsnark/CMakeFiles/ExperimentalSubmit.dir/build.make
@@ -67,10 +67,10 @@ libsnark/CMakeFiles/ExperimentalSubmit.dir/build: ExperimentalSubmit
 .PHONY : libsnark/CMakeFiles/ExperimentalSubmit.dir/build
 
 libsnark/CMakeFiles/ExperimentalSubmit.dir/clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/ExperimentalSubmit.dir/cmake_clean.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/ExperimentalSubmit.dir/cmake_clean.cmake
 .PHONY : libsnark/CMakeFiles/ExperimentalSubmit.dir/clean
 
 libsnark/CMakeFiles/ExperimentalSubmit.dir/depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libsnark/CMakeFiles/ExperimentalSubmit.dir/depend
 

@@ -4,18 +4,26 @@ from flask import Flask, request, send_file, Response, make_response
 client_list = {"7000": "asdfghc", "9088": "cvbnm", "2344": "hjklo", "5669": "qwerty"} 
 app = Flask(__name__)
 circuit = "HTTP_String"
-
+url = "/function"
 @app.route('/prove', methods=['POST'])
 def upload_file():
 	client_id = request.headers['Client-ID']
 	if (client_id in client_list):
-		print(request.headers['Client-ID'])
-		print(request.headers['Random-ID'])
+		print("Client allowed")
+		random_id = request.headers['Random-ID']
+		packet_num = request.headers['PacketNum']
 		file = request.files['proof']
-		print('files/verify.'+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.bin')
-		file.save('files/verify.'+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.bin')
-		print('File uploaded successfully.')
-
+		filename = 'files/verify.'+random_id+'.'+packet_num+'.bin'
+		print(filename)
+		file.save(filename)
+		print('Proof received! '+filename)
+		print('File received successfully.')
+		subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+url).split())
+		subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuit+'.arith '+circuit+'_Sample_Run1.pub.in verify verify.'+random_id+'.'+packet_num+'.bin').split())
+		#TODO: uncomment this line when java is fixed
+		#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+random_id+'.'+packet_num+'.in verify').split())
+	else:
+		print("CLIENT NOT ALLOWED")
 	subprocess.Popen(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+request.headers['Random-ID']+'.'+request.headers['PacketNum']+'.in verify').split())
 	#for line in runProcess(('./libsnark/build/libsnark/jsnark_interface/hello gg '+circuit+'.arith '+circuit+'_Sample_Run1.in verify').split()):
 	#	print(line)
@@ -25,7 +33,7 @@ def upload_file():
 def return_file():
 	if(request.headers['Client-ID'] in client_list):
 		print(request.headers['Client-ID'])
-		response = make_response(send_file("provKey.bin", mimetype='application/octet-stream'))
+		response = make_response(send_file("files/provKey.bin", mimetype='application/octet-stream'))
 		response.headers['Client-Token'] = client_list[request.headers['Client-ID']]
 		return response
 	else:

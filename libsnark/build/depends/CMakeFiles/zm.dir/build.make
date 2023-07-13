@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Include any dependencies generated for this target.
 include depends/CMakeFiles/zm.dir/depend.make
@@ -59,29 +59,29 @@ include depends/CMakeFiles/zm.dir/flags.make
 
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o: depends/CMakeFiles/zm.dir/flags.make
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o: ../depends/ate-pairing/src/zm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/ate-pairing/src/zm.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/ate-pairing/src/zm.cpp
 
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.i"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/ate-pairing/src/zm.cpp > CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/ate-pairing/src/zm.cpp > CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.i
 
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.s"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/ate-pairing/src/zm.cpp -o CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/ate-pairing/src/zm.cpp -o CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.s
 
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o: depends/CMakeFiles/zm.dir/flags.make
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o: ../depends/ate-pairing/src/zm2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/ate-pairing/src/zm2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/ate-pairing/src/zm2.cpp
 
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.i"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/ate-pairing/src/zm2.cpp > CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/ate-pairing/src/zm2.cpp > CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.i
 
 depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.s"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/ate-pairing/src/zm2.cpp -o CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/ate-pairing/src/zm2.cpp -o CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.s
 
 # Object files for target zm
 zm_OBJECTS = \
@@ -95,9 +95,9 @@ depends/libzm.a: depends/CMakeFiles/zm.dir/ate-pairing/src/zm.cpp.o
 depends/libzm.a: depends/CMakeFiles/zm.dir/ate-pairing/src/zm2.cpp.o
 depends/libzm.a: depends/CMakeFiles/zm.dir/build.make
 depends/libzm.a: depends/CMakeFiles/zm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libzm.a"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && $(CMAKE_COMMAND) -P CMakeFiles/zm.dir/cmake_clean_target.cmake
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zm.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libzm.a"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && $(CMAKE_COMMAND) -P CMakeFiles/zm.dir/cmake_clean_target.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 depends/CMakeFiles/zm.dir/build: depends/libzm.a
@@ -105,10 +105,10 @@ depends/CMakeFiles/zm.dir/build: depends/libzm.a
 .PHONY : depends/CMakeFiles/zm.dir/build
 
 depends/CMakeFiles/zm.dir/clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends && $(CMAKE_COMMAND) -P CMakeFiles/zm.dir/cmake_clean.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends && $(CMAKE_COMMAND) -P CMakeFiles/zm.dir/cmake_clean.cmake
 .PHONY : depends/CMakeFiles/zm.dir/clean
 
 depends/CMakeFiles/zm.dir/depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : depends/CMakeFiles/zm.dir/depend
 

@@ -8,7 +8,8 @@ from cryptography.hazmat.primitives.ciphers import (Cipher, algorithms, modes)
 import sha2_compressions
 import json, time, subprocess
 
-SERVER = 'server'
+#SERVER = 'server'
+SERVER = 'localhost'
 pathstr = '/pippo'
 allowed = "/function"
 circuitname = "HTTP_String"
@@ -209,10 +210,9 @@ def make_tls_connection(pathstr, keepalive):
 	f.close() '''
 	sys.stdout = original_stdout
 	print("Generating circuit and parameters...")
-	#stream = os.popen('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.HTTP_String run ../Client/files/'+filename+" "+allowed)
 	subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run ../Client/files/'+filename+" "+allowed).split())
 	print("PROOF COMPUTED!")
-	subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_Sample_Run1.in prove').split())
+	subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_Sample_Run1.in prove '+tls_conn._clientRandom.hex()+" 1").split())
 	
 
 	#print(output)

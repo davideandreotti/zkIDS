@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Utility rule file for ContinuousConfigure.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
 include libsnark/CMakeFiles/ContinuousConfigure.dir/progress.make
 
 libsnark/CMakeFiles/ContinuousConfigure:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/ctest -D ContinuousConfigure
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/ctest -D ContinuousConfigure
 
 ContinuousConfigure: libsnark/CMakeFiles/ContinuousConfigure
 ContinuousConfigure: libsnark/CMakeFiles/ContinuousConfigure.dir/build.make
@@ -67,10 +67,10 @@ libsnark/CMakeFiles/ContinuousConfigure.dir/build: ContinuousConfigure
 .PHONY : libsnark/CMakeFiles/ContinuousConfigure.dir/build
 
 libsnark/CMakeFiles/ContinuousConfigure.dir/clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/ContinuousConfigure.dir/cmake_clean.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/ContinuousConfigure.dir/cmake_clean.cmake
 .PHONY : libsnark/CMakeFiles/ContinuousConfigure.dir/clean
 
 libsnark/CMakeFiles/ContinuousConfigure.dir/depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/ContinuousConfigure.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/ContinuousConfigure.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libsnark/CMakeFiles/ContinuousConfigure.dir/depend
 

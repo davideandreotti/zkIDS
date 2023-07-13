@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/libff/libff/CMakeFiles/progress.marks
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles 0
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/libff/libff/CMakeFiles/progress.marks
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/clean
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/preinstall
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/preinstall
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 depends/libff/libff/CMakeFiles/multiexp_profile.dir/rule:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/CMakeFiles/multiexp_profile.dir/rule
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/CMakeFiles/multiexp_profile.dir/rule
 .PHONY : depends/libff/libff/CMakeFiles/multiexp_profile.dir/rule
 
 # Convenience name for target.
@@ -179,12 +179,12 @@ multiexp_profile: depends/libff/libff/CMakeFiles/multiexp_profile.dir/rule
 
 # fast build rule for target.
 multiexp_profile/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/build
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/build
 .PHONY : multiexp_profile/fast
 
 # Convenience name for target.
 depends/libff/libff/CMakeFiles/ff.dir/rule:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/CMakeFiles/ff.dir/rule
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libff/libff/CMakeFiles/ff.dir/rule
 .PHONY : depends/libff/libff/CMakeFiles/ff.dir/rule
 
 # Convenience name for target.
@@ -194,7 +194,7 @@ ff: depends/libff/libff/CMakeFiles/ff.dir/rule
 
 # fast build rule for target.
 ff/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/build
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/build
 .PHONY : ff/fast
 
 algebra/curves/alt_bn128/alt_bn128_g1.o: algebra/curves/alt_bn128/alt_bn128_g1.cpp.o
@@ -203,7 +203,7 @@ algebra/curves/alt_bn128/alt_bn128_g1.o: algebra/curves/alt_bn128/alt_bn128_g1.c
 
 # target to build an object file
 algebra/curves/alt_bn128/alt_bn128_g1.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g1.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g1.cpp.o
 .PHONY : algebra/curves/alt_bn128/alt_bn128_g1.cpp.o
 
 algebra/curves/alt_bn128/alt_bn128_g1.i: algebra/curves/alt_bn128/alt_bn128_g1.cpp.i
@@ -212,7 +212,7 @@ algebra/curves/alt_bn128/alt_bn128_g1.i: algebra/curves/alt_bn128/alt_bn128_g1.c
 
 # target to preprocess a source file
 algebra/curves/alt_bn128/alt_bn128_g1.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g1.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g1.cpp.i
 .PHONY : algebra/curves/alt_bn128/alt_bn128_g1.cpp.i
 
 algebra/curves/alt_bn128/alt_bn128_g1.s: algebra/curves/alt_bn128/alt_bn128_g1.cpp.s
@@ -221,7 +221,7 @@ algebra/curves/alt_bn128/alt_bn128_g1.s: algebra/curves/alt_bn128/alt_bn128_g1.c
 
 # target to generate assembly for a file
 algebra/curves/alt_bn128/alt_bn128_g1.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g1.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g1.cpp.s
 .PHONY : algebra/curves/alt_bn128/alt_bn128_g1.cpp.s
 
 algebra/curves/alt_bn128/alt_bn128_g2.o: algebra/curves/alt_bn128/alt_bn128_g2.cpp.o
@@ -230,7 +230,7 @@ algebra/curves/alt_bn128/alt_bn128_g2.o: algebra/curves/alt_bn128/alt_bn128_g2.c
 
 # target to build an object file
 algebra/curves/alt_bn128/alt_bn128_g2.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g2.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g2.cpp.o
 .PHONY : algebra/curves/alt_bn128/alt_bn128_g2.cpp.o
 
 algebra/curves/alt_bn128/alt_bn128_g2.i: algebra/curves/alt_bn128/alt_bn128_g2.cpp.i
@@ -239,7 +239,7 @@ algebra/curves/alt_bn128/alt_bn128_g2.i: algebra/curves/alt_bn128/alt_bn128_g2.c
 
 # target to preprocess a source file
 algebra/curves/alt_bn128/alt_bn128_g2.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g2.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g2.cpp.i
 .PHONY : algebra/curves/alt_bn128/alt_bn128_g2.cpp.i
 
 algebra/curves/alt_bn128/alt_bn128_g2.s: algebra/curves/alt_bn128/alt_bn128_g2.cpp.s
@@ -248,7 +248,7 @@ algebra/curves/alt_bn128/alt_bn128_g2.s: algebra/curves/alt_bn128/alt_bn128_g2.c
 
 # target to generate assembly for a file
 algebra/curves/alt_bn128/alt_bn128_g2.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g2.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_g2.cpp.s
 .PHONY : algebra/curves/alt_bn128/alt_bn128_g2.cpp.s
 
 algebra/curves/alt_bn128/alt_bn128_init.o: algebra/curves/alt_bn128/alt_bn128_init.cpp.o
@@ -257,7 +257,7 @@ algebra/curves/alt_bn128/alt_bn128_init.o: algebra/curves/alt_bn128/alt_bn128_in
 
 # target to build an object file
 algebra/curves/alt_bn128/alt_bn128_init.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_init.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_init.cpp.o
 .PHONY : algebra/curves/alt_bn128/alt_bn128_init.cpp.o
 
 algebra/curves/alt_bn128/alt_bn128_init.i: algebra/curves/alt_bn128/alt_bn128_init.cpp.i
@@ -266,7 +266,7 @@ algebra/curves/alt_bn128/alt_bn128_init.i: algebra/curves/alt_bn128/alt_bn128_in
 
 # target to preprocess a source file
 algebra/curves/alt_bn128/alt_bn128_init.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_init.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_init.cpp.i
 .PHONY : algebra/curves/alt_bn128/alt_bn128_init.cpp.i
 
 algebra/curves/alt_bn128/alt_bn128_init.s: algebra/curves/alt_bn128/alt_bn128_init.cpp.s
@@ -275,7 +275,7 @@ algebra/curves/alt_bn128/alt_bn128_init.s: algebra/curves/alt_bn128/alt_bn128_in
 
 # target to generate assembly for a file
 algebra/curves/alt_bn128/alt_bn128_init.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_init.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_init.cpp.s
 .PHONY : algebra/curves/alt_bn128/alt_bn128_init.cpp.s
 
 algebra/curves/alt_bn128/alt_bn128_pairing.o: algebra/curves/alt_bn128/alt_bn128_pairing.cpp.o
@@ -284,7 +284,7 @@ algebra/curves/alt_bn128/alt_bn128_pairing.o: algebra/curves/alt_bn128/alt_bn128
 
 # target to build an object file
 algebra/curves/alt_bn128/alt_bn128_pairing.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pairing.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pairing.cpp.o
 .PHONY : algebra/curves/alt_bn128/alt_bn128_pairing.cpp.o
 
 algebra/curves/alt_bn128/alt_bn128_pairing.i: algebra/curves/alt_bn128/alt_bn128_pairing.cpp.i
@@ -293,7 +293,7 @@ algebra/curves/alt_bn128/alt_bn128_pairing.i: algebra/curves/alt_bn128/alt_bn128
 
 # target to preprocess a source file
 algebra/curves/alt_bn128/alt_bn128_pairing.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pairing.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pairing.cpp.i
 .PHONY : algebra/curves/alt_bn128/alt_bn128_pairing.cpp.i
 
 algebra/curves/alt_bn128/alt_bn128_pairing.s: algebra/curves/alt_bn128/alt_bn128_pairing.cpp.s
@@ -302,7 +302,7 @@ algebra/curves/alt_bn128/alt_bn128_pairing.s: algebra/curves/alt_bn128/alt_bn128
 
 # target to generate assembly for a file
 algebra/curves/alt_bn128/alt_bn128_pairing.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pairing.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pairing.cpp.s
 .PHONY : algebra/curves/alt_bn128/alt_bn128_pairing.cpp.s
 
 algebra/curves/alt_bn128/alt_bn128_pp.o: algebra/curves/alt_bn128/alt_bn128_pp.cpp.o
@@ -311,7 +311,7 @@ algebra/curves/alt_bn128/alt_bn128_pp.o: algebra/curves/alt_bn128/alt_bn128_pp.c
 
 # target to build an object file
 algebra/curves/alt_bn128/alt_bn128_pp.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pp.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pp.cpp.o
 .PHONY : algebra/curves/alt_bn128/alt_bn128_pp.cpp.o
 
 algebra/curves/alt_bn128/alt_bn128_pp.i: algebra/curves/alt_bn128/alt_bn128_pp.cpp.i
@@ -320,7 +320,7 @@ algebra/curves/alt_bn128/alt_bn128_pp.i: algebra/curves/alt_bn128/alt_bn128_pp.c
 
 # target to preprocess a source file
 algebra/curves/alt_bn128/alt_bn128_pp.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pp.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pp.cpp.i
 .PHONY : algebra/curves/alt_bn128/alt_bn128_pp.cpp.i
 
 algebra/curves/alt_bn128/alt_bn128_pp.s: algebra/curves/alt_bn128/alt_bn128_pp.cpp.s
@@ -329,7 +329,7 @@ algebra/curves/alt_bn128/alt_bn128_pp.s: algebra/curves/alt_bn128/alt_bn128_pp.c
 
 # target to generate assembly for a file
 algebra/curves/alt_bn128/alt_bn128_pp.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pp.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/alt_bn128/alt_bn128_pp.cpp.s
 .PHONY : algebra/curves/alt_bn128/alt_bn128_pp.cpp.s
 
 algebra/curves/bn128/bn128_g1.o: algebra/curves/bn128/bn128_g1.cpp.o
@@ -338,7 +338,7 @@ algebra/curves/bn128/bn128_g1.o: algebra/curves/bn128/bn128_g1.cpp.o
 
 # target to build an object file
 algebra/curves/bn128/bn128_g1.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g1.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g1.cpp.o
 .PHONY : algebra/curves/bn128/bn128_g1.cpp.o
 
 algebra/curves/bn128/bn128_g1.i: algebra/curves/bn128/bn128_g1.cpp.i
@@ -347,7 +347,7 @@ algebra/curves/bn128/bn128_g1.i: algebra/curves/bn128/bn128_g1.cpp.i
 
 # target to preprocess a source file
 algebra/curves/bn128/bn128_g1.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g1.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g1.cpp.i
 .PHONY : algebra/curves/bn128/bn128_g1.cpp.i
 
 algebra/curves/bn128/bn128_g1.s: algebra/curves/bn128/bn128_g1.cpp.s
@@ -356,7 +356,7 @@ algebra/curves/bn128/bn128_g1.s: algebra/curves/bn128/bn128_g1.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/bn128/bn128_g1.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g1.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g1.cpp.s
 .PHONY : algebra/curves/bn128/bn128_g1.cpp.s
 
 algebra/curves/bn128/bn128_g2.o: algebra/curves/bn128/bn128_g2.cpp.o
@@ -365,7 +365,7 @@ algebra/curves/bn128/bn128_g2.o: algebra/curves/bn128/bn128_g2.cpp.o
 
 # target to build an object file
 algebra/curves/bn128/bn128_g2.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g2.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g2.cpp.o
 .PHONY : algebra/curves/bn128/bn128_g2.cpp.o
 
 algebra/curves/bn128/bn128_g2.i: algebra/curves/bn128/bn128_g2.cpp.i
@@ -374,7 +374,7 @@ algebra/curves/bn128/bn128_g2.i: algebra/curves/bn128/bn128_g2.cpp.i
 
 # target to preprocess a source file
 algebra/curves/bn128/bn128_g2.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g2.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g2.cpp.i
 .PHONY : algebra/curves/bn128/bn128_g2.cpp.i
 
 algebra/curves/bn128/bn128_g2.s: algebra/curves/bn128/bn128_g2.cpp.s
@@ -383,7 +383,7 @@ algebra/curves/bn128/bn128_g2.s: algebra/curves/bn128/bn128_g2.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/bn128/bn128_g2.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g2.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_g2.cpp.s
 .PHONY : algebra/curves/bn128/bn128_g2.cpp.s
 
 algebra/curves/bn128/bn128_gt.o: algebra/curves/bn128/bn128_gt.cpp.o
@@ -392,7 +392,7 @@ algebra/curves/bn128/bn128_gt.o: algebra/curves/bn128/bn128_gt.cpp.o
 
 # target to build an object file
 algebra/curves/bn128/bn128_gt.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_gt.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_gt.cpp.o
 .PHONY : algebra/curves/bn128/bn128_gt.cpp.o
 
 algebra/curves/bn128/bn128_gt.i: algebra/curves/bn128/bn128_gt.cpp.i
@@ -401,7 +401,7 @@ algebra/curves/bn128/bn128_gt.i: algebra/curves/bn128/bn128_gt.cpp.i
 
 # target to preprocess a source file
 algebra/curves/bn128/bn128_gt.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_gt.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_gt.cpp.i
 .PHONY : algebra/curves/bn128/bn128_gt.cpp.i
 
 algebra/curves/bn128/bn128_gt.s: algebra/curves/bn128/bn128_gt.cpp.s
@@ -410,7 +410,7 @@ algebra/curves/bn128/bn128_gt.s: algebra/curves/bn128/bn128_gt.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/bn128/bn128_gt.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_gt.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_gt.cpp.s
 .PHONY : algebra/curves/bn128/bn128_gt.cpp.s
 
 algebra/curves/bn128/bn128_init.o: algebra/curves/bn128/bn128_init.cpp.o
@@ -419,7 +419,7 @@ algebra/curves/bn128/bn128_init.o: algebra/curves/bn128/bn128_init.cpp.o
 
 # target to build an object file
 algebra/curves/bn128/bn128_init.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_init.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_init.cpp.o
 .PHONY : algebra/curves/bn128/bn128_init.cpp.o
 
 algebra/curves/bn128/bn128_init.i: algebra/curves/bn128/bn128_init.cpp.i
@@ -428,7 +428,7 @@ algebra/curves/bn128/bn128_init.i: algebra/curves/bn128/bn128_init.cpp.i
 
 # target to preprocess a source file
 algebra/curves/bn128/bn128_init.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_init.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_init.cpp.i
 .PHONY : algebra/curves/bn128/bn128_init.cpp.i
 
 algebra/curves/bn128/bn128_init.s: algebra/curves/bn128/bn128_init.cpp.s
@@ -437,7 +437,7 @@ algebra/curves/bn128/bn128_init.s: algebra/curves/bn128/bn128_init.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/bn128/bn128_init.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_init.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_init.cpp.s
 .PHONY : algebra/curves/bn128/bn128_init.cpp.s
 
 algebra/curves/bn128/bn128_pairing.o: algebra/curves/bn128/bn128_pairing.cpp.o
@@ -446,7 +446,7 @@ algebra/curves/bn128/bn128_pairing.o: algebra/curves/bn128/bn128_pairing.cpp.o
 
 # target to build an object file
 algebra/curves/bn128/bn128_pairing.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pairing.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pairing.cpp.o
 .PHONY : algebra/curves/bn128/bn128_pairing.cpp.o
 
 algebra/curves/bn128/bn128_pairing.i: algebra/curves/bn128/bn128_pairing.cpp.i
@@ -455,7 +455,7 @@ algebra/curves/bn128/bn128_pairing.i: algebra/curves/bn128/bn128_pairing.cpp.i
 
 # target to preprocess a source file
 algebra/curves/bn128/bn128_pairing.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pairing.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pairing.cpp.i
 .PHONY : algebra/curves/bn128/bn128_pairing.cpp.i
 
 algebra/curves/bn128/bn128_pairing.s: algebra/curves/bn128/bn128_pairing.cpp.s
@@ -464,7 +464,7 @@ algebra/curves/bn128/bn128_pairing.s: algebra/curves/bn128/bn128_pairing.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/bn128/bn128_pairing.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pairing.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pairing.cpp.s
 .PHONY : algebra/curves/bn128/bn128_pairing.cpp.s
 
 algebra/curves/bn128/bn128_pp.o: algebra/curves/bn128/bn128_pp.cpp.o
@@ -473,7 +473,7 @@ algebra/curves/bn128/bn128_pp.o: algebra/curves/bn128/bn128_pp.cpp.o
 
 # target to build an object file
 algebra/curves/bn128/bn128_pp.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pp.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pp.cpp.o
 .PHONY : algebra/curves/bn128/bn128_pp.cpp.o
 
 algebra/curves/bn128/bn128_pp.i: algebra/curves/bn128/bn128_pp.cpp.i
@@ -482,7 +482,7 @@ algebra/curves/bn128/bn128_pp.i: algebra/curves/bn128/bn128_pp.cpp.i
 
 # target to preprocess a source file
 algebra/curves/bn128/bn128_pp.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pp.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pp.cpp.i
 .PHONY : algebra/curves/bn128/bn128_pp.cpp.i
 
 algebra/curves/bn128/bn128_pp.s: algebra/curves/bn128/bn128_pp.cpp.s
@@ -491,7 +491,7 @@ algebra/curves/bn128/bn128_pp.s: algebra/curves/bn128/bn128_pp.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/bn128/bn128_pp.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pp.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/bn128/bn128_pp.cpp.s
 .PHONY : algebra/curves/bn128/bn128_pp.cpp.s
 
 algebra/curves/edwards/edwards_g1.o: algebra/curves/edwards/edwards_g1.cpp.o
@@ -500,7 +500,7 @@ algebra/curves/edwards/edwards_g1.o: algebra/curves/edwards/edwards_g1.cpp.o
 
 # target to build an object file
 algebra/curves/edwards/edwards_g1.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g1.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g1.cpp.o
 .PHONY : algebra/curves/edwards/edwards_g1.cpp.o
 
 algebra/curves/edwards/edwards_g1.i: algebra/curves/edwards/edwards_g1.cpp.i
@@ -509,7 +509,7 @@ algebra/curves/edwards/edwards_g1.i: algebra/curves/edwards/edwards_g1.cpp.i
 
 # target to preprocess a source file
 algebra/curves/edwards/edwards_g1.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g1.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g1.cpp.i
 .PHONY : algebra/curves/edwards/edwards_g1.cpp.i
 
 algebra/curves/edwards/edwards_g1.s: algebra/curves/edwards/edwards_g1.cpp.s
@@ -518,7 +518,7 @@ algebra/curves/edwards/edwards_g1.s: algebra/curves/edwards/edwards_g1.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/edwards/edwards_g1.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g1.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g1.cpp.s
 .PHONY : algebra/curves/edwards/edwards_g1.cpp.s
 
 algebra/curves/edwards/edwards_g2.o: algebra/curves/edwards/edwards_g2.cpp.o
@@ -527,7 +527,7 @@ algebra/curves/edwards/edwards_g2.o: algebra/curves/edwards/edwards_g2.cpp.o
 
 # target to build an object file
 algebra/curves/edwards/edwards_g2.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g2.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g2.cpp.o
 .PHONY : algebra/curves/edwards/edwards_g2.cpp.o
 
 algebra/curves/edwards/edwards_g2.i: algebra/curves/edwards/edwards_g2.cpp.i
@@ -536,7 +536,7 @@ algebra/curves/edwards/edwards_g2.i: algebra/curves/edwards/edwards_g2.cpp.i
 
 # target to preprocess a source file
 algebra/curves/edwards/edwards_g2.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g2.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g2.cpp.i
 .PHONY : algebra/curves/edwards/edwards_g2.cpp.i
 
 algebra/curves/edwards/edwards_g2.s: algebra/curves/edwards/edwards_g2.cpp.s
@@ -545,7 +545,7 @@ algebra/curves/edwards/edwards_g2.s: algebra/curves/edwards/edwards_g2.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/edwards/edwards_g2.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g2.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_g2.cpp.s
 .PHONY : algebra/curves/edwards/edwards_g2.cpp.s
 
 algebra/curves/edwards/edwards_init.o: algebra/curves/edwards/edwards_init.cpp.o
@@ -554,7 +554,7 @@ algebra/curves/edwards/edwards_init.o: algebra/curves/edwards/edwards_init.cpp.o
 
 # target to build an object file
 algebra/curves/edwards/edwards_init.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_init.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_init.cpp.o
 .PHONY : algebra/curves/edwards/edwards_init.cpp.o
 
 algebra/curves/edwards/edwards_init.i: algebra/curves/edwards/edwards_init.cpp.i
@@ -563,7 +563,7 @@ algebra/curves/edwards/edwards_init.i: algebra/curves/edwards/edwards_init.cpp.i
 
 # target to preprocess a source file
 algebra/curves/edwards/edwards_init.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_init.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_init.cpp.i
 .PHONY : algebra/curves/edwards/edwards_init.cpp.i
 
 algebra/curves/edwards/edwards_init.s: algebra/curves/edwards/edwards_init.cpp.s
@@ -572,7 +572,7 @@ algebra/curves/edwards/edwards_init.s: algebra/curves/edwards/edwards_init.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/edwards/edwards_init.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_init.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_init.cpp.s
 .PHONY : algebra/curves/edwards/edwards_init.cpp.s
 
 algebra/curves/edwards/edwards_pairing.o: algebra/curves/edwards/edwards_pairing.cpp.o
@@ -581,7 +581,7 @@ algebra/curves/edwards/edwards_pairing.o: algebra/curves/edwards/edwards_pairing
 
 # target to build an object file
 algebra/curves/edwards/edwards_pairing.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pairing.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pairing.cpp.o
 .PHONY : algebra/curves/edwards/edwards_pairing.cpp.o
 
 algebra/curves/edwards/edwards_pairing.i: algebra/curves/edwards/edwards_pairing.cpp.i
@@ -590,7 +590,7 @@ algebra/curves/edwards/edwards_pairing.i: algebra/curves/edwards/edwards_pairing
 
 # target to preprocess a source file
 algebra/curves/edwards/edwards_pairing.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pairing.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pairing.cpp.i
 .PHONY : algebra/curves/edwards/edwards_pairing.cpp.i
 
 algebra/curves/edwards/edwards_pairing.s: algebra/curves/edwards/edwards_pairing.cpp.s
@@ -599,7 +599,7 @@ algebra/curves/edwards/edwards_pairing.s: algebra/curves/edwards/edwards_pairing
 
 # target to generate assembly for a file
 algebra/curves/edwards/edwards_pairing.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pairing.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pairing.cpp.s
 .PHONY : algebra/curves/edwards/edwards_pairing.cpp.s
 
 algebra/curves/edwards/edwards_pp.o: algebra/curves/edwards/edwards_pp.cpp.o
@@ -608,7 +608,7 @@ algebra/curves/edwards/edwards_pp.o: algebra/curves/edwards/edwards_pp.cpp.o
 
 # target to build an object file
 algebra/curves/edwards/edwards_pp.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pp.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pp.cpp.o
 .PHONY : algebra/curves/edwards/edwards_pp.cpp.o
 
 algebra/curves/edwards/edwards_pp.i: algebra/curves/edwards/edwards_pp.cpp.i
@@ -617,7 +617,7 @@ algebra/curves/edwards/edwards_pp.i: algebra/curves/edwards/edwards_pp.cpp.i
 
 # target to preprocess a source file
 algebra/curves/edwards/edwards_pp.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pp.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pp.cpp.i
 .PHONY : algebra/curves/edwards/edwards_pp.cpp.i
 
 algebra/curves/edwards/edwards_pp.s: algebra/curves/edwards/edwards_pp.cpp.s
@@ -626,7 +626,7 @@ algebra/curves/edwards/edwards_pp.s: algebra/curves/edwards/edwards_pp.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/edwards/edwards_pp.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pp.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/edwards/edwards_pp.cpp.s
 .PHONY : algebra/curves/edwards/edwards_pp.cpp.s
 
 algebra/curves/mnt/mnt4/mnt4_g1.o: algebra/curves/mnt/mnt4/mnt4_g1.cpp.o
@@ -635,7 +635,7 @@ algebra/curves/mnt/mnt4/mnt4_g1.o: algebra/curves/mnt/mnt4/mnt4_g1.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt4/mnt4_g1.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g1.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g1.cpp.o
 .PHONY : algebra/curves/mnt/mnt4/mnt4_g1.cpp.o
 
 algebra/curves/mnt/mnt4/mnt4_g1.i: algebra/curves/mnt/mnt4/mnt4_g1.cpp.i
@@ -644,7 +644,7 @@ algebra/curves/mnt/mnt4/mnt4_g1.i: algebra/curves/mnt/mnt4/mnt4_g1.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt4/mnt4_g1.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g1.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g1.cpp.i
 .PHONY : algebra/curves/mnt/mnt4/mnt4_g1.cpp.i
 
 algebra/curves/mnt/mnt4/mnt4_g1.s: algebra/curves/mnt/mnt4/mnt4_g1.cpp.s
@@ -653,7 +653,7 @@ algebra/curves/mnt/mnt4/mnt4_g1.s: algebra/curves/mnt/mnt4/mnt4_g1.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt4/mnt4_g1.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g1.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g1.cpp.s
 .PHONY : algebra/curves/mnt/mnt4/mnt4_g1.cpp.s
 
 algebra/curves/mnt/mnt4/mnt4_g2.o: algebra/curves/mnt/mnt4/mnt4_g2.cpp.o
@@ -662,7 +662,7 @@ algebra/curves/mnt/mnt4/mnt4_g2.o: algebra/curves/mnt/mnt4/mnt4_g2.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt4/mnt4_g2.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g2.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g2.cpp.o
 .PHONY : algebra/curves/mnt/mnt4/mnt4_g2.cpp.o
 
 algebra/curves/mnt/mnt4/mnt4_g2.i: algebra/curves/mnt/mnt4/mnt4_g2.cpp.i
@@ -671,7 +671,7 @@ algebra/curves/mnt/mnt4/mnt4_g2.i: algebra/curves/mnt/mnt4/mnt4_g2.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt4/mnt4_g2.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g2.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g2.cpp.i
 .PHONY : algebra/curves/mnt/mnt4/mnt4_g2.cpp.i
 
 algebra/curves/mnt/mnt4/mnt4_g2.s: algebra/curves/mnt/mnt4/mnt4_g2.cpp.s
@@ -680,7 +680,7 @@ algebra/curves/mnt/mnt4/mnt4_g2.s: algebra/curves/mnt/mnt4/mnt4_g2.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt4/mnt4_g2.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g2.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_g2.cpp.s
 .PHONY : algebra/curves/mnt/mnt4/mnt4_g2.cpp.s
 
 algebra/curves/mnt/mnt4/mnt4_init.o: algebra/curves/mnt/mnt4/mnt4_init.cpp.o
@@ -689,7 +689,7 @@ algebra/curves/mnt/mnt4/mnt4_init.o: algebra/curves/mnt/mnt4/mnt4_init.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt4/mnt4_init.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_init.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_init.cpp.o
 .PHONY : algebra/curves/mnt/mnt4/mnt4_init.cpp.o
 
 algebra/curves/mnt/mnt4/mnt4_init.i: algebra/curves/mnt/mnt4/mnt4_init.cpp.i
@@ -698,7 +698,7 @@ algebra/curves/mnt/mnt4/mnt4_init.i: algebra/curves/mnt/mnt4/mnt4_init.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt4/mnt4_init.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_init.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_init.cpp.i
 .PHONY : algebra/curves/mnt/mnt4/mnt4_init.cpp.i
 
 algebra/curves/mnt/mnt4/mnt4_init.s: algebra/curves/mnt/mnt4/mnt4_init.cpp.s
@@ -707,7 +707,7 @@ algebra/curves/mnt/mnt4/mnt4_init.s: algebra/curves/mnt/mnt4/mnt4_init.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt4/mnt4_init.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_init.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_init.cpp.s
 .PHONY : algebra/curves/mnt/mnt4/mnt4_init.cpp.s
 
 algebra/curves/mnt/mnt4/mnt4_pairing.o: algebra/curves/mnt/mnt4/mnt4_pairing.cpp.o
@@ -716,7 +716,7 @@ algebra/curves/mnt/mnt4/mnt4_pairing.o: algebra/curves/mnt/mnt4/mnt4_pairing.cpp
 
 # target to build an object file
 algebra/curves/mnt/mnt4/mnt4_pairing.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pairing.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pairing.cpp.o
 .PHONY : algebra/curves/mnt/mnt4/mnt4_pairing.cpp.o
 
 algebra/curves/mnt/mnt4/mnt4_pairing.i: algebra/curves/mnt/mnt4/mnt4_pairing.cpp.i
@@ -725,7 +725,7 @@ algebra/curves/mnt/mnt4/mnt4_pairing.i: algebra/curves/mnt/mnt4/mnt4_pairing.cpp
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt4/mnt4_pairing.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pairing.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pairing.cpp.i
 .PHONY : algebra/curves/mnt/mnt4/mnt4_pairing.cpp.i
 
 algebra/curves/mnt/mnt4/mnt4_pairing.s: algebra/curves/mnt/mnt4/mnt4_pairing.cpp.s
@@ -734,7 +734,7 @@ algebra/curves/mnt/mnt4/mnt4_pairing.s: algebra/curves/mnt/mnt4/mnt4_pairing.cpp
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt4/mnt4_pairing.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pairing.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pairing.cpp.s
 .PHONY : algebra/curves/mnt/mnt4/mnt4_pairing.cpp.s
 
 algebra/curves/mnt/mnt4/mnt4_pp.o: algebra/curves/mnt/mnt4/mnt4_pp.cpp.o
@@ -743,7 +743,7 @@ algebra/curves/mnt/mnt4/mnt4_pp.o: algebra/curves/mnt/mnt4/mnt4_pp.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt4/mnt4_pp.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pp.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pp.cpp.o
 .PHONY : algebra/curves/mnt/mnt4/mnt4_pp.cpp.o
 
 algebra/curves/mnt/mnt4/mnt4_pp.i: algebra/curves/mnt/mnt4/mnt4_pp.cpp.i
@@ -752,7 +752,7 @@ algebra/curves/mnt/mnt4/mnt4_pp.i: algebra/curves/mnt/mnt4/mnt4_pp.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt4/mnt4_pp.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pp.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pp.cpp.i
 .PHONY : algebra/curves/mnt/mnt4/mnt4_pp.cpp.i
 
 algebra/curves/mnt/mnt4/mnt4_pp.s: algebra/curves/mnt/mnt4/mnt4_pp.cpp.s
@@ -761,7 +761,7 @@ algebra/curves/mnt/mnt4/mnt4_pp.s: algebra/curves/mnt/mnt4/mnt4_pp.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt4/mnt4_pp.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pp.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt4/mnt4_pp.cpp.s
 .PHONY : algebra/curves/mnt/mnt4/mnt4_pp.cpp.s
 
 algebra/curves/mnt/mnt46_common.o: algebra/curves/mnt/mnt46_common.cpp.o
@@ -770,7 +770,7 @@ algebra/curves/mnt/mnt46_common.o: algebra/curves/mnt/mnt46_common.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt46_common.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt46_common.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt46_common.cpp.o
 .PHONY : algebra/curves/mnt/mnt46_common.cpp.o
 
 algebra/curves/mnt/mnt46_common.i: algebra/curves/mnt/mnt46_common.cpp.i
@@ -779,7 +779,7 @@ algebra/curves/mnt/mnt46_common.i: algebra/curves/mnt/mnt46_common.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt46_common.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt46_common.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt46_common.cpp.i
 .PHONY : algebra/curves/mnt/mnt46_common.cpp.i
 
 algebra/curves/mnt/mnt46_common.s: algebra/curves/mnt/mnt46_common.cpp.s
@@ -788,7 +788,7 @@ algebra/curves/mnt/mnt46_common.s: algebra/curves/mnt/mnt46_common.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt46_common.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt46_common.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt46_common.cpp.s
 .PHONY : algebra/curves/mnt/mnt46_common.cpp.s
 
 algebra/curves/mnt/mnt6/mnt6_g1.o: algebra/curves/mnt/mnt6/mnt6_g1.cpp.o
@@ -797,7 +797,7 @@ algebra/curves/mnt/mnt6/mnt6_g1.o: algebra/curves/mnt/mnt6/mnt6_g1.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt6/mnt6_g1.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g1.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g1.cpp.o
 .PHONY : algebra/curves/mnt/mnt6/mnt6_g1.cpp.o
 
 algebra/curves/mnt/mnt6/mnt6_g1.i: algebra/curves/mnt/mnt6/mnt6_g1.cpp.i
@@ -806,7 +806,7 @@ algebra/curves/mnt/mnt6/mnt6_g1.i: algebra/curves/mnt/mnt6/mnt6_g1.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt6/mnt6_g1.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g1.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g1.cpp.i
 .PHONY : algebra/curves/mnt/mnt6/mnt6_g1.cpp.i
 
 algebra/curves/mnt/mnt6/mnt6_g1.s: algebra/curves/mnt/mnt6/mnt6_g1.cpp.s
@@ -815,7 +815,7 @@ algebra/curves/mnt/mnt6/mnt6_g1.s: algebra/curves/mnt/mnt6/mnt6_g1.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt6/mnt6_g1.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g1.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g1.cpp.s
 .PHONY : algebra/curves/mnt/mnt6/mnt6_g1.cpp.s
 
 algebra/curves/mnt/mnt6/mnt6_g2.o: algebra/curves/mnt/mnt6/mnt6_g2.cpp.o
@@ -824,7 +824,7 @@ algebra/curves/mnt/mnt6/mnt6_g2.o: algebra/curves/mnt/mnt6/mnt6_g2.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt6/mnt6_g2.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g2.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g2.cpp.o
 .PHONY : algebra/curves/mnt/mnt6/mnt6_g2.cpp.o
 
 algebra/curves/mnt/mnt6/mnt6_g2.i: algebra/curves/mnt/mnt6/mnt6_g2.cpp.i
@@ -833,7 +833,7 @@ algebra/curves/mnt/mnt6/mnt6_g2.i: algebra/curves/mnt/mnt6/mnt6_g2.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt6/mnt6_g2.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g2.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g2.cpp.i
 .PHONY : algebra/curves/mnt/mnt6/mnt6_g2.cpp.i
 
 algebra/curves/mnt/mnt6/mnt6_g2.s: algebra/curves/mnt/mnt6/mnt6_g2.cpp.s
@@ -842,7 +842,7 @@ algebra/curves/mnt/mnt6/mnt6_g2.s: algebra/curves/mnt/mnt6/mnt6_g2.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt6/mnt6_g2.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g2.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_g2.cpp.s
 .PHONY : algebra/curves/mnt/mnt6/mnt6_g2.cpp.s
 
 algebra/curves/mnt/mnt6/mnt6_init.o: algebra/curves/mnt/mnt6/mnt6_init.cpp.o
@@ -851,7 +851,7 @@ algebra/curves/mnt/mnt6/mnt6_init.o: algebra/curves/mnt/mnt6/mnt6_init.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt6/mnt6_init.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_init.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_init.cpp.o
 .PHONY : algebra/curves/mnt/mnt6/mnt6_init.cpp.o
 
 algebra/curves/mnt/mnt6/mnt6_init.i: algebra/curves/mnt/mnt6/mnt6_init.cpp.i
@@ -860,7 +860,7 @@ algebra/curves/mnt/mnt6/mnt6_init.i: algebra/curves/mnt/mnt6/mnt6_init.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt6/mnt6_init.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_init.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_init.cpp.i
 .PHONY : algebra/curves/mnt/mnt6/mnt6_init.cpp.i
 
 algebra/curves/mnt/mnt6/mnt6_init.s: algebra/curves/mnt/mnt6/mnt6_init.cpp.s
@@ -869,7 +869,7 @@ algebra/curves/mnt/mnt6/mnt6_init.s: algebra/curves/mnt/mnt6/mnt6_init.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt6/mnt6_init.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_init.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_init.cpp.s
 .PHONY : algebra/curves/mnt/mnt6/mnt6_init.cpp.s
 
 algebra/curves/mnt/mnt6/mnt6_pairing.o: algebra/curves/mnt/mnt6/mnt6_pairing.cpp.o
@@ -878,7 +878,7 @@ algebra/curves/mnt/mnt6/mnt6_pairing.o: algebra/curves/mnt/mnt6/mnt6_pairing.cpp
 
 # target to build an object file
 algebra/curves/mnt/mnt6/mnt6_pairing.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pairing.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pairing.cpp.o
 .PHONY : algebra/curves/mnt/mnt6/mnt6_pairing.cpp.o
 
 algebra/curves/mnt/mnt6/mnt6_pairing.i: algebra/curves/mnt/mnt6/mnt6_pairing.cpp.i
@@ -887,7 +887,7 @@ algebra/curves/mnt/mnt6/mnt6_pairing.i: algebra/curves/mnt/mnt6/mnt6_pairing.cpp
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt6/mnt6_pairing.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pairing.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pairing.cpp.i
 .PHONY : algebra/curves/mnt/mnt6/mnt6_pairing.cpp.i
 
 algebra/curves/mnt/mnt6/mnt6_pairing.s: algebra/curves/mnt/mnt6/mnt6_pairing.cpp.s
@@ -896,7 +896,7 @@ algebra/curves/mnt/mnt6/mnt6_pairing.s: algebra/curves/mnt/mnt6/mnt6_pairing.cpp
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt6/mnt6_pairing.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pairing.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pairing.cpp.s
 .PHONY : algebra/curves/mnt/mnt6/mnt6_pairing.cpp.s
 
 algebra/curves/mnt/mnt6/mnt6_pp.o: algebra/curves/mnt/mnt6/mnt6_pp.cpp.o
@@ -905,7 +905,7 @@ algebra/curves/mnt/mnt6/mnt6_pp.o: algebra/curves/mnt/mnt6/mnt6_pp.cpp.o
 
 # target to build an object file
 algebra/curves/mnt/mnt6/mnt6_pp.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pp.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pp.cpp.o
 .PHONY : algebra/curves/mnt/mnt6/mnt6_pp.cpp.o
 
 algebra/curves/mnt/mnt6/mnt6_pp.i: algebra/curves/mnt/mnt6/mnt6_pp.cpp.i
@@ -914,7 +914,7 @@ algebra/curves/mnt/mnt6/mnt6_pp.i: algebra/curves/mnt/mnt6/mnt6_pp.cpp.i
 
 # target to preprocess a source file
 algebra/curves/mnt/mnt6/mnt6_pp.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pp.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pp.cpp.i
 .PHONY : algebra/curves/mnt/mnt6/mnt6_pp.cpp.i
 
 algebra/curves/mnt/mnt6/mnt6_pp.s: algebra/curves/mnt/mnt6/mnt6_pp.cpp.s
@@ -923,7 +923,7 @@ algebra/curves/mnt/mnt6/mnt6_pp.s: algebra/curves/mnt/mnt6/mnt6_pp.cpp.s
 
 # target to generate assembly for a file
 algebra/curves/mnt/mnt6/mnt6_pp.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pp.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/algebra/curves/mnt/mnt6/mnt6_pp.cpp.s
 .PHONY : algebra/curves/mnt/mnt6/mnt6_pp.cpp.s
 
 algebra/scalar_multiplication/multiexp_profile.o: algebra/scalar_multiplication/multiexp_profile.cpp.o
@@ -932,7 +932,7 @@ algebra/scalar_multiplication/multiexp_profile.o: algebra/scalar_multiplication/
 
 # target to build an object file
 algebra/scalar_multiplication/multiexp_profile.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/algebra/scalar_multiplication/multiexp_profile.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/algebra/scalar_multiplication/multiexp_profile.cpp.o
 .PHONY : algebra/scalar_multiplication/multiexp_profile.cpp.o
 
 algebra/scalar_multiplication/multiexp_profile.i: algebra/scalar_multiplication/multiexp_profile.cpp.i
@@ -941,7 +941,7 @@ algebra/scalar_multiplication/multiexp_profile.i: algebra/scalar_multiplication/
 
 # target to preprocess a source file
 algebra/scalar_multiplication/multiexp_profile.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/algebra/scalar_multiplication/multiexp_profile.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/algebra/scalar_multiplication/multiexp_profile.cpp.i
 .PHONY : algebra/scalar_multiplication/multiexp_profile.cpp.i
 
 algebra/scalar_multiplication/multiexp_profile.s: algebra/scalar_multiplication/multiexp_profile.cpp.s
@@ -950,7 +950,7 @@ algebra/scalar_multiplication/multiexp_profile.s: algebra/scalar_multiplication/
 
 # target to generate assembly for a file
 algebra/scalar_multiplication/multiexp_profile.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/algebra/scalar_multiplication/multiexp_profile.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/multiexp_profile.dir/build.make depends/libff/libff/CMakeFiles/multiexp_profile.dir/algebra/scalar_multiplication/multiexp_profile.cpp.s
 .PHONY : algebra/scalar_multiplication/multiexp_profile.cpp.s
 
 common/double.o: common/double.cpp.o
@@ -959,7 +959,7 @@ common/double.o: common/double.cpp.o
 
 # target to build an object file
 common/double.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/double.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/double.cpp.o
 .PHONY : common/double.cpp.o
 
 common/double.i: common/double.cpp.i
@@ -968,7 +968,7 @@ common/double.i: common/double.cpp.i
 
 # target to preprocess a source file
 common/double.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/double.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/double.cpp.i
 .PHONY : common/double.cpp.i
 
 common/double.s: common/double.cpp.s
@@ -977,7 +977,7 @@ common/double.s: common/double.cpp.s
 
 # target to generate assembly for a file
 common/double.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/double.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/double.cpp.s
 .PHONY : common/double.cpp.s
 
 common/profiling.o: common/profiling.cpp.o
@@ -986,7 +986,7 @@ common/profiling.o: common/profiling.cpp.o
 
 # target to build an object file
 common/profiling.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/profiling.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/profiling.cpp.o
 .PHONY : common/profiling.cpp.o
 
 common/profiling.i: common/profiling.cpp.i
@@ -995,7 +995,7 @@ common/profiling.i: common/profiling.cpp.i
 
 # target to preprocess a source file
 common/profiling.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/profiling.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/profiling.cpp.i
 .PHONY : common/profiling.cpp.i
 
 common/profiling.s: common/profiling.cpp.s
@@ -1004,7 +1004,7 @@ common/profiling.s: common/profiling.cpp.s
 
 # target to generate assembly for a file
 common/profiling.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/profiling.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/profiling.cpp.s
 .PHONY : common/profiling.cpp.s
 
 common/utils.o: common/utils.cpp.o
@@ -1013,7 +1013,7 @@ common/utils.o: common/utils.cpp.o
 
 # target to build an object file
 common/utils.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/utils.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/utils.cpp.o
 .PHONY : common/utils.cpp.o
 
 common/utils.i: common/utils.cpp.i
@@ -1022,7 +1022,7 @@ common/utils.i: common/utils.cpp.i
 
 # target to preprocess a source file
 common/utils.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/utils.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/utils.cpp.i
 .PHONY : common/utils.cpp.i
 
 common/utils.s: common/utils.cpp.s
@@ -1031,7 +1031,7 @@ common/utils.s: common/utils.cpp.s
 
 # target to generate assembly for a file
 common/utils.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/utils.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libff/libff/CMakeFiles/ff.dir/build.make depends/libff/libff/CMakeFiles/ff.dir/common/utils.cpp.s
 .PHONY : common/utils.cpp.s
 
 # Help Target
@@ -1153,6 +1153,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

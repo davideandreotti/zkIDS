@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Include any dependencies generated for this target.
 include libsnark/CMakeFiles/test_knapsack_gadget.dir/depend.make
@@ -59,16 +59,16 @@ include libsnark/CMakeFiles/test_knapsack_gadget.dir/flags.make
 
 libsnark/CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.o: libsnark/CMakeFiles/test_knapsack_gadget.dir/flags.make
 libsnark/CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.o: ../libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libsnark/CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.o"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libsnark/CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.o"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp
 
 libsnark/CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.i"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp > CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp > CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.i
 
 libsnark/CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.s"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp -o CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp -o CMakeFiles/test_knapsack_gadget.dir/gadgetlib1/gadgets/hashes/knapsack/tests/test_knapsack_gadget.cpp.s
 
 # Object files for target test_knapsack_gadget
 test_knapsack_gadget_OBJECTS = \
@@ -86,8 +86,8 @@ libsnark/test_knapsack_gadget: /usr/lib/x86_64-linux-gnu/libgmp.so
 libsnark/test_knapsack_gadget: /usr/lib/x86_64-linux-gnu/libgmpxx.so
 libsnark/test_knapsack_gadget: depends/libzm.a
 libsnark/test_knapsack_gadget: libsnark/CMakeFiles/test_knapsack_gadget.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_knapsack_gadget"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_knapsack_gadget.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_knapsack_gadget"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_knapsack_gadget.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 libsnark/CMakeFiles/test_knapsack_gadget.dir/build: libsnark/test_knapsack_gadget
@@ -95,10 +95,10 @@ libsnark/CMakeFiles/test_knapsack_gadget.dir/build: libsnark/test_knapsack_gadge
 .PHONY : libsnark/CMakeFiles/test_knapsack_gadget.dir/build
 
 libsnark/CMakeFiles/test_knapsack_gadget.dir/clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/test_knapsack_gadget.dir/cmake_clean.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/test_knapsack_gadget.dir/cmake_clean.cmake
 .PHONY : libsnark/CMakeFiles/test_knapsack_gadget.dir/clean
 
 libsnark/CMakeFiles/test_knapsack_gadget.dir/depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/test_knapsack_gadget.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/test_knapsack_gadget.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libsnark/CMakeFiles/test_knapsack_gadget.dir/depend
 

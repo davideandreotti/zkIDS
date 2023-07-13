@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/gtest/googletest/src/gtest-all.cc" "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/gtest/googletest/src/gtest-all.cc" "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,7 +14,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "BN_SUPPORT_SNARK=1"
   "CURVE_BN128"
   "MONTGOMERY_OUTPUT"
-  "MULTICORE=1"
   "USE_ASM"
   )
 

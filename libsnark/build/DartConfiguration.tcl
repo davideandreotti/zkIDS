@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
-BuildDirectory: /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+SourceDirectory: /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
+BuildDirectory: /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -26,7 +26,7 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark"
+ConfigureCommand: "/usr/bin/cmake" "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 

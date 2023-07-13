@@ -55,14 +55,14 @@ int main(int argc, char **argv) {
 		//generate keypair
 		r1cs_gg_ppzksnark_keypair<libsnark::default_r1cs_gg_ppzksnark_pp> keypair = r1cs_gg_ppzksnark_generator<libsnark::default_r1cs_gg_ppzksnark_pp>(example.constraint_system);
 		cout << "Writing prover key to file..." <<endl;
-		std::ofstream out("provKey.bin", std::ios::binary);
+		std::ofstream out("files/provKey.bin", std::ios::binary);
 		out << keypair.pk;
 		out.close();
 		cout << "Processing verification key... ";
 		//processed verification key contains a small amount of precomputed information that enables faster verification times.
 		r1cs_gg_ppzksnark_processed_verification_key<libsnark::default_r1cs_gg_ppzksnark_pp> pvk = r1cs_gg_ppzksnark_verifier_process_vk<libsnark::default_r1cs_gg_ppzksnark_pp>(keypair.vk);
 		cout << "Writing to file..."<<endl;
-		out.open("veriKey.bin", std::ios::binary);
+		out.open("files/veriKey.bin", std::ios::binary);
 		out << pvk;
 
 		out.close();
@@ -73,7 +73,11 @@ int main(int argc, char **argv) {
 
 	}
 	else if(strcmp(argv[3], "prove") == 0)
-	{
+	{	cout << "Proof generation..." <<endl;
+		string randomid = argv[4];
+		string packetnum = argv[5];	
+		string filename = "files/proof" + randomid + packetnum + ".bin";
+		cout << filename;
 		CircuitReader reader(argv[1], argv[2], pb);
 		//get constraint system from protoboard (inputs are not involved)
 		r1cs_constraint_system<FieldT> cs = get_constraint_system_from_gadgetlib2(*pb);
@@ -98,7 +102,7 @@ int main(int argc, char **argv) {
 		}
 		
 		cout << "Reading key..."<<endl;	
-		std::ifstream in("provKey.bin", std::ios::binary);
+		std::ifstream in("files/provKey.bin", std::ios::binary);
 		r1cs_gg_ppzksnark_proving_key<libsnark::default_r1cs_gg_ppzksnark_pp> proverKey;
 		in >> proverKey;
 		
@@ -106,13 +110,16 @@ int main(int argc, char **argv) {
 		r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp> proof = r1cs_gg_ppzksnark_prover<libsnark::default_r1cs_gg_ppzksnark_pp>(proverKey, example.primary_input, example.auxiliary_input);
 		cout << "Writing proof to file..."<<endl;
 		//NOTE: this instruction uses an "input"/"output" function that is THE SAME as the << >> operators but with a name. It is in the serialization.hpp file of libff.
-		libff::output<r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp>>(proof, "proof.bin"); 
+		libff::output<r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp>>(proof, filename.c_str()); 
 		
 		//r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp> prova;
 		//prova=libff::input<r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp>>("proof.bin"); 
 	}
 	else if(strcmp(argv[3], "verify") == 0)
-	{
+	{	
+		cout << "Verifying proof..." <<endl;
+		string proof_path = argv[4];
+		cout << proof_path <<endl;
 		CircuitReader reader(argv[1], argv[2], pb);
 		//get constraint system from protoboard (inputs are not involved)
 		r1cs_constraint_system<FieldT> cs = get_constraint_system_from_gadgetlib2(*pb);
@@ -131,11 +138,11 @@ int main(int argc, char **argv) {
 		cout << "Example created!" << endl;
 		//-----------------------------------------------------------------------------------------------------------
 		cout << "Reading verification key (preprocessed)..."<<endl;
-		std::ifstream in("veriKey.bin", std::ios::binary); //TODO: uniform input/output serialization methods
+		std::ifstream in("files/veriKey.bin", std::ios::binary); //TODO: uniform input/output serialization methods
 		r1cs_gg_ppzksnark_processed_verification_key<libsnark::default_r1cs_gg_ppzksnark_pp> verificationKey;
 		in >> verificationKey;
 		cout << "Reading proof..."<<endl;
-    		r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp> proof = libff::input<r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp>>("proof.bin"); 
+    		r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp> proof = libff::input<r1cs_gg_ppzksnark_proof<libsnark::default_r1cs_gg_ppzksnark_pp>>(proof_path.c_str()); 
     		//this instruction to be used if not processed verification key
     		//const bool ans2 = r1cs_gg_ppzksnark_verifier_strong_IC<libsnark::default_r1cs_gg_ppzksnark_pp>(verificationKey, example.primary_input, proof);
     		const bool ans2 = r1cs_gg_ppzksnark_online_verifier_strong_IC<libsnark::default_r1cs_gg_ppzksnark_pp>(verificationKey, example.primary_input, proof);

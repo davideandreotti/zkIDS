@@ -1,4 +1,4 @@
-# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/cmake_install.cmake")
-  include("/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/cmake_install.cmake")
+  include("/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/cmake_install.cmake")
+  include("/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

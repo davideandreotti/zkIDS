@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/libfqfft/tutorials/CMakeFiles/progress.marks
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles 0
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/libfqfft/tutorials/CMakeFiles/progress.marks
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/clean
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/preinstall
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/preinstall
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/rule:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/rule
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/rule
 .PHONY : depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/rule
 
 # Convenience name for target.
@@ -179,12 +179,12 @@ lagrange_polynomial_evaluation: depends/libfqfft/tutorials/CMakeFiles/lagrange_p
 
 # fast build rule for target.
 lagrange_polynomial_evaluation/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build
 .PHONY : lagrange_polynomial_evaluation/fast
 
 # Convenience name for target.
 depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/rule:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/rule
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/rule
 .PHONY : depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/rule
 
 # Convenience name for target.
@@ -194,12 +194,12 @@ polynomial_evaluation: depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluati
 
 # fast build rule for target.
 polynomial_evaluation/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build
 .PHONY : polynomial_evaluation/fast
 
 # Convenience name for target.
 depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/rule:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/rule
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f CMakeFiles/Makefile2 depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/rule
 .PHONY : depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/rule
 
 # Convenience name for target.
@@ -209,7 +209,7 @@ polynomial_multiplication: depends/libfqfft/tutorials/CMakeFiles/polynomial_mult
 
 # fast build rule for target.
 polynomial_multiplication/fast:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build
 .PHONY : polynomial_multiplication/fast
 
 lagrange_polynomial_evaluation_example.o: lagrange_polynomial_evaluation_example.cpp.o
@@ -218,7 +218,7 @@ lagrange_polynomial_evaluation_example.o: lagrange_polynomial_evaluation_example
 
 # target to build an object file
 lagrange_polynomial_evaluation_example.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/lagrange_polynomial_evaluation_example.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/lagrange_polynomial_evaluation_example.cpp.o
 .PHONY : lagrange_polynomial_evaluation_example.cpp.o
 
 lagrange_polynomial_evaluation_example.i: lagrange_polynomial_evaluation_example.cpp.i
@@ -227,7 +227,7 @@ lagrange_polynomial_evaluation_example.i: lagrange_polynomial_evaluation_example
 
 # target to preprocess a source file
 lagrange_polynomial_evaluation_example.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/lagrange_polynomial_evaluation_example.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/lagrange_polynomial_evaluation_example.cpp.i
 .PHONY : lagrange_polynomial_evaluation_example.cpp.i
 
 lagrange_polynomial_evaluation_example.s: lagrange_polynomial_evaluation_example.cpp.s
@@ -236,7 +236,7 @@ lagrange_polynomial_evaluation_example.s: lagrange_polynomial_evaluation_example
 
 # target to generate assembly for a file
 lagrange_polynomial_evaluation_example.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/lagrange_polynomial_evaluation_example.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/lagrange_polynomial_evaluation.dir/lagrange_polynomial_evaluation_example.cpp.s
 .PHONY : lagrange_polynomial_evaluation_example.cpp.s
 
 polynomial_evaluation_example.o: polynomial_evaluation_example.cpp.o
@@ -245,7 +245,7 @@ polynomial_evaluation_example.o: polynomial_evaluation_example.cpp.o
 
 # target to build an object file
 polynomial_evaluation_example.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/polynomial_evaluation_example.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/polynomial_evaluation_example.cpp.o
 .PHONY : polynomial_evaluation_example.cpp.o
 
 polynomial_evaluation_example.i: polynomial_evaluation_example.cpp.i
@@ -254,7 +254,7 @@ polynomial_evaluation_example.i: polynomial_evaluation_example.cpp.i
 
 # target to preprocess a source file
 polynomial_evaluation_example.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/polynomial_evaluation_example.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/polynomial_evaluation_example.cpp.i
 .PHONY : polynomial_evaluation_example.cpp.i
 
 polynomial_evaluation_example.s: polynomial_evaluation_example.cpp.s
@@ -263,7 +263,7 @@ polynomial_evaluation_example.s: polynomial_evaluation_example.cpp.s
 
 # target to generate assembly for a file
 polynomial_evaluation_example.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/polynomial_evaluation_example.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_evaluation.dir/polynomial_evaluation_example.cpp.s
 .PHONY : polynomial_evaluation_example.cpp.s
 
 polynomial_multiplication_on_fft_example.o: polynomial_multiplication_on_fft_example.cpp.o
@@ -272,7 +272,7 @@ polynomial_multiplication_on_fft_example.o: polynomial_multiplication_on_fft_exa
 
 # target to build an object file
 polynomial_multiplication_on_fft_example.cpp.o:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/polynomial_multiplication_on_fft_example.cpp.o
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/polynomial_multiplication_on_fft_example.cpp.o
 .PHONY : polynomial_multiplication_on_fft_example.cpp.o
 
 polynomial_multiplication_on_fft_example.i: polynomial_multiplication_on_fft_example.cpp.i
@@ -281,7 +281,7 @@ polynomial_multiplication_on_fft_example.i: polynomial_multiplication_on_fft_exa
 
 # target to preprocess a source file
 polynomial_multiplication_on_fft_example.cpp.i:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/polynomial_multiplication_on_fft_example.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/polynomial_multiplication_on_fft_example.cpp.i
 .PHONY : polynomial_multiplication_on_fft_example.cpp.i
 
 polynomial_multiplication_on_fft_example.s: polynomial_multiplication_on_fft_example.cpp.s
@@ -290,7 +290,7 @@ polynomial_multiplication_on_fft_example.s: polynomial_multiplication_on_fft_exa
 
 # target to generate assembly for a file
 polynomial_multiplication_on_fft_example.cpp.s:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/polynomial_multiplication_on_fft_example.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(MAKE) -f depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/build.make depends/libfqfft/tutorials/CMakeFiles/polynomial_multiplication.dir/polynomial_multiplication_on_fft_example.cpp.s
 .PHONY : polynomial_multiplication_on_fft_example.cpp.s
 
 # Help Target
@@ -329,6 +329,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

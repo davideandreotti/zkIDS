@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Include any dependencies generated for this target.
 include libsnark/CMakeFiles/relations_ssp_test.dir/depend.make
@@ -59,16 +59,16 @@ include libsnark/CMakeFiles/relations_ssp_test.dir/flags.make
 
 libsnark/CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.o: libsnark/CMakeFiles/relations_ssp_test.dir/flags.make
 libsnark/CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.o: ../libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libsnark/CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.o"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libsnark/CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.o"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp
 
 libsnark/CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.i"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp > CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp > CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.i
 
 libsnark/CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.s"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp -o CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/relations/arithmetic_programs/ssp/tests/test_ssp.cpp -o CMakeFiles/relations_ssp_test.dir/relations/arithmetic_programs/ssp/tests/test_ssp.cpp.s
 
 # Object files for target relations_ssp_test
 relations_ssp_test_OBJECTS = \
@@ -86,8 +86,8 @@ libsnark/relations_ssp_test: /usr/lib/x86_64-linux-gnu/libgmp.so
 libsnark/relations_ssp_test: /usr/lib/x86_64-linux-gnu/libgmpxx.so
 libsnark/relations_ssp_test: depends/libzm.a
 libsnark/relations_ssp_test: libsnark/CMakeFiles/relations_ssp_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable relations_ssp_test"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/relations_ssp_test.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable relations_ssp_test"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/relations_ssp_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 libsnark/CMakeFiles/relations_ssp_test.dir/build: libsnark/relations_ssp_test
@@ -95,10 +95,10 @@ libsnark/CMakeFiles/relations_ssp_test.dir/build: libsnark/relations_ssp_test
 .PHONY : libsnark/CMakeFiles/relations_ssp_test.dir/build
 
 libsnark/CMakeFiles/relations_ssp_test.dir/clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/relations_ssp_test.dir/cmake_clean.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/relations_ssp_test.dir/cmake_clean.cmake
 .PHONY : libsnark/CMakeFiles/relations_ssp_test.dir/clean
 
 libsnark/CMakeFiles/relations_ssp_test.dir/depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/relations_ssp_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/relations_ssp_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libsnark/CMakeFiles/relations_ssp_test.dir/depend
 

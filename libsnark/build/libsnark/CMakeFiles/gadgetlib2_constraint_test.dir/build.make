@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark
+CMAKE_SOURCE_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build
+CMAKE_BINARY_DIR = /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build
 
 # Include any dependencies generated for this target.
 include libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/depend.make
@@ -59,16 +59,16 @@ include libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/flags.make
 
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.o: libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/flags.make
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.o: ../libsnark/gadgetlib2/tests/constraint_UTEST.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.o"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/gadgetlib2/tests/constraint_UTEST.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.o"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.o -c /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/gadgetlib2/tests/constraint_UTEST.cpp
 
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.i"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/gadgetlib2/tests/constraint_UTEST.cpp > CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.i
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/gadgetlib2/tests/constraint_UTEST.cpp > CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.i
 
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.s"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/gadgetlib2/tests/constraint_UTEST.cpp -o CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.s
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/gadgetlib2/tests/constraint_UTEST.cpp -o CMakeFiles/gadgetlib2_constraint_test.dir/gadgetlib2/tests/constraint_UTEST.cpp.s
 
 # Object files for target gadgetlib2_constraint_test
 gadgetlib2_constraint_test_OBJECTS = \
@@ -88,8 +88,8 @@ libsnark/gadgetlib2_constraint_test: /usr/lib/x86_64-linux-gnu/libgmpxx.so
 libsnark/gadgetlib2_constraint_test: depends/libzm.a
 libsnark/gadgetlib2_constraint_test: depends/gtest/googlemock/gtest/libgtest.a
 libsnark/gadgetlib2_constraint_test: libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable gadgetlib2_constraint_test"
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gadgetlib2_constraint_test.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable gadgetlib2_constraint_test"
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gadgetlib2_constraint_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/build: libsnark/gadgetlib2_constraint_test
@@ -97,10 +97,10 @@ libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/build: libsnark/gadgetlib2_co
 .PHONY : libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/build
 
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/clean:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/gadgetlib2_constraint_test.dir/cmake_clean.cmake
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark && $(CMAKE_COMMAND) -P CMakeFiles/gadgetlib2_constraint_test.dir/cmake_clean.cmake
 .PHONY : libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/clean
 
 libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/depend:
-	cd /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libsnark/CMakeFiles/gadgetlib2_constraint_test.dir/depend
 

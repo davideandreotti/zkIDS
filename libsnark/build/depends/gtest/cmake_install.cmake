@@ -1,4 +1,4 @@
-# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/depends/gtest
+# Install script for directory: /home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/depends/gtest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/gtest/googlemock/cmake_install.cmake")
+  include("/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/gtest/googlemock/cmake_install.cmake")
 
 endif()
 

@@ -120,27 +120,31 @@ def elaborateAppData(packet):
 
 def print_transcript(transcript, stream_id):
 	original_stdout = sys.stdout
-	print(int(now)+int(stream_id))
-	name = "middlebox_transcript"+"."+str(int(now))+"."+str(int(stream_id))+"."+str(transcript['PacketNumber'])+".txt" #OR we could use the unique stream_id...
+	random_id = toHex(transcript['RandomID']).hex()
+	name = "transcript_"+random_id+str(transcript['PacketNumber'])+".txt" #OR we could use the unique stream_id...
 	
-	f = open("transcripts/"+name, "w")
+	f = open("files/"+name, "w")
 	sys.stdout = f
-	print('0'*32)	
-	print('0'*32)
+	print('0'*32)	#PSK
+	print('0'*32)	#ec_sk
 	print(transcript['Cx'].hex())
 	print(transcript['Cy'].hex())
 	print(transcript['Sx'].hex())
 	print(transcript['Sy'].hex())	
-	print(transcript['ServExt_ct'].hex())
+	print('0'*32)	#HS (Witness)
 	print(transcript['H2'].hex())
-	print(transcript['ServExt_ct_SF'].hex())
+	print('0'*32) #H7
+	print('0'*32)	#H3
+	print('0'*32)	#SF
 	print(transcript['ch_sh'].hex())
-	print(transcript['ch_sh_len'])
+	#print(transcript['ServExt_ct'].hex())
 	print(transcript['ServExt_ct_EncExt'].hex())
 	print(transcript['ServExt_ct_Cert'].hex())
 	print(transcript['ServExt_ct_CertVerify'].hex())
+	print(transcript['ServExt_ct_SF'].hex())
 	print(transcript['appl_ct'].hex())
-	print(transcript['PacketNumber'])
+	print('0'*32)	# sha state
+	print(transcript['PacketNumber'])	#TODO IMPLEMENT IN CIRCUIT
 	print('0'*32)
 	f.close()
 	sys.stdout = original_stdout
@@ -152,7 +156,7 @@ def call_java(name):
 
 def process_with_pyshark(fileName):
 	tls_session={"CH": False, "SH": False, "S_CS": False, "SF": False, "C_CS": False, "CF": False, "App": 0, "src": '', "dst": ''}
-	transcript={"Cx":'', "Cy":'', "Sx":'', "Sy":'', "ch_sh":'', "ch_sh_len":'',"H2":'',"ServExt_ct":'', "ServExt_ct_EncExt":'',"ServExt_ct_Cert":'',"ServExt_ct_CertVerify":'',"ServExt_ct_SF":'', "ServExt_ct_tail":'', "appl_ct":'', "PacketNumber": '' }
+	transcript={"RandomID": '', "Cx":'', "Cy":'', "Sx":'', "Sy":'', "ch_sh":'', "ch_sh_len":'',"H2":'',"ServExt_ct":'', "ServExt_ct_EncExt":'',"ServExt_ct_Cert":'',"ServExt_ct_CertVerify":'',"ServExt_ct_SF":'', "ServExt_ct_tail":'', "appl_ct":'', "PacketNumber": '' }
 	#pcap_data = pyshark.FileCapture(fileName)
 	capture=pyshark.LiveCapture(interface='lo', bpf_filter="tcp and not port 5001")
 
@@ -184,13 +188,14 @@ def process_with_pyshark(fileName):
 						transcripts[stream_id]=copy.deepcopy(transcript)
 						Cx=toHex(packet.tls.handshake_extensions_key_share_key_exchange)[1:33]
 						transcripts[stream_id]["Cx"]=Cx
-						Cy=toHex(packet.tls.handshake_extensions_key_share_key_exchange)[33:64]
+						Cy=toHex(packet.tls.handshake_extensions_key_share_key_exchange)[33:65]
 						transcripts[stream_id]["Cy"]=Cy
 						ch_sh = parseApplicationData(toHex(packet.tcp.payload))[0][1]
 						
 						#print(packet.tls._all_fields)
 						#session_id = packet.tls.handshake_session_id
 						client_random = packet.tls.handshake_random
+						transcripts[stream_id]["RandomID"] = client_random
 						cipher_suites = packet.tls.handshake_ciphersuites
 					elif packet.tls.handshake_type == '2':
 						print("(",stream_id,") Server Hello")
@@ -203,7 +208,7 @@ def process_with_pyshark(fileName):
 							transcripts[stream_id]["ch_sh_len"]=len(ch_sh)
 							Sx=toHex(packet.tls.handshake_extensions_key_share_key_exchange)[1:33]
 							transcripts[stream_id]["Sx"]=Sx
-							Sy=toHex(packet.tls.handshake_extensions_key_share_key_exchange)[33:64]
+							Sy=toHex(packet.tls.handshake_extensions_key_share_key_exchange)[33:65]
 							transcripts[stream_id]["Sy"]=Sy
 							hasher=sha256()
 							hasher.update(ch_sh)
@@ -279,10 +284,11 @@ def process_with_pyshark(fileName):
 							transcripts[stream_id]['PacketNumber'] = status[stream_id]['App']
 							name = print_transcript(transcripts[stream_id], stream_id)
 							print("Computing inputs")
-							#call_java(name)
-							java_call = threading.Thread(target=call_java, args=(name,))
-							threads.append(java_call)
-							java_call.start()
+							
+							#java_call = threading.Thread(target=call_java, args=(name,))
+							#threads.append(java_call)
+							#java_call.start()
+							
 							#TODO: consider implementing a queue for incoming new processes
 
 					#print(status)

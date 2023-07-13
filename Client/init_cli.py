@@ -1,7 +1,8 @@
 import requests, time
 from tls import *
 client_id = '9088'
-host = "middlebox"
+#host = "middlebox"
+host = 'localhost'
 def send_file(file_path, url, headers):
 	with open(file_path, 'rb') as file:
 		files = {'proof': file}
@@ -47,20 +48,22 @@ def main():
 		prompt=input("Setup done. Press enter to generate request or 'q' to quit: ")
 		if prompt.lower() == "":
 			function = "/function/run"
+		else: 
+			function = prompt.lower()
+		if prompt.lower() == "q":
+			print("Exiting the program.")
+			break
+		else:
 			keepalive = False
-			print("Sending HTTP request(s) to server...")
+			print("Sending HTTP request(s) to "+function)
 			(random_id, numPackets) = make_tls_connection(function, keepalive)
 			for pkt in numPackets:
-				file_path = "files/proof"+random_id.hex()+numPackets+".bin"		#TODO: must be replaced with proof+random_id+numpacket+.txt
+				print(pkt)
+				file_path = "files/proof"+random_id.hex()+pkt+".bin"		#TODO: must be replaced with proof+random_id+numpacket+.txt
 				url = "http://"+host+":5001/prove"
 				print("Random ID: "+random_id.hex())
 				headers = {'Client-ID': client_id, 'Random-ID':random_id.hex(), 'PacketNum': pkt}
 				send_file(file_path, url, headers)
-		elif prompt.lower() == "q":
-			print("Exiting the program.")
-			break
-		else:
-			print("Invalid input. Try again.")
 
 	   
 

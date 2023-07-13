@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/common/routing_algorithms/profiling/profile_routing_algorithms.cpp" "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/profile_routing_algorithms.dir/common/routing_algorithms/profiling/profile_routing_algorithms.cpp.o"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/common/routing_algorithms/profiling/profile_routing_algorithms.cpp" "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/profile_routing_algorithms.dir/common/routing_algorithms/profiling/profile_routing_algorithms.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,7 +14,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "BN_SUPPORT_SNARK=1"
   "CURVE_BN128"
   "MONTGOMERY_OUTPUT"
-  "MULTICORE=1"
   "USE_ASM"
   )
 
@@ -28,9 +27,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/snark.dir/DependInfo.cmake"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/libff/libff/CMakeFiles/ff.dir/DependInfo.cmake"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/snark.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/libff/libff/CMakeFiles/ff.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

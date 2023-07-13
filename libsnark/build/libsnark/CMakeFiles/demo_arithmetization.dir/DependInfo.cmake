@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/libsnark/reductions/ram_to_r1cs/examples/demo_arithmetization.cpp" "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/demo_arithmetization.dir/reductions/ram_to_r1cs/examples/demo_arithmetization.cpp.o"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/libsnark/reductions/ram_to_r1cs/examples/demo_arithmetization.cpp" "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/demo_arithmetization.dir/reductions/ram_to_r1cs/examples/demo_arithmetization.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,7 +16,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "BOOST_PROGRAM_OPTIONS_DYN_LINK"
   "CURVE_BN128"
   "MONTGOMERY_OUTPUT"
-  "MULTICORE=1"
   "USE_ASM"
   )
 
@@ -30,9 +29,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/libsnark/CMakeFiles/snark.dir/DependInfo.cmake"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/libff/libff/CMakeFiles/ff.dir/DependInfo.cmake"
-  "/home/davide/Scrivania/ZeroKnowledge/Middlebox/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/libsnark/CMakeFiles/snark.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/libff/libff/CMakeFiles/ff.dir/DependInfo.cmake"
+  "/home/davide/Scrivania/ZeroKnowledge/zkfw_new/zkfw/libsnark/build/depends/CMakeFiles/zm.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
