@@ -1,0 +1,36 @@
+services:
+    middlebox:
+        image: middlebox
+        build: 
+            context: ./
+            dockerfile: middlebox.Dockerfile
+        #direct startup of webserver
+        working_dir: /home/Middlebox
+        command: "python init_mb.py"
+        #ports:
+        #    - 9090:9090
+        cap_add:
+            - NET_ADMIN
+            - NET_RAW
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+    #creare il dockerfile per il compilatore con i comandi di installazione    
+    client:
+        image: client
+        build: 
+            context: ./
+            dockerfile: client.Dockerfile
+        working_dir: /home/Client
+        command: "python init_cli.py"
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+
+    server:
+        image: server
+        build: 
+            context: ./
+            dockerfile: server.Dockerfile
+        stdin_open: true
+        tty: true
+        command: "nginx -g 'daemon off;'"
+        

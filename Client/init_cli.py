@@ -1,7 +1,7 @@
 import requests, time
 from tls import *
 client_id = '9088'
-host = "172.19.0.2"
+host = "middlebox"
 def send_file(file_path, url, headers):
 	with open(file_path, 'rb') as file:
 		files = {'proof': file}
@@ -31,7 +31,7 @@ def main():
 		print("Connected!")
 		break
 	# Save the response file
-	save_file(response, 'test.bin')
+	save_file(response, 'files/provKey.bin')
 	print("Circuit saved as: test.bin")
 	# Retrieve the Client-Token header
 	client_token = response.headers.get('Client-Token')
@@ -51,7 +51,7 @@ def main():
 			print("Sending HTTP request(s) to server...")
 			(random_id, numPackets) = make_tls_connection(function, keepalive)
 			for pkt in numPackets:
-				file_path = "files/proof.txt"		#TODO: must be replaced with proof+random_id+numpacket+.txt
+				file_path = "files/proof"+random_id.hex()+numPackets+".bin"		#TODO: must be replaced with proof+random_id+numpacket+.txt
 				url = "http://"+host+":5001/prove"
 				print("Random ID: "+random_id.hex())
 				headers = {'Client-ID': client_id, 'Random-ID':random_id.hex(), 'PacketNum': pkt}
