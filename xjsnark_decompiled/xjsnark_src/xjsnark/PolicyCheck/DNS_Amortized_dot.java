@@ -35,7 +35,7 @@ public class DNS_Amortized_dot extends CircuitGenerator {
     __generateCircuit();
     if (s[0].equals("pub")) {
       System.out.println("Generate public inputs only");
-      this.__generatePublicInputs(new SampleRun("Sample_Run1", true) {
+      this.__generatePublicInputs(new SampleRun("\"Sample_Run1\"", true) {
         public void pre() {
           try {
 
@@ -137,7 +137,7 @@ public class DNS_Amortized_dot extends CircuitGenerator {
       });
     } else if (s[0].equals("run")) {
       System.out.println("Normal execution");
-      this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
+      this.__evaluateSampleRun(new SampleRun("\"Sample_Run1\"", true) {
         public void pre() {
           try {
 

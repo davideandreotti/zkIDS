@@ -23,6 +23,8 @@ public class HTTP_String extends CircuitGenerator {
     Config.outputFilesPath = ".";
     transcript_path = args[1];
     allowed_url = args[2];
+    randomid = args[3];
+    pktnum = args[4];
     new HTTP_String(args);
   }
 
@@ -31,7 +33,7 @@ public class HTTP_String extends CircuitGenerator {
     __generateCircuit();
     if (s[0].equals("pub")) {
       System.out.println("Generate public inputs only");
-      this.__generatePublicInputs(new SampleRun("Sample_Run1", true) {
+      this.__generatePublicInputs(new SampleRun(randomid+pktnum, true) {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {
@@ -140,7 +142,7 @@ public class HTTP_String extends CircuitGenerator {
       });
     } else if (s[0].equals("run")) {
       System.out.println("Normal execution");
-      this.__evaluateSampleRun(new SampleRun("Sample_Run1", true) {
+      this.__evaluateSampleRun(new SampleRun("randomid+pktnum", true) {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {
@@ -292,6 +294,8 @@ public class HTTP_String extends CircuitGenerator {
   public static String transcript_path;
   public static String merkle_path;
   public static String token_str;
+  public static String randomid;
+  public static String pktnum;
   public static final int MAX_DNS_CT_LEN = 500;
   public static final int MAX_URL_LEN = 20;
   public static final int TOKEN_LEN = 6;
