@@ -1,5 +1,6 @@
 import sys, os
 sys.path.insert(0, "./tlslite-ng-0.8.0-alpha40")
+sys.path.insert(0, "./Merkle Proof")
 from socket import *
 from tlslite import TLSConnection, HandshakeSettings, HTTPTLSConnection, messages
 from tlslite.api import *
@@ -7,12 +8,14 @@ from tlslite.constants import *
 from cryptography.hazmat.primitives.ciphers import (Cipher, algorithms, modes) 
 import sha2_compressions
 import json, time, subprocess
+from membership_proofs import *
 
 #SERVER = 'server'
 SERVER = 'localhost'
 pathstr = '/pippo'
 allowed = "/function"
-circuitname = "HTTP_String"
+method = "GET"
+#circuitname = "HTTP_String"
 # takes bytearray key, iv as input; string plaintext
 def encrypt_aes_gcm(key, iv, plaintext):
 	encryptor = Cipher(
@@ -155,7 +158,7 @@ def print_test(test_dict):
 	print("c ap key: " + test_dict['c_ap_key'])
 	print("c ap iv: " + test_dict['c_ap_iv'])
 	
-def make_tls_connection(pathstr, keepalive):
+def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, anon, client_token):
 	oursettings = HandshakeSettings()
 	oursettings.usePaddingExtension = False
 	#oursettings.method_flag_for_padding = "doh"
@@ -170,14 +173,13 @@ def make_tls_connection(pathstr, keepalive):
 	http_conn = HTTPTLSConnection(SERVER, 443, settings=oursettings, printhandshake=True)
 	tls_conn=None
 	headers = {
-		"Client-Token": "aabbcc",
+		"Client-Token": client_token,
 		"Host": "oo", 
-		"Accept-Encoding": "application/binary"
+		"Accept-Encoding": "text/plain"
 	}
 	#http_conn.request("POST", pathstr, open("ebpf.pdf","rb"), headers)
 	#this is the correct command, uncomment after
-	http_conn.request('GET', pathstr, body=None, headers=headers)
-	
+	http_conn.request(method, pathstr, body=None, headers=headers)
 	
 	
 	resp = http_conn.getresponse()
@@ -202,18 +204,33 @@ def make_tls_connection(pathstr, keepalive):
 	sys.stdout = f
 	print_test(dict)
 	f.close()
-
+	sys.stdout = original_stdout
 	'''
 	f = open("transcript_resumption.txt", "w")
 	sys.stdout = f
 	print_test(get_test_values(tls_conn2)) #PSK is now set! Previous session was resumed as specified on resumptionsession variable!
 	f.close() '''
-	sys.stdout = original_stdout
-	print("Generating circuit and parameters...")
-	subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run ../Client/files/'+filename+" "+allowed).split())
-	print("PROOF COMPUTED!")
-	subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_Sample_Run1.in prove '+tls_conn._clientRandom.hex()+" 1").split())
 	
+	
+	command = method+" "+pathstr
+	print("Generating circuit and parameters...")
+	if(allowed != ""):
+		print("Running String circuit")
+		subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" "+allowed + ' ' + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+	elif(tree_path != ""):
+		#input_path = "files/anon_tree" if anon else "files/allowlist.txt"
+		print("Computing proof...")
+		merkle_filename = ("merkle_witness."+tls_conn._clientRandom.hex()+str(packetNumber)+".txt")
+		compute_proof(command, tree_path, anon, "files/"+merkle_filename, "Merkle Proof/generated_merkle_tree.txt")
+		if(client_token != ""):
+			print("Running Merkle circuit")
+			subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" url " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+		else:
+			print("Running Merkle Token circuit")
+			subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+	print("PROOF COMPUTED!")
+	subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
+	subprocess.run(('rm '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
 
 	#print(output)
 
@@ -221,5 +238,6 @@ def make_tls_connection(pathstr, keepalive):
 
 
 if __name__ == '__main__':
-	make_tls_connection('/function/run',False)
+	make_tls_connection('/function/run',False, "HTTP_Merkle", "allowlist.txt","","", 'aaaaa')
+
 

@@ -168,7 +168,7 @@ public class HTTP_Merkle_Token extends CircuitGenerator {
       });
     } else if (s[0].equals("run")) {
       System.out.println("Normal execution");
-      this.__evaluateSampleRun(new SampleRun("randomid + pktnum", true) {
+      this.__evaluateSampleRun(new SampleRun(randomid + pktnum, true) {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {

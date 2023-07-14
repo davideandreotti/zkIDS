@@ -1,8 +1,13 @@
 import requests, time
+
 from tls import *
-client_id = '9088'
+#client_id = '7000'
 #host = "middlebox"
 host = 'localhost'
+circuit = ""
+client_token = ""
+url_wildcard = ""
+tree_path = ""
 def send_file(file_path, url, headers):
 	with open(file_path, 'rb') as file:
 		files = {'proof': file}
@@ -19,12 +24,19 @@ def save_file(response, path):
 
 
 def main():
+	global circuit 
+	global client_token 
+	global url_wildcard 
+	global tree_path
+	anon = ""
+	client_id = input("Insert Client-ID:\n")
 	print("Connecting to middlebox as client "+client_id)
-	url = "http://"+host+":5001/prover-key"
+	#url = "http://"+host+":5001/prover-key"
 	headers = {'Client-ID': client_id}
 	while True:
 		try:
-			response = requests.get(url, headers=headers)
+			response_key = requests.get("http://"+host+":5001/prover-key", headers=headers)
+			response_params = requests.get("http://"+host+":5001/parameters", headers=headers)
 		except requests.ConnectionError:
 			print("Retrying...")
 			time.sleep(2)
@@ -32,18 +44,33 @@ def main():
 		print("Connected!")
 		break
 	# Save the response file
-	save_file(response, 'files/provKey.bin')
-	print("Circuit saved as: test.bin")
-	# Retrieve the Client-Token header
-	client_token = response.headers.get('Client-Token')
-	if client_token:
-		with open('token.txt', 'w') as token_file:
-			token_file.write(client_token)
-		print("Authentication succeeded, Client-Token obtained.")
-	else:
-		print("Error, Client-Token not found")
-
-
+	save_file(response_key, 'files/provKey.bin')
+	print("Circuit saved as: provKey.bin")
+	
+	if 'Anonymized-Tree' in response_params.headers:
+		anon = response_params.headers.get('Anonymized-Tree')
+		print("Anonymized tree: ",bool(anon))
+		tree_path = 'files/merkle_tree.txt'
+		save_file(response_params, tree_path)
+		print("Tree saved as: merkle_tree.txt")
+		if 'Client-Token' in response_params.headers:
+			circuit = 'HTTP_Merkle_Token'
+			client_token = response_params.headers.get('Client-Token')
+			print("Client Token: ", client_token)
+		else:
+			circuit = 'HTTP_Merkle'
+	elif 'Allowed-URL' in response_params.headers:
+		url_wildcard = response_params.headers.get('Allowed-URL')
+		print("Allowed URL wildcard: ", url_wildcard)
+		circuit = 'HTTP_String'
+	
+	#if client_token:
+	#	with open('token.txt', 'w') as token_file:
+	#		token_file.write(client_token)
+	#	print("Authentication succeeded, Client-Token obtained.")
+	#else:
+	#	print("Error, Client-Token not found")
+	
 	while True:
 		prompt=input("Setup done. Press enter to generate request or 'q' to quit: ")
 		if prompt.lower() == "":
@@ -56,12 +83,12 @@ def main():
 		else:
 			keepalive = False
 			print("Sending HTTP request(s) to "+function)
-			(random_id, numPackets) = make_tls_connection(function, keepalive)
+			(random_id, numPackets) = make_tls_connection(function, keepalive, circuit, tree_path, url_wildcard, anon, client_token)
 			for pkt in numPackets:
 				print(pkt)
-				file_path = "files/proof"+random_id.hex()+pkt+".bin"		#TODO: must be replaced with proof+random_id+numpacket+.txt
+				file_path = "files/proof"+random_id.hex()+pkt+".bin"
 				url = "http://"+host+":5001/prove"
-				print("Random ID: "+random_id.hex())
+				print("Proof sent!")
 				headers = {'Client-ID': client_id, 'Random-ID':random_id.hex(), 'PacketNum': pkt}
 				send_file(file_path, url, headers)
 
