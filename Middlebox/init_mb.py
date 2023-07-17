@@ -1,6 +1,8 @@
 import requests, subprocess, sys, os
+sys.path.insert(0, "./Merkle Proof")
 from runprocess import runProcess
 from flask import Flask, request, send_file, Response, make_response
+from membership_proofs import *
 client_list = {"7000": "asdfghc", "9088": "cvbnm", "2344": "hjklo", "5669": "qwerty"} 
 client_url = {"7000": "/function", "9088": "/notfunction", "2344": "/function/run", "5669": "/otherpath"} 
 #client_circuit = {"7000": "/function", "9088": "/notfunction", "2344": "/function/run", "5669": "/otherpath"} 
@@ -9,7 +11,7 @@ circuit = ""
 url = ""
 merkle=False
 token=False
-anon = False
+anon = True
 @app.route('/prove', methods=['POST'])
 def upload_file():
 	client_id = request.headers['Client-ID']
@@ -29,7 +31,8 @@ def upload_file():
 			if(token):
 				print(token, "Token")
 				circuit = 'HTTP_Merkle_Token'
-				jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+'../Middlebox/files/merkle_proof_pub.txt '+token + ' ' + random_id+' '+packet_num).split())
+				print(type(random_id), type(packet_num))
+				jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+'../Middlebox/files/merkle_proof_pub.txt '+client_list[client_id] + ' ' + random_id+' '+packet_num).split())
 
 			else:
 				circuit = 'HTTP_Merkle'
@@ -73,8 +76,8 @@ def return_params():
 		print(request.headers['Client-ID'])
 		if(merkle):
 			#TODO: generate tree and root file
-			response = make_response(send_file("files/merkle_tree.txt", mimetype='text/plain'))
-			response.headers['Anonymized-Tree'] = anon
+			response = make_response(send_file("files/generated_merkle_tree.txt", mimetype='text/plain'))
+			response.headers['Anonymized-Tree'] = ("True" if anon else "")
 			if(token):
 				response.headers['Client-Token'] = client_list[request.headers['Client-ID']]
 		else:
@@ -83,23 +86,39 @@ def return_params():
 		return response
 	else:
 		return Response(status=401)
+		
+@app.route('/url-list', methods=['GET'])
+def return_urllist():
+	if(request.headers['Client-ID'] in client_list):
+		print(request.headers['Client-ID'])
+		if(anon):
+			#TODO: generate tree and root file
+			response = make_response(send_file("files/anon_tree.txt", mimetype='text/plain'))
+		else:
+			response = make_response(send_file("files/allowlist.txt", mimetype='text/plain'))
+		return response
+	else:
+		return Response(status=401)
+
             
             
 
 
 
 if (len(sys.argv)>1 and sys.argv[1]=='merkle'):
+	
 	if(len(sys.argv)>2 and sys.argv[2]=='token'):
 		circuit = 'HTTP_Merkle_Token'
 		token=True
 		merkle=True
-		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt ../Middlebox/files/test_merkle.txt token circuitgen 1').split())
+		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt ../Middlebox/files/merkle_proof_pub.txt token circuitgen 1').split())
 		lrun = (('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/'+circuit+'.arith setup').split())
 	else:
 		circuit = 'HTTP_Merkle'
 		merkle=True
-		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt ../Middlebox/files/test_merkle.txt /function circuitgen 1').split())
+		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt ../Middlebox/files/merkle_proof_pub.txt /function circuitgen 1').split())
 		lrun = (('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/'+circuit+'.arith setup').split())
+	compute_tree('files/allowlist.txt', anon)
 else:
 	circuit = 'HTTP_String'
 	jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt /function circuitgen 1').split())
@@ -116,6 +135,6 @@ if(not os.path.exists('files/'+circuit+'.arith')):
 		exit()
 else:
 	print("Circuit already generated!")
-subprocess.run(lrun).check_returncode()
+#subprocess.run(lrun).check_returncode()
 print("Generation done. Starting Flask Server")
 app.run(host='0.0.0.0', port=5001)

@@ -221,10 +221,10 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 		#input_path = "files/anon_tree" if anon else "files/allowlist.txt"
 		print("Computing proof...")
 		merkle_filename = ("merkle_witness."+tls_conn._clientRandom.hex()+str(packetNumber)+".txt")
-		compute_proof(command, tree_path, anon, "files/"+merkle_filename, "Merkle Proof/generated_merkle_tree.txt")
-		if(client_token != ""):
+		compute_proof(command, tree_path, anon, "files/"+merkle_filename, "files/generated_merkle_tree.txt")
+		if(client_token == ""):
 			print("Running Merkle circuit")
-			subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" url " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+			subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" /function " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
 		else:
 			print("Running Merkle Token circuit")
 			subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())

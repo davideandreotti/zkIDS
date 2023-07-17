@@ -36,7 +36,7 @@ public class Test_HTTP_String extends CircuitGenerator {
     __generateCircuit();
     if (s[0].equals("pub")) {
       System.out.println("Generate public inputs only");
-      this.__generatePublicInputs(new SampleRun("randomid+pktnum", true) {
+      this.__generatePublicInputs(new SampleRun(randomid+pktnum, true) {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {
@@ -143,7 +143,7 @@ public class Test_HTTP_String extends CircuitGenerator {
       });
     } else if (s[0].equals("run")) {
       System.out.println("Normal execution");
-      this.__evaluateSampleRun(new SampleRun("randomid+pktnum", true) {
+      this.__evaluateSampleRun(new SampleRun(randomid+pktnum, true) {
         public void pre() {
           // **************** Channel Opening Inputs ***************************************** 
           try {

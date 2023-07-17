@@ -15,7 +15,7 @@ RUN apt-get update -qq && \
 RUN ln -fs /usr/share/zoneinfo/Europe/Rome /etc/localtime
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends $APT_DEPS
 #RUN  apt-get -y install tzdata
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends openjdk-8-jre
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends openjdk-17-jre
 RUN pip install --no-cache-dir --upgrade pip && \
 	pip install --no-cache-dir $PIP_DEPS
 RUN apt-get autoremove --purge -qq

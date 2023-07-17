@@ -7,6 +7,7 @@ host = 'localhost'
 circuit = ""
 client_token = ""
 url_wildcard = ""
+list_path = ""
 tree_path = ""
 def send_file(file_path, url, headers):
 	with open(file_path, 'rb') as file:
@@ -27,7 +28,7 @@ def main():
 	global circuit 
 	global client_token 
 	global url_wildcard 
-	global tree_path
+	global list_path
 	anon = ""
 	client_id = input("Insert Client-ID:\n")
 	print("Connecting to middlebox as client "+client_id)
@@ -48,11 +49,15 @@ def main():
 	print("Circuit saved as: provKey.bin")
 	
 	if 'Anonymized-Tree' in response_params.headers:
+		response_tree = requests.get("http://"+host+":5001/url-list", headers=headers)
 		anon = response_params.headers.get('Anonymized-Tree')
-		print("Anonymized tree: ",bool(anon))
-		tree_path = 'files/merkle_tree.txt'
+		tree_path = 'files/generated_merkle_tree.txt'
+		list_path = 'files/allowlist.txt'
 		save_file(response_params, tree_path)
-		print("Tree saved as: merkle_tree.txt")
+		print("Tree saved as: "+tree_path)
+		if (anon!=''):
+			list_path = 'files/anon_list.txt'
+		save_file(response_tree, list_path)
 		if 'Client-Token' in response_params.headers:
 			circuit = 'HTTP_Merkle_Token'
 			client_token = response_params.headers.get('Client-Token')
@@ -83,7 +88,7 @@ def main():
 		else:
 			keepalive = False
 			print("Sending HTTP request(s) to "+function)
-			(random_id, numPackets) = make_tls_connection(function, keepalive, circuit, tree_path, url_wildcard, anon, client_token)
+			(random_id, numPackets) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token)
 			for pkt in numPackets:
 				print(pkt)
 				file_path = "files/proof"+random_id.hex()+pkt+".bin"
