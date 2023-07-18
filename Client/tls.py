@@ -1,6 +1,8 @@
 import sys, os
 sys.path.insert(0, "./tlslite-ng-0.8.0-alpha40")
 sys.path.insert(0, "./Merkle Proof")
+sys.path.insert(0, "../Middlebox")
+from trackers import *
 from socket import *
 from tlslite import TLSConnection, HandshakeSettings, HTTPTLSConnection, messages
 from tlslite.api import *
@@ -158,7 +160,7 @@ def print_test(test_dict):
 	print("c ap key: " + test_dict['c_ap_key'])
 	print("c ap iv: " + test_dict['c_ap_iv'])
 	
-def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, anon, client_token):
+def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, anon, client_token, testing):
 	oursettings = HandshakeSettings()
 	oursettings.usePaddingExtension = False
 	#oursettings.method_flag_for_padding = "doh"
@@ -210,6 +212,43 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 	sys.stdout = f
 	print_test(get_test_values(tls_conn2)) #PSK is now set! Previous session was resumed as specified on resumptionsession variable!
 	f.close() '''
+	
+	if(testing):
+		start_time = time.time()
+		command = method+" "+pathstr
+		print("Generating circuit and parameters...")
+		if(allowed != ""):
+			print("Running String circuit")
+			out2=[["Running circuit", time.time()-start_time]]
+			(out, mem)= trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" "+allowed + ' ' + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, start_time)
+			out = out2 + out
+			#print("OUT ARRAY: ", out)
+			#subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" "+allowed + ' ' + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+		elif(tree_path != ""):
+			#input_path = "files/anon_tree" if anon else "files/allowlist.txt"
+			print("Computing proof...")
+			merkle_filename = ("merkle_witness."+tls_conn._clientRandom.hex()+str(packetNumber)+".txt")
+			compute_proof(command, tree_path, anon, "files/"+merkle_filename, "files/generated_merkle_tree.txt")
+			out2=[["PROOF COMPUTED, Running circuit", time.time()-start_time]]
+			if(client_token == ""):
+				print("Running Merkle circuit")
+				(out, mem)=trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" /function " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, start_time)
+				out=out2+out
+				#subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" /function " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+			else:
+				print("Running Merkle Token circuit")
+				(out, mem)=trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, start_time)								
+				out = out2 + out
+				
+				#subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
+		print("PROOF COMPUTED!")
+		(out3, mem2) = trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split(), "libsnark_proof"+circuitname, start_time)
+		out+=out3
+		#mem+=mem2
+		
+		#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
+		subprocess.run(('rm '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
+		return(tls_conn._clientRandom, ['1'], out, mem2)
 	
 	
 	command = method+" "+pathstr

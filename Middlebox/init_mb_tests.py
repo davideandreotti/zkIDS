@@ -1,4 +1,4 @@
-import requests, subprocess, sys, os
+import requests, subprocess, sys, os, time, json
 sys.path.insert(0, "./Merkle Proof")
 from runprocess import runProcess
 from flask import Flask, request, send_file, Response, make_response
@@ -13,11 +13,14 @@ url = ""
 merkle=False
 token=False
 anon = True
+start_time = time.time()
 @app.route('/prove', methods=['POST'])
 def upload_file():
 	client_id = request.headers['Client-ID']
 	if (client_id in client_list):
 		print("Client allowed")
+		start_time=time.time()
+		out2=[["Verification starts now", time.time()-start_time]]
 		random_id = request.headers['Random-ID']
 		packet_num = request.headers['PacketNum']
 		file = request.files['proof']
@@ -26,7 +29,8 @@ def upload_file():
 		file.save(filename)
 		print('Proof received! '+filename)
 		print('File received successfully.')
-		
+		out2= out2 + [["Proof received", time.time()-start_time]]
+		print(out2)
 		if (merkle):
 			print(merkle, "Merkle")
 			if(token):
@@ -47,11 +51,17 @@ def upload_file():
 
 		
 		try:
-			subprocess.run(jrun).check_returncode()
+			#subprocess.run(jrun).check_returncode()
+			(out_tmp, mem_tmp) = trackRun(jrun, "xjsnark_verify"+circuit, start_time)
+			out = out2 + out_tmp
+			mem = mem_tmp
 		except subprocess.CalledProcessError:
 			print("Wrong java parameters! " + random_id + " " + packet_num)
 		try:
-			subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
+			(out_tmp, mem_tmp)=trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split(), "libsnark_verify"+circuit, start_time)
+			out = out + out_tmp
+			mem = mem + mem_tmp
+			#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
 		except subprocess.CalledProcessError:
 			print("Wrong libsnark parameters! " + random_id + " " + packet_num)
 			Response(status=403)
@@ -59,6 +69,10 @@ def upload_file():
 		print("CLIENT NOT ALLOWED")
 		Response(status=401)
 
+	with open("verify_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
+		json.dump(out, f, ensure_ascii=False, indent=4)
+	with open("verify_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
+		json.dump(mem, f, ensure_ascii=False, indent=4)
 	return Response(status=200)
 
 @app.route('/prover-key', methods=['GET'])
@@ -127,7 +141,11 @@ else:
 jname = "xjsnark_setup_"+circuit+".json"
 try:
 	print("Running Java")
-	trackRun(jrun, jname)
+	start_time=time.time()
+	(out_tmp, mem_tmp)=trackRun(jrun, jname, start_time)
+	out=out_tmp
+	mem=mem_tmp
+	#start_time+=out[-1][1]
 	subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
 	subprocess.run(('rm '+circuit+'_circuitgen1.pub.in').split()).check_returncode()
 	
@@ -135,7 +153,15 @@ except subprocess.CalledProcessError:
 	print("Wrong parameters, server not starting")
 	exit()
 print("Running Libsnark")
-lname = "libsnark_setup_"+circuit+".json"
-trackRun(lrun, lname)
+lname = "libsnark_setup_"+circuit
+(out_tmp, mem_tmp)=trackRun(lrun, lname, start_time)
+out = out+out_tmp
+mem=mem+mem_tmp
+#start_time+=out[-1][1]
+#print(start_time)
+with open("setup_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
+	json.dump(out, f, ensure_ascii=False, indent=4)
+with open("setup_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
+	json.dump(mem, f, ensure_ascii=False, indent=4)
 print("Generation done. Starting Flask Server")
 app.run(host='0.0.0.0', port=5001)
