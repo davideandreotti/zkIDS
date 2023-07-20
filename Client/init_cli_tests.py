@@ -42,6 +42,7 @@ def main():
 		try:
 			start_time = time.time()
 			outputs=[["Request sent", time.time()-start_time]]
+			memory = [[0, time.time-start_time()]]
 			response_key = requests.get("http://"+host+":5001/prover-key", headers=headers)
 			response_params = requests.get("http://"+host+":5001/parameters", headers=headers)
 		except requests.ConnectionError:
@@ -54,6 +55,7 @@ def main():
 	save_file(response_key, 'files/provKey.bin')
 	print("Circuit saved as: provKey.bin")
 	outputs+=[["Key received", time.time()-start_time]]
+	memory +=[[0, time.time()-start_time]]
 	if 'Anonymized-Tree' in response_params.headers:
 		response_tree = requests.get("http://"+host+":5001/url-list", headers=headers)
 		anon = response_params.headers.get('Anonymized-Tree')
@@ -75,6 +77,8 @@ def main():
 		print("Allowed URL wildcard: ", url_wildcard)
 		circuit = 'HTTP_String'
 	outputs+=[["Merkle computations done", time.time()-start_time]]
+	memory += [[0, time.time()-start_time]]
+	
 	#if client_token:
 	#	with open('token.txt', 'w') as token_file:
 	#		token_file.write(client_token)
@@ -94,16 +98,18 @@ def main():
 			keepalive = False
 			print("Sending HTTP request(s) to "+function)
 			time_placeholder = time.time()-start_time
+			mem += [[],[]
 			(random_id, numPackets, out, mem) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token, True)
 			for item in out:
 				item[1] += time_placeholder
 			for item in mem:
 				item[1] += time_placeholder
 			outputs += out
+			memory += mem
 			with open("prove_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
 				    json.dump(outputs, f, ensure_ascii=False, indent=4)
 			with open("prove_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
-				    json.dump(mem, f, ensure_ascii=False, indent=4)
+				    json.dump(memory, f, ensure_ascii=False, indent=4)
 			for pkt in numPackets:
 				print(pkt)
 				file_path = "files/proof"+random_id.hex()+pkt+".bin"

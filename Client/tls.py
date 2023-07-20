@@ -244,11 +244,12 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 		print("PROOF COMPUTED!")
 		(out3, mem2) = trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split(), "libsnark_proof"+circuitname, start_time)
 		out+=out3
-		#mem+=mem2
+		mem+=mem2
+
 		
 		#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
 		subprocess.run(('rm '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
-		return(tls_conn._clientRandom, ['1'], out, mem2)
+		return(tls_conn._clientRandom, ['1'], out, mem)
 	
 	
 	command = method+" "+pathstr
