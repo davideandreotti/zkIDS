@@ -12,7 +12,7 @@ import backend.auxTypes.UnsignedInteger;
 import backend.auxTypes.FieldElement;
 import util.Util;
 import xjsnark.tls13_key_schedules.TLSKeySchedule;
-import xjsnark.membership_merkle.membership_proof_functions;
+import xjsnark.membership_merkle.Test_membership_proof_functions;
 import backend.eval.CircuitEvaluator;
 
 public class Test_HTTP_Merkle extends CircuitGenerator {
@@ -22,7 +22,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
   public static void main(String[] args) {
     Config.multivariateExpressionMinimization = false;
     Config.writeCircuits = true;
-    Config.outputFilesPath = ".";
+    Config.outputFilesPath = "files/";
     transcript_path = args[1];
     merkle_path = args[2];
     allowed_url = args[3];
@@ -148,7 +148,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
             }
 
             // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < HEIGHT; i++) {
               line = br.readLine();
               auth_path[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -286,7 +286,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
             }
 
             // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < HEIGHT; i++) {
               line = br.readLine();
               auth_path[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -465,9 +465,9 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
 
     UnsignedInteger[] SHA_H_Checkpoint_32 = xjsnark.util_and_sha.Util.convert_8_to_32(SHA_H_Checkpoint);
     values = TLSKeySchedule.get1RTT_HS_new(HS, H2, TR3_len.copy(16), CertVerify_len.copy(16), CertVerify_ct_tail, ServerFinished_ct, CertVerify_tail_len.copy(8), SHA_H_Checkpoint_32, appl_ct);
-    string_http = Test_LabelExtraction.firewall_string(values[0], url_bytes, url_length.copy(8));
+    //string_http = Test_LabelExtraction.firewall_string(values[0], url_bytes, url_length.copy(8));
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
-    a.assign(membership_proof_functions.membershipProofChecks(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
+    a.assign(Test_membership_proof_functions.membershipProofChecks(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
 
   }
   public String get_tail_minus_36(String line) {

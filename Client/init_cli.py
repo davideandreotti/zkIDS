@@ -88,7 +88,7 @@ def main():
 		else:
 			keepalive = False
 			print("Sending HTTP request(s) to "+function)
-			(random_id, numPackets) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token)
+			(random_id, numPackets) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token, False)
 			for pkt in numPackets:
 				print(pkt)
 				file_path = "files/proof"+random_id.hex()+pkt+".bin"

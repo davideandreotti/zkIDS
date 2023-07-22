@@ -355,7 +355,7 @@ def compute_tree(allowlist_filename, anon):
 				file.write(str(line) + '\n')
 	print("Computing merkle tree structure")
 	merkle_tree = computeMerkleTree(input_array)
-	compute_proof("GET /function/run", "files/allowlist.txt", False, "files/merkle_proof_pub.txt", "files/generated_merkle_tree.txt")
+	#compute_proof("GET /function/run", "files/allowlist.txt", False, "files/merkle_proof_pub.txt", "files/generated_merkle_tree.txt")
 	merkle_tree_structure = merkle_tree[1]
 	return merkle_tree_structure
 	
@@ -363,7 +363,7 @@ def compute_proof(command, input_array_path, anon, proof_filename, tree_filename
 	merkle_tree_structure = get_tree(tree_filename)
 	with open(input_array_path) as file:
 		input_array = ([int(line.rstrip()) for line in file] if anon else [line.rstrip() for line in file])
-	print(input_array)
+	#print(input_array)
 	if(anon):
 		(real_leaf, index) = find_hidden_substring(command, input_array)
 	else:
@@ -372,7 +372,7 @@ def compute_proof(command, input_array_path, anon, proof_filename, tree_filename
 	print("Running membership proof")
 
 	return_value = runMembershipProof(command, real_leaf, merkle_tree_structure, input_array, proof_filename, index)
-	print(return_value)
+	#print(return_value)
 
 def get_tree(filename):
 	with open(filename) as file:

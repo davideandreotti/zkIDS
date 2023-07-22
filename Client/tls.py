@@ -252,7 +252,8 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 		return(tls_conn._clientRandom, ['1'], out, mem)
 	
 	
-	command = method+" "+pathstr
+	#command = method+" "+pathstr
+	command = pathstr
 	print("Generating circuit and parameters...")
 	if(allowed != ""):
 		print("Running String circuit")

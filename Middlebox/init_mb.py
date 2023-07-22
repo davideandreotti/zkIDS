@@ -135,6 +135,6 @@ if(not os.path.exists('files/'+circuit+'.arith')):
 		exit()
 else:
 	print("Circuit already generated!")
-#subprocess.run(lrun).check_returncode()
+subprocess.run(lrun).check_returncode()
 print("Generation done. Starting Flask Server")
 app.run(host='0.0.0.0', port=5001)

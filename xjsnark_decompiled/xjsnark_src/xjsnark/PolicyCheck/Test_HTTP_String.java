@@ -26,6 +26,7 @@ public class Test_HTTP_String extends CircuitGenerator {
     randomid = args[3];
     pktnum = args[4];
     MAX_DNS_CT_LEN = Integer.parseInt(args[5]);
+    System.out.println(MAX_DNS_CT_LEN);
     MAX_URL_LEN = Integer.parseInt(args[6]);
 
     new Test_HTTP_String(args);
