@@ -22,7 +22,7 @@ public class HTTP_Merkle_Token extends CircuitGenerator {
   public static void main(String[] args) {
     Config.multivariateExpressionMinimization = false;
     Config.writeCircuits = true;
-    Config.outputFilesPath = ".";
+    Config.outputFilesPath = "files/";
     transcript_path = args[1];
     merkle_path = args[2];
     token_str = args[3];

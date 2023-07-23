@@ -12,7 +12,7 @@ import backend.auxTypes.UnsignedInteger;
 import backend.auxTypes.FieldElement;
 import util.Util;
 import xjsnark.tls13_key_schedules.TLSKeySchedule;
-import xjsnark.membership_merkle.Test_membership_proof_functions;
+import xjsnark.membership_merkle.test_membership_proof_functions;
 import backend.eval.CircuitEvaluator;
 
 public class Test_HTTP_Merkle extends CircuitGenerator {
@@ -148,7 +148,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
             }
 
             // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-            for (int i = 0; i < HEIGHT; i++) {
+            for (int i = 0; i < 4; i++) {
               line = br.readLine();
               auth_path[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -286,7 +286,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
             }
 
             // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-            for (int i = 0; i < HEIGHT; i++) {
+            for (int i = 0; i < 4; i++) {
               line = br.readLine();
               auth_path[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -382,6 +382,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
     CertVerify_ct_tail = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(CertVerify_ct_tail), 8);
     ServerFinished_ct = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(ServerFinished_ct), 8);
     url_bytes = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(url_bytes), 8);
+    appl_ct = (UnsignedInteger[]) UnsignedInteger.createInputArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(appl_ct), 8);
 
 
 
@@ -419,7 +420,6 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
 
     HS = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(HS), 8);
     SHA_H_Checkpoint = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(SHA_H_Checkpoint), 8);
-    appl_ct = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(appl_ct), 8);
     tree_leaf = (UnsignedInteger[]) UnsignedInteger.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(tree_leaf), 8);
 
     auth_path = (FieldElement[]) FieldElement.createVerifiedWitnessArray(CircuitGenerator.__getActiveCircuitGenerator(), Util.getArrayDimensions(auth_path), new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
@@ -465,9 +465,8 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
 
     UnsignedInteger[] SHA_H_Checkpoint_32 = xjsnark.util_and_sha.Util.convert_8_to_32(SHA_H_Checkpoint);
     values = TLSKeySchedule.get1RTT_HS_new(HS, H2, TR3_len.copy(16), CertVerify_len.copy(16), CertVerify_ct_tail, ServerFinished_ct, CertVerify_tail_len.copy(8), SHA_H_Checkpoint_32, appl_ct);
-    //string_http = Test_LabelExtraction.firewall_string(values[0], url_bytes, url_length.copy(8));
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
-    a.assign(Test_membership_proof_functions.membershipProofChecks(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
+    a.assign(test_membership_proof_functions.membershipProofChecks_M(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
 
   }
   public String get_tail_minus_36(String line) {

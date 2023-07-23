@@ -14,15 +14,14 @@ import util.Util;
 import java.util.ArrayList;
 import backend.auxTypes.VariableState;
 import backend.auxTypes.IAuxType;
-import xjsnark.PolicyCheck.Test_HTTP_Merkle;
 
 public class Test_MerkleAuthPath extends StructDefinition {
 
 
   public UnsignedInteger directionSelector = new UnsignedInteger(64, new BigInteger("0"));
-  public FieldElement[] digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{Test_HTTP_Merkle.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
+  public FieldElement[] digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{test_membership_proof_functions.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
   public Test_MerkleAuthPath() {
-    digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{Test_HTTP_Merkle.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
+    digests = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{test_membership_proof_functions.HEIGHT}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
   }
   public Test_MerkleAuthPath(UnsignedInteger inputDS, FieldElement[] inputDigests) {
     directionSelector.assign(inputDS, 64);
@@ -33,13 +32,13 @@ public class Test_MerkleAuthPath extends StructDefinition {
     FieldElement currentDigest = leaf.copy();
     FieldElement[] inputToNextHash = (FieldElement[]) FieldElement.createZeroArray(CircuitGenerator.__getActiveCircuitGenerator(), new int[]{2}, new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"));
 
-    for (int i = 0; i < Test_HTTP_Merkle.HEIGHT; i++) {
+    for (int i = 0; i < test_membership_proof_functions.HEIGHT; i++) {
       for (int j = 0; j < 2; j++) {
         {
-          Bit bit_a0a0e0o = directionBits[i].copy();
-          boolean c_a0a0e0o = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0e0o);
-          if (c_a0a0e0o) {
-            if (bit_a0a0e0o.getConstantValue()) {
+          Bit bit_a0a0e0o_0 = directionBits[i].copy();
+          boolean c_a0a0e0o_0 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0e0o_0);
+          if (c_a0a0e0o_0) {
+            if (bit_a0a0e0o_0.getConstantValue()) {
               inputToNextHash[j].assign((j >= 1 ? currentDigest : digests[i]));
             } else {
               inputToNextHash[j].assign((j < 1 ? currentDigest : digests[i]));
@@ -47,7 +46,7 @@ public class Test_MerkleAuthPath extends StructDefinition {
             }
           } else {
             ConditionalScopeTracker.pushMain();
-            ConditionalScopeTracker.push(bit_a0a0e0o);
+            ConditionalScopeTracker.push(bit_a0a0e0o_0);
             inputToNextHash[j].assign((j >= 1 ? currentDigest : digests[i]));
 
             ConditionalScopeTracker.pop();

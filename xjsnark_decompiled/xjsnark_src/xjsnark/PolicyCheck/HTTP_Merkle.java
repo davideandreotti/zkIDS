@@ -22,7 +22,7 @@ public class HTTP_Merkle extends CircuitGenerator {
   public static void main(String[] args) {
     Config.multivariateExpressionMinimization = false;
     Config.writeCircuits = true;
-    Config.outputFilesPath = ".";
+    Config.outputFilesPath = "files/";
     transcript_path = args[1];
     merkle_path = args[2];
     allowed_url = args[3];
@@ -468,8 +468,6 @@ public class HTTP_Merkle extends CircuitGenerator {
 
     UnsignedInteger[] SHA_H_Checkpoint_32 = xjsnark.util_and_sha.Util.convert_8_to_32(SHA_H_Checkpoint);
     values = TLSKeySchedule.get1RTT_HS_new(HS, H2, TR3_len.copy(16), CertVerify_len.copy(16), CertVerify_ct_tail, ServerFinished_ct, CertVerify_tail_len.copy(8), SHA_H_Checkpoint_32, appl_ct);
-    string_http = LabelExtraction.firewall(values[0], url_bytes, url_length.copy(8));
-
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
     a.assign(membership_proof_functions.membershipProofChecks(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
 

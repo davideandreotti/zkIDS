@@ -7,14 +7,15 @@ import backend.auxTypes.FieldElement;
 import java.math.BigInteger;
 import xjsnark.poseidon.PoseidonHash;
 import backend.auxTypes.Bit;
+import xjsnark.PolicyCheck.Test_HTTP_Merkle;
 import backend.structure.CircuitGenerator;
 import backend.auxTypes.ConditionalScopeTracker;
+import xjsnark.PolicyCheck.Test_HTTP_Merkle_Token;
+
+public class test_membership_proof_functions {
 
 
-public class Test_membership_proof_functions {
-
-  //public static final int HEIGHT = 4;
-
+  public static int HEIGHT = 0;
   // non_membership proof function
   // It uses F_p[8] as its input_domain_name's format and takes MerkleAuthPath structure as its input format
   public static UnsignedInteger check_membership_path(FieldElement[] input_domain_name, FieldElement root, FieldElement left_leaf, FieldElement right_leaf, Test_MerkleAuthPath authPath_left, Test_MerkleAuthPath authPath_right) {
@@ -52,7 +53,8 @@ public class Test_membership_proof_functions {
 
   // wildcard non_membership proof function
   // It takes uint_8[255] as its input_domain_name's format and takes Merkle Path and directionSelector directly as its input format
-  public static UnsignedInteger membershipProofChecks(UnsignedInteger[] input_domain_name_wildcard, FieldElement root, UnsignedInteger[] leaf_url, UnsignedInteger leaf_length, FieldElement[] authPath_array, UnsignedInteger direction) {
+  public static UnsignedInteger membershipProofChecks_M(UnsignedInteger[] input_domain_name_wildcard, FieldElement root, UnsignedInteger[] leaf_url, UnsignedInteger leaf_length, FieldElement[] authPath_array, UnsignedInteger direction) {
+    HEIGHT = Test_HTTP_Merkle.HEIGHT;
     // construct MerkAuthPath structure (compute root for left_path and right_path later) 
     Test_MerkleAuthPath authPath_left = new Test_MerkleAuthPath(direction.copy(64), authPath_array);
     // convert the left and right domain name toF_p[8] to be accepted by Poseidon Hash 
@@ -76,25 +78,25 @@ public class Test_membership_proof_functions {
     // check out the notes for the algorithm 
     for (int i = 0; i < 255; i++) {
       {
-        Bit bit_a0v0k = UnsignedInteger.instantiateFrom(8, i).isLessThan(leaf_length).copy();
-        boolean c_a0v0k = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0v0k);
-        if (c_a0v0k) {
-          if (bit_a0v0k.getConstantValue()) {
+        Bit bit_a0w0k = UnsignedInteger.instantiateFrom(8, i).isLessThan(leaf_length).copy();
+        boolean c_a0w0k = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0w0k);
+        if (c_a0w0k) {
+          if (bit_a0w0k.getConstantValue()) {
 
             leaf_url[i].forceEqual(input_domain_name_wildcard[i]);
           } else {
             {
-              Bit bit_a0a0a0a2a0a12a01 = UnsignedInteger.instantiateFrom(8, i).isEqualTo(leaf_length).copy();
-              boolean c_a0a0a0a2a0a12a01 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0a0a2a0a12a01);
-              if (c_a0a0a0a2a0a12a01) {
-                if (bit_a0a0a0a2a0a12a01.getConstantValue()) {
+              Bit bit_a0a0a0a2a0a22a01 = UnsignedInteger.instantiateFrom(8, i).isEqualTo(leaf_length).copy();
+              boolean c_a0a0a0a2a0a22a01 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0a0a2a0a22a01);
+              if (c_a0a0a0a2a0a22a01) {
+                if (bit_a0a0a0a2a0a22a01.getConstantValue()) {
                   leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
                 } else {
 
                 }
               } else {
                 ConditionalScopeTracker.pushMain();
-                ConditionalScopeTracker.push(bit_a0a0a0a2a0a12a01);
+                ConditionalScopeTracker.push(bit_a0a0a0a2a0a22a01);
                 leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
 
                 ConditionalScopeTracker.pop();
@@ -110,7 +112,7 @@ public class Test_membership_proof_functions {
           }
         } else {
           ConditionalScopeTracker.pushMain();
-          ConditionalScopeTracker.push(bit_a0v0k);
+          ConditionalScopeTracker.push(bit_a0w0k);
 
           leaf_url[i].forceEqual(input_domain_name_wildcard[i]);
 
@@ -119,17 +121,17 @@ public class Test_membership_proof_functions {
           ConditionalScopeTracker.push(new Bit(true));
 
           {
-            Bit bit_a0a0a12a01_0 = UnsignedInteger.instantiateFrom(8, i).isEqualTo(leaf_length).copy();
-            boolean c_a0a0a12a01_0 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0a12a01_0);
-            if (c_a0a0a12a01_0) {
-              if (bit_a0a0a12a01_0.getConstantValue()) {
+            Bit bit_a0a0a22a01_0 = UnsignedInteger.instantiateFrom(8, i).isEqualTo(leaf_length).copy();
+            boolean c_a0a0a22a01_0 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0a22a01_0);
+            if (c_a0a0a22a01_0) {
+              if (bit_a0a0a22a01_0.getConstantValue()) {
                 leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
               } else {
 
               }
             } else {
               ConditionalScopeTracker.pushMain();
-              ConditionalScopeTracker.push(bit_a0a0a12a01_0);
+              ConditionalScopeTracker.push(bit_a0a0a22a01_0);
               leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
 
               ConditionalScopeTracker.pop();
@@ -150,6 +152,106 @@ public class Test_membership_proof_functions {
 
     return UnsignedInteger.instantiateFrom(1, 1);
   }
+  public static UnsignedInteger membershipProofChecks_MT(UnsignedInteger[] input_domain_name_wildcard, FieldElement root, UnsignedInteger[] leaf_url, UnsignedInteger leaf_length, FieldElement[] authPath_array, UnsignedInteger direction) {
+    HEIGHT = Test_HTTP_Merkle_Token.HEIGHT;
+    // construct MerkAuthPath structure (compute root for left_path and right_path later) 
+    Test_MerkleAuthPath authPath_left = new Test_MerkleAuthPath(direction.copy(64), authPath_array);
+    // convert the left and right domain name toF_p[8] to be accepted by Poseidon Hash 
+    FieldElement leaf = new FieldElement(new BigInteger("21888242871839275222246405745257275088548364400416034343698204186575808495617"), new BigInteger("0"));
+    FieldElement[] leaf_url_fp = convert_8_to_Fp_python(leaf_url);
+
+    // compute the hash of left and right domain name in the first layer 
+    // The needs an 8-input Poseidon Hash since domain name has a larger size 
+    FieldElement leaf_hash = PoseidonHash.poseidon_hash_8(leaf_url_fp).copy();
+
+    // compute the Merkle Root using left_left and right_left verifiably 
+    FieldElement computed_root = authPath_left.computeMerkleRoot(leaf_hash.copy()).copy();
+
+    // compare that roots are the same (public input root, roots computed from left and right) 
+    // It can prove that both left_leaf and right_leaf exist in Merkle Tree 
+
+    computed_root.forceEqual(root);
+
+    // Prove that left_leaf is indead smaller than right_leaf 
+    // This firstly checks left_index and right_index for exact matching and then checks the next is smaller 
+    // check out the notes for the algorithm 
+    for (int i = 0; i < 255; i++) {
+      {
+        Bit bit_a0w0l = UnsignedInteger.instantiateFrom(8, i).isLessThan(leaf_length).copy();
+        boolean c_a0w0l = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0w0l);
+        if (c_a0w0l) {
+          if (bit_a0w0l.getConstantValue()) {
+
+            leaf_url[i].forceEqual(input_domain_name_wildcard[i]);
+          } else {
+            {
+              Bit bit_a0a0a0a2a0a22a11 = UnsignedInteger.instantiateFrom(8, i).isEqualTo(leaf_length).copy();
+              boolean c_a0a0a0a2a0a22a11 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0a0a2a0a22a11);
+              if (c_a0a0a0a2a0a22a11) {
+                if (bit_a0a0a0a2a0a22a11.getConstantValue()) {
+                  leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
+                } else {
+
+                }
+              } else {
+                ConditionalScopeTracker.pushMain();
+                ConditionalScopeTracker.push(bit_a0a0a0a2a0a22a11);
+                leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
+
+                ConditionalScopeTracker.pop();
+
+                ConditionalScopeTracker.push(new Bit(true));
+
+                ConditionalScopeTracker.pop();
+                ConditionalScopeTracker.popMain();
+              }
+
+            }
+
+          }
+        } else {
+          ConditionalScopeTracker.pushMain();
+          ConditionalScopeTracker.push(bit_a0w0l);
+
+          leaf_url[i].forceEqual(input_domain_name_wildcard[i]);
+
+          ConditionalScopeTracker.pop();
+
+          ConditionalScopeTracker.push(new Bit(true));
+
+          {
+            Bit bit_a0a0a22a11_0 = UnsignedInteger.instantiateFrom(8, i).isEqualTo(leaf_length).copy();
+            boolean c_a0a0a22a11_0 = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0a0a22a11_0);
+            if (c_a0a0a22a11_0) {
+              if (bit_a0a0a22a11_0.getConstantValue()) {
+                leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
+              } else {
+
+              }
+            } else {
+              ConditionalScopeTracker.pushMain();
+              ConditionalScopeTracker.push(bit_a0a0a22a11_0);
+              leaf_url[i].forceEqual(UnsignedInteger.instantiateFrom(8, 0x00));
+
+              ConditionalScopeTracker.pop();
+
+              ConditionalScopeTracker.push(new Bit(true));
+
+              ConditionalScopeTracker.pop();
+              ConditionalScopeTracker.popMain();
+            }
+
+          }
+          ConditionalScopeTracker.pop();
+          ConditionalScopeTracker.popMain();
+        }
+
+      }
+    }
+
+    return UnsignedInteger.instantiateFrom(1, 1);
+  }
+
 
   // convert uint_8[] to F_p[8] -- the same as python script
   public static FieldElement[] convert_8_to_Fp_python(UnsignedInteger[] byte_array) {
