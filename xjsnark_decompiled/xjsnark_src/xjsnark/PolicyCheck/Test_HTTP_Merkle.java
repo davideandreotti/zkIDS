@@ -148,7 +148,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
             }
 
             // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < HEIGHT; i++) {
               line = br.readLine();
               auth_path[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }
@@ -286,7 +286,7 @@ public class Test_HTTP_Merkle extends CircuitGenerator {
             }
 
             // path of left and right, it's F_p[HEIGHT] elements storing the hashes in the path 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < HEIGHT; i++) {
               line = br.readLine();
               auth_path[i].mapValue(new BigInteger(line, 10), CircuitGenerator.__getActiveCircuitGenerator().__getCircuitEvaluator());
             }

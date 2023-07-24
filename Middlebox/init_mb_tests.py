@@ -115,11 +115,53 @@ def return_urllist():
 	else:
 		return Response(status=401)
 
-            
-            
+
+merkle = False
+random_id = "runtest"
+packet_num = "1"
+if (merkle):
+	print(merkle, "Merkle")
+	if(token):
+		print(token, "Token")
+		circuit = 'HTTP_Merkle_Token'
+		print(type(random_id), type(packet_num))
+		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+'../Middlebox/files/merkle_proof_pub.txt '+client_list[client_id] + ' ' + random_id+' '+packet_num).split())
+		else:
+		circuit = 'HTTP_Merkle'
+		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+'../Middlebox/files/merkle_proof_pub.txt placeholder '+random_id+' '+packet_num).split())
+else:
+	print(merkle, token, "String")
+	circuit = 'HTTP_String'
+	jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+client_url[client_id]+' '+random_id+' '+packet_num).split())
+	
+try:
+	#subprocess.run(jrun).check_returncode()
+	(out_tmp, mem_tmp) = trackRun(jrun, "xjsnark_verify"+circuit, start_time)
+	out = out2 + out_tmp
+	mem = mem_tmp
+except subprocess.CalledProcessError:
+	print("Wrong java parameters! " + random_id + " " + packet_num)
+try:
+	(out_tmp, mem_tmp)=trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split(), "libsnark_verify"+circuit, start_time)
+	out = out + out_tmp
+	mem = mem + mem_tmp
+	#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
+except subprocess.CalledProcessError:
+	print("Wrong libsnark parameters! " + random_id + " " + packet_num)
+	
+with open("verify_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
+	json.dump(out, f, ensure_ascii=False, indent=4)
+with open("verify_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
+	json.dump(mem, f, ensure_ascii=False, indent=4)
 
 
 
+
+
+
+
+
+exit()
 if (len(sys.argv)>1 and sys.argv[1]=='merkle'):
 	
 	if(len(sys.argv)>2 and sys.argv[2]=='token'):

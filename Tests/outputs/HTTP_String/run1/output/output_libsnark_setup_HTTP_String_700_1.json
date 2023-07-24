@@ -1,0 +1,374 @@
+[
+    [
+        "Reset time counters for profiling\n",
+        0.0042493343353271484
+    ],
+    [
+        "Executing setup...\n",
+        0.004790782928466797
+    ],
+    [
+        "No inputs provided: generating circuit only\n",
+        0.005294084548950195
+    ],
+    [
+        "(enter) Parsing Only the circuit           \t[             ]\t(0.0005s x1.00 from start)\n",
+        0.005783557891845703
+    ],
+    [
+        "(leave) Parsing and Evaluating the circuit \t[1689929903.8835s x0.00]\t(9.2678s x1.00 from start)\n",
+        9.271625995635986
+    ],
+    [
+        "Translating Constraints ... \n",
+        9.276653289794922
+    ],
+    [
+        "\tConstraint translation done\n",
+        32.561858892440796
+    ],
+    [
+        "\tMemory usage for constraint translation: 1906 MB\n",
+        32.61448621749878
+    ],
+    [
+        "Example created!\n",
+        32.672000885009766
+    ],
+    [
+        "(enter) Call to r1cs_gg_ppzksnark_generator\t[             ]\t(32.5581s x0.98 from start)\n",
+        32.73107123374939
+    ],
+    [
+        "  (enter) Call to r1cs_constraint_system::swap_AB_if_beneficial\t[             ]\t(33.3763s x0.98 from start)\n",
+        33.38009595870972
+    ],
+    [
+        "    (enter) Estimate densities                 \t[             ]\t(33.3763s x0.98 from start)\n",
+        33.46017670631409
+    ],
+    [
+        "      * Non-zero A-count (estimate): 1669869\n",
+        33.531476974487305
+    ],
+    [
+        "      * Non-zero B-count (estimate): 792145\n",
+        33.605507135391235
+    ],
+    [
+        "    (leave) Estimate densities                 \t[0.0933s x1.00]\t(33.4696s x0.98 from start)\n",
+        33.67155909538269
+    ],
+    [
+        "    Swap is not beneficial, not performing\n",
+        33.7370331287384
+    ],
+    [
+        "  (leave) Call to r1cs_constraint_system::swap_AB_if_beneficial\t[0.0933s x1.00]\t(33.4696s x0.98 from start)\n",
+        33.80626654624939
+    ],
+    [
+        "  (enter) Call to r1cs_to_qap_instance_map_with_evaluation\t[             ]\t(33.4698s x0.98 from start)\n",
+        33.87175226211548
+    ],
+    [
+        "    (enter) Compute evaluations of A, B, C, H at t\t[             ]\t(33.7239s x0.97 from start)\n",
+        33.93430852890015
+    ],
+    [
+        "    (leave) Compute evaluations of A, B, C, H at t\t[4.5736s x1.00]\t(38.2975s x0.97 from start)\n",
+        38.30137753486633
+    ],
+    [
+        "  (leave) Call to r1cs_to_qap_instance_map_with_evaluation\t[4.8278s x0.96]\t(38.2975s x0.97 from start)\n",
+        38.36103963851929
+    ],
+    [
+        "  * QAP number of variables: 1886126\n",
+        38.42036414146423
+    ],
+    [
+        "  * QAP pre degree: 1914225\n",
+        38.47780656814575
+    ],
+    [
+        "  * QAP degree: 2097152\n",
+        38.534446716308594
+    ],
+    [
+        "  * QAP number of input variables: 921\n",
+        38.59156274795532
+    ],
+    [
+        "  (enter) Compute query densities            \t[             ]\t(38.2994s x0.97 from start)\n",
+        38.65229511260986
+    ],
+    [
+        "  (leave) Compute query densities            \t[0.0086s x1.00]\t(38.3080s x0.97 from start)\n",
+        38.720210552215576
+    ],
+    [
+        "  (enter) Compute gamma_ABC for R1CS verification key\t[             ]\t(38.3080s x0.97 from start)\n",
+        38.787025928497314
+    ],
+    [
+        "  (leave) Compute gamma_ABC for R1CS verification key\t[0.0001s x1.00]\t(38.3081s x0.97 from start)\n",
+        38.85558891296387
+    ],
+    [
+        "  (enter) Compute L query for R1CS proving key\t[             ]\t(38.3081s x0.97 from start)\n",
+        38.92423892021179
+    ],
+    [
+        "  (leave) Compute L query for R1CS proving key\t[0.3035s x0.86]\t(38.6116s x0.97 from start)\n",
+        38.992804527282715
+    ],
+    [
+        "  (enter) Generating G1 MSM window table     \t[             ]\t(38.6116s x0.97 from start)\n",
+        39.061102628707886
+    ],
+    [
+        "    Choosing window size 17 for 4347994 elements\n",
+        39.840660095214844
+    ],
+    [
+        "    * G1 window: 17\n",
+        39.902503967285156
+    ],
+    [
+        "  (leave) Generating G1 MSM window table     \t[1.2252s x0.64]\t(39.8369s x0.96 from start)\n",
+        39.971850633621216
+    ],
+    [
+        "  (enter) Generating G2 MSM window table     \t[             ]\t(39.8369s x0.96 from start)\n",
+        40.041420459747314
+    ],
+    [
+        "    Choosing window size 16 for 791999 elements\n",
+        41.13066005706787
+    ],
+    [
+        "    * G2 window: 16\n",
+        41.19493317604065
+    ],
+    [
+        "  (leave) Generating G2 MSM window table     \t[1.2900s x0.82]\t(41.1269s x0.96 from start)\n",
+        41.26080369949341
+    ],
+    [
+        "  (enter) Generate R1CS proving key          \t[             ]\t(41.1269s x0.96 from start)\n",
+        41.33418583869934
+    ],
+    [
+        "    (enter) Generate queries                   \t[             ]\t(41.1276s x0.96 from start)\n",
+        41.40058970451355
+    ],
+    [
+        "      (enter) Compute the A-query                \t[             ]\t(41.1276s x0.96 from start)\n",
+        41.46517014503479
+    ],
+    [
+        "      ............................................................................................................................................................................................. DONE!\n",
+        55.734270334243774
+    ],
+    [
+        "      (leave) Compute the A-query                \t[14.6028s x1.00]\t(55.7305s x0.97 from start)\n",
+        55.800240993499756
+    ],
+    [
+        "      (enter) Compute the B-query                \t[             ]\t(55.7305s x0.97 from start)\n",
+        55.86535382270813
+    ],
+    [
+        "      Non-zero coordinate count: 791999/1886127 (41.99%)\n",
+        79.57668781280518
+    ],
+    [
+        "      (leave) Compute the B-query                \t[23.8424s x1.00]\t(79.5729s x0.98 from start)\n",
+        79.70189189910889
+    ],
+    [
+        "      (enter) Compute the H-query                \t[             ]\t(79.5729s x0.98 from start)\n",
+        79.77113270759583
+    ],
+    [
+        "      .................................................................................................................................................................................................................. DONE!\n",
+        98.2708158493042
+    ],
+    [
+        "      (leave) Compute the H-query                \t[18.6941s x1.00]\t(98.2670s x0.98 from start)\n",
+        98.33752751350403
+    ],
+    [
+        "      (enter) Compute the L-query                \t[             ]\t(98.2670s x0.98 from start)\n",
+        98.40894317626953
+    ],
+    [
+        "      ............................................................................................................................................................................................. DONE!\n",
+        115.02346754074097
+    ],
+    [
+        "      (leave) Compute the L-query                \t[16.7526s x1.00]\t(115.0196s x0.98 from start)\n",
+        115.09677505493164
+    ],
+    [
+        "    (leave) Generate queries                   \t[73.8960s x1.00]\t(115.0237s x0.98 from start)\n",
+        115.17431640625
+    ],
+    [
+        "  (leave) Generate R1CS proving key          \t[73.8973s x1.00]\t(115.0242s x0.98 from start)\n",
+        115.25285482406616
+    ],
+    [
+        "  (enter) Generate R1CS verification key     \t[             ]\t(115.0242s x0.98 from start)\n",
+        115.32215332984924
+    ],
+    [
+        "    (enter) Call to reduced_pairing<bn128_pp>  \t[             ]\t(115.0250s x0.98 from start)\n",
+        115.3859052658081
+    ],
+    [
+        "      (enter) Call to pairing<bn128_pp>          \t[             ]\t(115.0250s x0.98 from start)\n",
+        115.448903799057
+    ],
+    [
+        "        (enter) Call to bn128_ate_precompute_G1    \t[             ]\t(115.0251s x0.98 from start)\n",
+        115.51125717163086
+    ],
+    [
+        "        (leave) Call to bn128_ate_precompute_G1    \t[0.0006s x0.08]\t(115.0257s x0.98 from start)\n",
+        115.57402992248535
+    ],
+    [
+        "        (enter) Call to bn128_ate_precompute_G2    \t[             ]\t(115.0257s x0.98 from start)\n",
+        115.6365818977356
+    ],
+    [
+        "        (leave) Call to bn128_ate_precompute_G2    \t[0.0006s x0.19]\t(115.0263s x0.98 from start)\n",
+        115.6992027759552
+    ],
+    [
+        "        (enter) Call to miller_loop<bn128_pp>      \t[             ]\t(115.0263s x0.98 from start)\n",
+        115.76122498512268
+    ],
+    [
+        "        (leave) Call to miller_loop<bn128_pp>      \t[0.0012s x0.19]\t(115.0275s x0.98 from start)\n",
+        115.8242015838623
+    ],
+    [
+        "      (leave) Call to pairing<bn128_pp>          \t[0.0025s x0.17]\t(115.0275s x0.98 from start)\n",
+        115.88825631141663
+    ],
+    [
+        "      (enter) Call to bn128_final_exponentiation \t[             ]\t(115.0275s x0.98 from start)\n",
+        115.9511787891388
+    ],
+    [
+        "      (leave) Call to bn128_final_exponentiation \t[0.0003s x1.00]\t(115.0278s x0.98 from start)\n",
+        116.01953721046448
+    ],
+    [
+        "    (leave) Call to reduced_pairing<bn128_pp>  \t[0.0027s x0.25]\t(115.0278s x0.98 from start)\n",
+        116.0850281715393
+    ],
+    [
+        "    (enter) Encode gamma_ABC for R1CS verification key\t[             ]\t(115.0281s x0.98 from start)\n",
+        116.14811062812805
+    ],
+    [
+        "      . DONE!\n",
+        116.21024465560913
+    ],
+    [
+        "    (leave) Encode gamma_ABC for R1CS verification key\t[0.0101s x1.00]\t(115.0382s x0.98 from start)\n",
+        116.2727587223053
+    ],
+    [
+        "  (leave) Generate R1CS verification key     \t[0.0140s x0.80]\t(115.0382s x0.98 from start)\n",
+        116.33537459373474
+    ],
+    [
+        "(leave) Call to r1cs_gg_ppzksnark_generator\t[82.4813s x0.98]\t(115.0394s x0.98 from start)\n",
+        116.39789938926697
+    ],
+    [
+        "* G1 elements in PK: 7754611\n",
+        116.46004295349121
+    ],
+    [
+        "* Non-zero G1 elements in PK: 6660483\n",
+        116.52596640586853
+    ],
+    [
+        "* G2 elements in PK: 1886128\n",
+        116.58713006973267
+    ],
+    [
+        "* Non-zero G2 elements in PK: 792000\n",
+        116.64987468719482
+    ],
+    [
+        "* PK size in bits: 2152239101\n",
+        116.71180295944214
+    ],
+    [
+        "* G1 elements in VK: 921\n",
+        116.77383923530579
+    ],
+    [
+        "* G2 elements in VK: 2\n",
+        116.83600926399231
+    ],
+    [
+        "* GT elements in VK: 1\n",
+        116.89814281463623
+    ],
+    [
+        "* VK size in bits: 295072\n",
+        116.9596848487854
+    ],
+    [
+        "Writing prover key to file...\n",
+        117.02194094657898
+    ],
+    [
+        "Processing verification key... (enter) Call to r1cs_gg_ppzksnark_verifier_process_vk\t[             ]\t(135.3208s x0.97 from start)\n",
+        135.32467651367188
+    ],
+    [
+        "  (enter) Call to bn128_ate_precompute_G2    \t[             ]\t(135.3208s x0.97 from start)\n",
+        135.42637610435486
+    ],
+    [
+        "  (leave) Call to bn128_ate_precompute_G2    \t[0.0002s x1.02]\t(135.3210s x0.97 from start)\n",
+        135.5128297805786
+    ],
+    [
+        "  (enter) Call to bn128_ate_precompute_G2    \t[             ]\t(135.3211s x0.97 from start)\n",
+        135.60883617401123
+    ],
+    [
+        "  (leave) Call to bn128_ate_precompute_G2    \t[0.0002s x1.01]\t(135.3213s x0.97 from start)\n",
+        135.69567799568176
+    ],
+    [
+        "(leave) Call to r1cs_gg_ppzksnark_verifier_process_vk\t[0.0006s x0.99]\t(135.3214s x0.97 from start)\n",
+        135.77580189704895
+    ],
+    [
+        "Writing to file...\n",
+        135.850243806839
+    ],
+    [
+        "Done",
+        139.40824961662292
+    ],
+    [
+        "PK Size",
+        962322541
+    ],
+    [
+        "VK Size",
+        69116
+    ]
+]
