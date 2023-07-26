@@ -34,15 +34,18 @@ def main():
 	global list_path
 	global start_time
 	anon = ""
-	client_id = input("Insert Client-ID:\n")
+	run = sys.argv[1]
+	print(run)
+	#client_id = input("Insert Client-ID:\n")
+	client_id = "7000"
 	print("Connecting to middlebox as client "+client_id)
 	#url = "http://"+host+":5001/prover-key"
 	headers = {'Client-ID': client_id}
 	while True:
 		try:
 			start_time = time.time()
-			outputs=[["Request sent", time.time()-start_time]]
-			memory = [[0, time.time-start_time()]]
+			outputs=[["Request sent", time.time()-start_time, 0]]
+			memory = [[0, time.time()-start_time, 0]]
 			response_key = requests.get("http://"+host+":5001/prover-key", headers=headers)
 			response_params = requests.get("http://"+host+":5001/parameters", headers=headers)
 		except requests.ConnectionError:
@@ -54,8 +57,8 @@ def main():
 	# Save the response file
 	save_file(response_key, 'files/provKey.bin')
 	print("Circuit saved as: provKey.bin")
-	outputs+=[["Key received", time.time()-start_time]]
-	memory +=[[0, time.time()-start_time]]
+	outputs+=[["Key received", time.time()-start_time, 0]]
+	memory +=[[0, time.time()-start_time, 0]]
 	if 'Anonymized-Tree' in response_params.headers:
 		response_tree = requests.get("http://"+host+":5001/url-list", headers=headers)
 		anon = response_params.headers.get('Anonymized-Tree')
@@ -76,8 +79,8 @@ def main():
 		url_wildcard = response_params.headers.get('Allowed-URL')
 		print("Allowed URL wildcard: ", url_wildcard)
 		circuit = 'HTTP_String'
-	outputs+=[["Merkle computations done", time.time()-start_time]]
-	memory += [[0, time.time()-start_time]]
+	outputs+=[["Merkle computations done", time.time()-start_time, 0]]
+	memory += [[0, time.time()-start_time, 0]]
 	
 	#if client_token:
 	#	with open('token.txt', 'w') as token_file:
@@ -98,18 +101,20 @@ def main():
 			keepalive = False
 			print("Sending HTTP request(s) to "+function)
 			time_placeholder = time.time()-start_time
-			mem += [[],[]
-			(random_id, numPackets, out, mem) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token, True)
+			#mem += [[],[]]
+			(random_id, numPackets, out, mem, cpu_times) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token, True)
 			for item in out:
 				item[1] += time_placeholder
 			for item in mem:
 				item[1] += time_placeholder
 			outputs += out
 			memory += mem
-			with open("prove_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
-				    json.dump(outputs, f, ensure_ascii=False, indent=4)
-			with open("prove_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
-				    json.dump(memory, f, ensure_ascii=False, indent=4)
+			with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/cputime_"+circuit+"_libsnark_prove.json", 'w', encoding='utf-8') as f:
+				json.dump(cpu_times, f, ensure_ascii=False, indent=4)
+			with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/prove_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
+				json.dump(outputs, f, ensure_ascii=False, indent=4)
+			with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/prove_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
+				json.dump(memory, f, ensure_ascii=False, indent=4)
 			for pkt in numPackets:
 				print(pkt)
 				file_path = "files/proof"+random_id.hex()+pkt+".bin"

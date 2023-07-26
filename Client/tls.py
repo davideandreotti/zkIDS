@@ -219,37 +219,39 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 		print("Generating circuit and parameters...")
 		if(allowed != ""):
 			print("Running String circuit")
-			out2=[["Running circuit", time.time()-start_time]]
-			(out, mem)= trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" "+allowed + ' ' + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, start_time)
+			out2=[["Running circuit", time.time()-start_time, 0]]
+			(out, mem, cpu_times)= trackRun_cputime(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" "+allowed + ' ' + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, [start_time, 0])
 			out = out2 + out
 			#print("OUT ARRAY: ", out)
 			#subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" "+allowed + ' ' + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
 		elif(tree_path != ""):
 			#input_path = "files/anon_tree" if anon else "files/allowlist.txt"
 			print("Computing proof...")
+			out2=[["Running circuit", time.time()-start_time, 0]]
 			merkle_filename = ("merkle_witness."+tls_conn._clientRandom.hex()+str(packetNumber)+".txt")
 			compute_proof(command, tree_path, anon, "files/"+merkle_filename, "files/generated_merkle_tree.txt")
-			out2=[["PROOF COMPUTED, Running circuit", time.time()-start_time]]
+			out2+=[["PROOF COMPUTED, Running circuit", time.time()-start_time, 0]]
 			if(client_token == ""):
 				print("Running Merkle circuit")
-				(out, mem)=trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" /function " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, start_time)
+				(out, mem, cpu_times)=trackRun_cputime(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" /function " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, [start_time, 0])
 				out=out2+out
 				#subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" /function " + tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
 			else:
 				print("Running Merkle Token circuit")
-				(out, mem)=trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, start_time)								
+				(out, mem, cpu_times)=trackRun_cputime(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split(), "xjsnark_proof"+circuitname, [start_time, 0])								
 				out = out2 + out
 				
 				#subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
 		print("PROOF COMPUTED!")
-		(out3, mem2) = trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split(), "libsnark_proof"+circuitname, start_time)
+		(out3, mem2, cpu_times2) = trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuitname+'.arith files/'+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split(), "libsnark_proof"+circuitname, [start_time, out[-1][2]])
+		cpu_times +=cpu_times2
 		out+=out3
 		mem+=mem2
 
 		
 		#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
-		subprocess.run(('rm '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
-		return(tls_conn._clientRandom, ['1'], out, mem)
+		subprocess.run(('rm files/'+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
+		return(tls_conn._clientRandom, ['1'], out, mem, cpu_times)
 	
 	
 	#command = method+" "+pathstr

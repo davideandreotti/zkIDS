@@ -52,13 +52,14 @@ def upload_file():
 		
 		try:
 			#subprocess.run(jrun).check_returncode()
-			(out_tmp, mem_tmp) = trackRun(jrun, "xjsnark_verify"+circuit, start_time)
+			(out_tmp, mem_tmp, cpu_time) = trackRun_cputime(jrun, "xjsnark_verify"+circuit, [start_time, 0])
 			out = out2 + out_tmp
 			mem = mem_tmp
 		except subprocess.CalledProcessError:
 			print("Wrong java parameters! " + random_id + " " + packet_num)
 		try:
-			(out_tmp, mem_tmp)=trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split(), "libsnark_verify"+circuit, start_time)
+			(out_tmp, mem_tmp, cpu_time2)=trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split(), "libsnark_verify"+circuit, [start_time, out[-1][2]])
+			cpu_time +=cpu_time2
 			out = out + out_tmp
 			mem = mem + mem_tmp
 			#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
@@ -68,10 +69,11 @@ def upload_file():
 	else:
 		print("CLIENT NOT ALLOWED")
 		Response(status=401)
-
-	with open("verify_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
+	with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/cputime_"+circuit+"_libsnark_verify.json", 'w', encoding='utf-8') as f:
+		json.dump(cpu_time, f, ensure_ascii=False, indent=4)
+	with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/verify_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
 		json.dump(out, f, ensure_ascii=False, indent=4)
-	with open("verify_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
+	with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/verify_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
 		json.dump(mem, f, ensure_ascii=False, indent=4)
 	return Response(status=200)
 
@@ -115,56 +117,10 @@ def return_urllist():
 	else:
 		return Response(status=401)
 
-
-merkle = False
-random_id = "runtest"
-packet_num = "1"
-if (merkle):
-	print(merkle, "Merkle")
-	if(token):
-		print(token, "Token")
-		circuit = 'HTTP_Merkle_Token'
-		print(type(random_id), type(packet_num))
-		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+'../Middlebox/files/merkle_proof_pub.txt '+client_list[client_id] + ' ' + random_id+' '+packet_num).split())
-		else:
-		circuit = 'HTTP_Merkle'
-		jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+'../Middlebox/files/merkle_proof_pub.txt placeholder '+random_id+' '+packet_num).split())
-else:
-	print(merkle, token, "String")
-	circuit = 'HTTP_String'
-	jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/transcript_'+random_id+packet_num+'.txt '+client_url[client_id]+' '+random_id+' '+packet_num).split())
+run = sys.argv[1]
+if (len(sys.argv)>2 and sys.argv[2]=='merkle'):
 	
-try:
-	#subprocess.run(jrun).check_returncode()
-	(out_tmp, mem_tmp) = trackRun(jrun, "xjsnark_verify"+circuit, start_time)
-	out = out2 + out_tmp
-	mem = mem_tmp
-except subprocess.CalledProcessError:
-	print("Wrong java parameters! " + random_id + " " + packet_num)
-try:
-	(out_tmp, mem_tmp)=trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split(), "libsnark_verify"+circuit, start_time)
-	out = out + out_tmp
-	mem = mem + mem_tmp
-	#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
-except subprocess.CalledProcessError:
-	print("Wrong libsnark parameters! " + random_id + " " + packet_num)
-	
-with open("verify_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
-	json.dump(out, f, ensure_ascii=False, indent=4)
-with open("verify_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
-	json.dump(mem, f, ensure_ascii=False, indent=4)
-
-
-
-
-
-
-
-
-exit()
-if (len(sys.argv)>1 and sys.argv[1]=='merkle'):
-	
-	if(len(sys.argv)>2 and sys.argv[2]=='token'):
+	if(len(sys.argv)>3 and sys.argv[3]=='token'):
 		circuit = 'HTTP_Merkle_Token'
 		token=True
 		merkle=True
@@ -181,29 +137,34 @@ else:
 	jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt /function circuitgen 1').split())
 	lrun = (('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/'+circuit+'.arith setup').split())
 jname = "xjsnark_setup_"+circuit+".json"
+os.makedirs(os.path.dirname("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/"), exist_ok=True)
 try:
 	print("Running Java")
 	start_time=time.time()
-	(out_tmp, mem_tmp)=trackRun(jrun, jname, start_time)
+	(out_tmp, mem_tmp, cpu_time)=trackRun_cputime(jrun, jname, [start_time, 0])
+	with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/cputime_"+circuit+"_java.json", 'w', encoding='utf-8') as f:
+		json.dump(cpu_time, f, ensure_ascii=False, indent=4)
 	out=out_tmp
 	mem=mem_tmp
 	#start_time+=out[-1][1]
-	subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
-	subprocess.run(('rm '+circuit+'_circuitgen1.pub.in').split()).check_returncode()
+	#subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
+	subprocess.run(('rm files/'+circuit+'_circuitgen1.pub.in').split()).check_returncode()
 	
 except subprocess.CalledProcessError:
 	print("Wrong parameters, server not starting")
 	exit()
 print("Running Libsnark")
 lname = "libsnark_setup_"+circuit
-(out_tmp, mem_tmp)=trackRun(lrun, lname, start_time)
+(out_tmp, mem_tmp, cpu_time)=trackRun_cputime(lrun, lname, [start_time, out[-1][2]])
 out = out+out_tmp
 mem=mem+mem_tmp
 #start_time+=out[-1][1]
 #print(start_time)
-with open("setup_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
+with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/cputime_"+circuit+"_libsnark_setup.json", 'w', encoding='utf-8') as f:
+	json.dump(cpu_time, f, ensure_ascii=False, indent=4)
+with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/setup_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
 	json.dump(out, f, ensure_ascii=False, indent=4)
-with open("setup_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
+with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/setup_"+circuit+"_memory.json", 'w', encoding='utf-8') as f:
 	json.dump(mem, f, ensure_ascii=False, indent=4)
 print("Generation done. Starting Flask Server")
 app.run(host='0.0.0.0', port=5001)
