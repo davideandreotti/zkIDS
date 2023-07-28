@@ -323,7 +323,7 @@ if __name__=='__main__':
 	#trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/HTTP_String.arith setup').split(), "libsnark_setup_HTTP_String.json")
 	#trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.HTTP_String pub ../Middlebox/files/test.txt /function circuitgen 1').split(), "xjsnark_setup_HTTP_String.json")
 	#run_looped_tests("Test_HTTP_String", 2)
-	for i in range(4,10):
+	for i in range(7,12):
 		run_looped_tests_string("Test_HTTP_String", i)
 	'''circuit = "Test_HTTP_Merkle"
 	num = 2
