@@ -1,0 +1,202 @@
+[
+    [
+        "Reset time counters for profiling\n",
+        0.0039653778076171875,
+        0.0
+    ],
+    [
+        "Verifying proof...\n",
+        0.004586219787597656,
+        0.0
+    ],
+    [
+        "files/proofrun201.bin\n",
+        0.005192995071411133,
+        0.0
+    ],
+    [
+        "(enter) Parsing and Evaluating the circuit \t[             ]\t(0.0006s x1.00 from start)\n",
+        0.005736112594604492,
+        0.0
+    ],
+    [
+        "(leave) Parsing and Evaluating the circuit \t[6.3675s x1.00]\t(6.3681s x1.00 from start)\n",
+        6.371465444564819,
+        6.35
+    ],
+    [
+        "Translating Constraints ... \n",
+        6.375084638595581,
+        6.35
+    ],
+    [
+        "\tConstraint translation done\n",
+        25.303402185440063,
+        25.04
+    ],
+    [
+        "\tMemory usage for constraint translation: 1771 MB\n",
+        25.336230516433716,
+        25.05
+    ],
+    [
+        "Assignment of values done .. \n",
+        25.378869771957397,
+        25.09
+    ],
+    [
+        "Example created!\n",
+        25.423665285110474,
+        25.16
+    ],
+    [
+        "Reading verification key (preprocessed)...\n",
+        25.46209144592285,
+        25.18
+    ],
+    [
+        "Reading proof...\n",
+        25.5071861743927,
+        25.22
+    ],
+    [
+        "(enter) Call to r1cs_gg_ppzksnark_online_verifier_strong_IC\t[             ]\t(25.3049s x0.99 from start)\n",
+        25.53920888900757,
+        25.23
+    ],
+    [
+        "  (enter) Call to r1cs_gg_ppzksnark_online_verifier_weak_IC\t[             ]\t(25.3049s x0.99 from start)\n",
+        25.574482917785645,
+        25.26
+    ],
+    [
+        "    (enter) Accumulate input                   \t[             ]\t(25.3049s x0.99 from start)\n",
+        25.6112277507782,
+        25.3
+    ],
+    [
+        "    (leave) Accumulate input                   \t[0.0232s x0.01]\t(25.3281s x0.99 from start)\n",
+        25.64832329750061,
+        25.33
+    ],
+    [
+        "    (enter) Check if the proof is well-formed  \t[             ]\t(25.3281s x0.99 from start)\n",
+        25.686872720718384,
+        25.37
+    ],
+    [
+        "    (leave) Check if the proof is well-formed  \t[0.0000s x1.02]\t(25.3281s x0.99 from start)\n",
+        25.73049807548523,
+        25.42
+    ],
+    [
+        "    (enter) Online pairing computations        \t[             ]\t(25.3281s x0.99 from start)\n",
+        25.770836353302002,
+        25.46
+    ],
+    [
+        "      (enter) Check QAP divisibility             \t[             ]\t(25.3281s x0.99 from start)\n",
+        25.808801889419556,
+        25.49
+    ],
+    [
+        "        (enter) Call to bn128_ate_precompute_G1    \t[             ]\t(25.3281s x0.99 from start)\n",
+        25.842294216156006,
+        25.51
+    ],
+    [
+        "        (leave) Call to bn128_ate_precompute_G1    \t[0.0000s x1.14]\t(25.3281s x0.99 from start)\n",
+        25.87012219429016,
+        25.520000000000003
+    ],
+    [
+        "        (enter) Call to bn128_ate_precompute_G2    \t[             ]\t(25.3281s x0.99 from start)\n",
+        25.897951364517212,
+        25.53
+    ],
+    [
+        "        (leave) Call to bn128_ate_precompute_G2    \t[0.0001s x1.00]\t(25.3281s x0.99 from start)\n",
+        25.924664735794067,
+        25.53
+    ],
+    [
+        "        (enter) Call to bn128_ate_precompute_G1    \t[             ]\t(25.3281s x0.99 from start)\n",
+        25.954731702804565,
+        25.56
+    ],
+    [
+        "        (leave) Call to bn128_ate_precompute_G1    \t[0.0000s x1.10]\t(25.3281s x0.99 from start)\n",
+        25.987767934799194,
+        25.59
+    ],
+    [
+        "        (enter) Call to bn128_ate_precompute_G1    \t[             ]\t(25.3281s x0.99 from start)\n",
+        26.02137851715088,
+        25.62
+    ],
+    [
+        "        (leave) Call to bn128_ate_precompute_G1    \t[0.0000s x1.03]\t(25.3281s x0.99 from start)\n",
+        26.054617166519165,
+        25.66
+    ],
+    [
+        "        (enter) Call to miller_loop<bn128_pp>      \t[             ]\t(25.3281s x0.99 from start)\n",
+        26.088818550109863,
+        25.69
+    ],
+    [
+        "        (leave) Call to miller_loop<bn128_pp>      \t[0.0001s x1.00]\t(25.3283s x0.99 from start)\n",
+        26.12315058708191,
+        25.72
+    ],
+    [
+        "        (enter) Call to double_miller_loop<bn128_pp>\t[             ]\t(25.3283s x0.99 from start)\n",
+        26.15725040435791,
+        25.759999999999998
+    ],
+    [
+        "        (leave) Call to double_miller_loop<bn128_pp>\t[0.0002s x1.00]\t(25.3285s x0.99 from start)\n",
+        26.191457986831665,
+        25.79
+    ],
+    [
+        "        (enter) Call to bn128_final_exponentiation \t[             ]\t(25.3285s x0.99 from start)\n",
+        26.22545552253723,
+        25.83
+    ],
+    [
+        "        (leave) Call to bn128_final_exponentiation \t[0.0002s x1.00]\t(25.3287s x0.99 from start)\n",
+        26.258629322052002,
+        25.86
+    ],
+    [
+        "      (leave) Check QAP divisibility             \t[0.0007s x1.00]\t(25.3287s x0.99 from start)\n",
+        26.29132580757141,
+        25.89
+    ],
+    [
+        "    (leave) Online pairing computations        \t[0.0007s x1.00]\t(25.3287s x0.99 from start)\n",
+        26.32416796684265,
+        25.919999999999998
+    ],
+    [
+        "  (leave) Call to r1cs_gg_ppzksnark_online_verifier_weak_IC\t[0.0239s x0.04]\t(25.3287s x0.99 from start)\n",
+        26.356126308441162,
+        25.96
+    ],
+    [
+        "(leave) Call to r1cs_gg_ppzksnark_online_verifier_strong_IC\t[0.0239s x0.04]\t(25.3287s x0.99 from start)\n",
+        26.38731050491333,
+        25.99
+    ],
+    [
+        "PASS",
+        27.022783994674683,
+        26.63
+    ],
+    [
+        "Done",
+        27.477644681930542,
+        26.63
+    ]
+]
