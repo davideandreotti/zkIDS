@@ -170,13 +170,13 @@ def run_looped_tests_string(circuit, num):
 	for i in [200, 400, 600, 800, 1000, 1500, 2000]:
 		start_time = time.time()
 
-		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run tls_data.txt /function run"+str(i)+" 1 "+str(i)+" 20").split(), "", [start_time, 0])
+		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run tls_data.txt merkle_data.txt asdfghc run"+str(i)+" 1 "+str(i)+" 20 4 5").split(), "", [start_time, 0])
 		with open(pathj, 'a') as file:
 			file.write(str(cpu_time) + '\n')
 		print("Tot CPU Time: ",cpu_time)
-		with open(path+"/output_java_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/output_java_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(out, f, ensure_ascii=False, indent=4)
-		with open(path+"/memory_java_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/memory_java_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(mem, f, ensure_ascii=False, indent=4)
 		
 		#subprocess.run(("mv files/Test_"+circuit+".arith .").split())
@@ -185,25 +185,25 @@ def run_looped_tests_string(circuit, num):
 		out +=[["VK Size", os.path.getsize('files/veriKey.bin')]]
 		with open(pathls, 'a') as file:
 			file.write(str(cpu_time) + '\n')
-		with open(path+"/output_libsnark_setup_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/output_libsnark_setup_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(out, f, ensure_ascii=False, indent=4)
-		with open(path+"/memory_libsnark_setup_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/memory_libsnark_setup_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(mem, f, ensure_ascii=False, indent=4)
 			
 		(out, mem, cpu_time) = trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_run'+str(i)+'1.in prove run'+str(i)+' 1').split(), "", [time.time(), 0])
 		with open(pathlp, 'a') as file:
 			file.write(str(cpu_time) + '\n')
-		with open(path+"/output_libsnark_prove_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/output_libsnark_prove_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(out, f, ensure_ascii=False, indent=4)
-		with open(path+"/memory_libsnark_prove_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/memory_libsnark_prove_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(mem, f, ensure_ascii=False, indent=4)
 			
 		(out, mem, cpu_time) = trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_run'+str(i)+'1.in verify files/proofrun'+str(i)+'1.bin').split(), "", [time.time(), 0])
 		with open(pathlv, 'a') as file:
 			file.write(str(cpu_time) + '\n')
-		with open(path+"/output_libsnark_verify_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/output_libsnark_verify_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(out, f, ensure_ascii=False, indent=4)
-		with open(path+"/memory_libsnark_verify_HTTP_String_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
+		with open(path+"/memory_libsnark_verify_"+circuit+"_"+str(i)+"_"+str(num)+".json", 'w', encoding='utf-8') as f:
 			json.dump(mem, f, ensure_ascii=False, indent=4)
 		
 
@@ -275,12 +275,19 @@ def run_looped_tests_merkle(circuit, num):
 		with open(pathlv, 'w') as file:
 			pass
 		
-	for i in range(4, 10, 1):
+	for i in [5, 10, 15, 20, 25]:
 		print(i)
 		start_time = time.time()
-		os.makedirs(os.path.dirname("files/"+circuit+"/run"+str(num)), exist_ok=True)
-		merkle_file = generate_list(i)
-		(out, mem, cpu_time) = trackRun(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run tls_data.txt "+merkle_file+" /pippo run"+str(i)+" 1 500 20 "+str(i)).split(), "", start_time)
+		
+		out2 = [["Merkle Computation starts now", 0, 0]]
+		#merkle_file = generate_list(i)
+		merkle_file="files/proof_"+str(i)+".txt"
+		#compute_proof("GET /function/run", "files/allowlist_"+str(i)+".txt", False, "files/proof_"+str(i)+".txt", "files/tree_"+str(i)+".txt")
+		out2+=[["Merkle Proof Computed", time.time()-start_time, 0]]
+		
+		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run tls_data.txt "+merkle_file+" /pippo run"+str(i)+" 1 500 20 "+str(i)).split(), "", [start_time, 0])
+		out = out2+out
+		print(out[:5])
 		with open(pathj, 'a') as file:
 			file.write(str(cpu_time) + '\n')
 		save_to_correct_folder("output", "java", num, circuit, i, out)
@@ -288,7 +295,7 @@ def run_looped_tests_merkle(circuit, num):
 
 		
 		#subprocess.run(("mv files/Test_"+circuit+".arith .").split())
-		(out, mem, cpu_time) = trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith setup').split(), "", time.time())
+		(out, mem, cpu_time) = trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith setup').split(), "", [time.time(), 0])
 		out +=[["PK Size", os.path.getsize('files/provKey.bin')]]
 		out +=[["VK Size", os.path.getsize('files/veriKey.bin')]]
 		with open(pathls, 'a') as file:
@@ -297,34 +304,34 @@ def run_looped_tests_merkle(circuit, num):
 		save_to_correct_folder("memory", "libsnark_setup", num, circuit, i, mem)
 
 			
-		(out, mem, cpu_time) = trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_run'+str(i)+'1.in prove run'+str(i)+' 1').split(), "", time.time())
+		(out, mem, cpu_time) = trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_run'+str(i)+'1.in prove run'+str(i)+' 1').split(), "", [time.time(), 0])
 		with open(pathlp, 'a') as file:
 			file.write(str(cpu_time) + '\n')
 		save_to_correct_folder("output", "libsnark_prove", num, circuit, i, out)
 		save_to_correct_folder("memory", "libsnark_prove", num, circuit, i, mem)
 
 			
-		(out, mem, cpu_time) = trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_run'+str(i)+'1.in verify proofrun'+str(i)+'1.bin').split(), "", time.time())
+		(out, mem, cpu_time) = trackRun_cputime(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_run'+str(i)+'1.in verify files/proofrun'+str(i)+'1.bin').split(), "", [time.time(), 0])
 		with open(pathlv, 'a') as file:
 			file.write(str(cpu_time) + '\n')
 		save_to_correct_folder("output", "libsnark_verify", num, circuit, i, out)
 		save_to_correct_folder("memory", "libsnark_verify", num, circuit, i, mem)
-		os.rename("files/"+circuit+".arith", "files/"+circuit+"/run"+str(num)+"/"+circuit+".arith")
+		#os.rename("files/"+circuit+".arith", "files/"+circuit+"/run"+str(num)+"/"+circuit+".arith")
 		os.rename("files/"+circuit+"_run"+str(i)+"1.in", "files/"+circuit+"/run"+str(num)+"/"+circuit+"_run"+str(i)+"1.in")
 		os.rename("files/proofrun"+str(i)+"1.bin", "files/"+circuit+"/run"+str(num)+"/proofrun"+str(i)+"1.bin")	
-		os.rename("files/provKey.bin", "files/"+circuit+"/run"+str(num)+"/provKey.bin")	
-		os.rename("files/veriKey.bin", "files/"+circuit+"/run"+str(num)+"/veriKey.bin")
-		os.rename("files/allowlist_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/allowlist_"+str(i)+".txt")
-		os.rename("files/tree_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/tree_"+str(i)+".txt")
-		os.rename("files/proof_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/proof_"+str(i)+".txt")	
+		#os.rename("files/provKey.bin", "files/"+circuit+"/run"+str(num)+"/provKey.bin")	
+		#os.rename("files/veriKey.bin", "files/"+circuit+"/run"+str(num)+"/veriKey.bin")
+		#os.rename("files/allowlist_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/allowlist_"+str(i)+".txt")
+		#os.rename("files/tree_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/tree_"+str(i)+".txt")
+		#os.rename("files/proof_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/proof_"+str(i)+".txt")	
 
 if __name__=='__main__':
 	#memory_over_time_with_highlights("HTTP_String")
 	#trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/HTTP_String.arith setup').split(), "libsnark_setup_HTTP_String.json")
 	#trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.HTTP_String pub ../Middlebox/files/test.txt /function circuitgen 1').split(), "xjsnark_setup_HTTP_String.json")
 	#run_looped_tests("Test_HTTP_String", 2)
-	for i in range(7,12):
-		run_looped_tests_string("Test_HTTP_String", i)
+	for i in range(9,12):
+		run_looped_tests_string("Test_HTTP_Merkle_Token", i)
 	'''circuit = "Test_HTTP_Merkle"
 	num = 2
 	i = 4
@@ -340,3 +347,5 @@ if __name__=='__main__':
 	os.rename("files/proof_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/proof_"+str(i)+".txt")'''
 	#run_looped_tests_merkle("Test_HTTP_Merkle", 2)
 	#generate_list(5)
+	#for i in range(13,53):
+	#	run_looped_tests_merkle("Test_HTTP_Merkle", i)

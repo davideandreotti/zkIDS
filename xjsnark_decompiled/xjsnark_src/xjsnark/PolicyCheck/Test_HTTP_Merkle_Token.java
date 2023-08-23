@@ -461,7 +461,7 @@ public class Test_HTTP_Merkle_Token extends CircuitGenerator {
 
     UnsignedInteger[] SHA_H_Checkpoint_32 = xjsnark.util_and_sha.Util.convert_8_to_32(SHA_H_Checkpoint);
     values = TLSKeySchedule.get1RTT_HS_new(HS, H2, TR3_len.copy(16), CertVerify_len.copy(16), CertVerify_ct_tail, ServerFinished_ct, CertVerify_tail_len.copy(8), SHA_H_Checkpoint_32, appl_ct);
-    tokencheck.assign(LabelExtraction.check_token(values[0], token, token_length.copy(8)), 1);
+    tokencheck.assign(Test_LabelExtraction.check_token(values[0], token, token_length.copy(8)), 1);
     UnsignedInteger a = new UnsignedInteger(1, new BigInteger("0"));
     a.assign(test_membership_proof_functions.membershipProofChecks_MT(values[0], root.copy(), tree_leaf, leaf_length.copy(8), auth_path, direction.copy(64)), 1);
 

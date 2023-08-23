@@ -157,6 +157,8 @@ print("Running Libsnark")
 lname = "libsnark_setup_"+circuit
 (out_tmp, mem_tmp, cpu_time)=trackRun_cputime(lrun, lname, [start_time, out[-1][2]])
 out = out+out_tmp
+out +=[["PK Size", os.path.getsize('files/provKey.bin')]]
+out +=[["VK Size", os.path.getsize('files/veriKey.bin')]]
 mem=mem+mem_tmp
 #start_time+=out[-1][1]
 #print(start_time)

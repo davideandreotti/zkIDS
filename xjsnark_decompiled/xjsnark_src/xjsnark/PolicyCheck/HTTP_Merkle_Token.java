@@ -362,7 +362,7 @@ public class HTTP_Merkle_Token extends CircuitGenerator {
   public static String pktnum;
   public static final int MAX_DNS_CT_LEN = 500;
   public static final int MAX_URL_LEN = 20;
-  public static final int TOKEN_LEN = 6;
+  public static final int TOKEN_LEN = 5;
   @Override
   public void __defineInputs() {
     super.__defineInputs();
