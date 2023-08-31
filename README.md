@@ -1,6 +1,6 @@
-# zkIDS: a privacy-oriented Intrusion Detection System based on Zero-Knowledge proofs
-Name is to be defined
-
+# zkIDS  aaa
+### A privacy-oriented Intrusion Detection System based on Zero-Knowledge proofs
+# Instructions
 - compile libsnark (flags)
 - modify MPS
 - config docker
