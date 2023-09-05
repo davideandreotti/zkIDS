@@ -21,7 +21,8 @@ services:
             context: ./
             dockerfile: client.Dockerfile
         working_dir: /home/Client
-        command: "python init_cli.py"
+        #command: "python init_cli.py"
+        command: "/bin/bash"
         stdin_open: true # docker run -i
         tty: true        # docker run -t
 

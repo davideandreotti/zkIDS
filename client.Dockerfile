@@ -20,6 +20,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
 	pip install --no-cache-dir $PIP_DEPS
 RUN apt-get autoremove --purge -qq
 COPY ./Client /home/Client
+COPY ./Middlebox/trackers.py /home/Middlebox/
+COPY ./Middlebox/runprocess.py /home/Middlebox/
 COPY ./xjsnark_decompiled /home/xjsnark_decompiled
 COPY ./libsnark /home/libsnark
 WORKDIR /home/
