@@ -50,7 +50,7 @@ def upload_file():
 		except subprocess.CalledProcessError:
 			print("Wrong java parameters! " + random_id + " " + packet_num)
 		try:
-			subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith '+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
+			subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuit+'.arith files/'+circuit+'_'+random_id+packet_num+'.pub.in verify '+filename).split()).check_returncode()
 		except subprocess.CalledProcessError:
 			print("Wrong libsnark parameters! " + random_id + " " + packet_num)
 			Response(status=403)
@@ -127,8 +127,8 @@ else:
 if(not os.path.exists('files/'+circuit+'.arith')):
 	try:
 		subprocess.run(jrun).check_returncode()
-		subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
-		subprocess.run(('rm '+circuit+'_circuitgen1.pub.in').split()).check_returncode()
+		#subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
+		#subprocess.run(('rm '+circuit+'_circuitgen1.pub.in').split()).check_returncode()
 		
 	except subprocess.CalledProcessError:
 		print("Wrong parameters, server not starting")

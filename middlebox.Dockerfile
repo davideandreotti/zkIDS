@@ -8,7 +8,8 @@ ENV APT_DEPS git \
 			python-is-python3 \
 			pip \
 			tshark \
-			libgomp1
+			libgomp1 iproute2 
+			#nano iputils-ping
 
 ENV PIP_DEPS requests flask pyshark
 RUN apt-get update -qq && \

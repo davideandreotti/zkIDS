@@ -3,7 +3,7 @@ import requests, time
 from tls import *
 #client_id = '7000'
 #host = "middlebox"
-host = 'localhost'
+#host = 'localhost'
 circuit = ""
 client_token = ""
 url_wildcard = ""
@@ -24,29 +24,32 @@ def save_file(response, path):
 
 
 
-def main():
+def main(host, server):
 	global circuit 
 	global client_token 
 	global url_wildcard 
 	global list_path
 	anon = ""
-	client_id = input("Insert Client-ID:\n")
-	print("Connecting to middlebox as client "+client_id)
+	#client_id = input("Insert Client-ID:\n")
+	print("Connecting to IDS with ID "+client_id)
 	#url = "http://"+host+":5001/prover-key"
 	headers = {'Client-ID': client_id}
+	c=0
 	while True:
 		try:
 			response_key = requests.get("http://"+host+":5001/prover-key", headers=headers)
 			response_params = requests.get("http://"+host+":5001/parameters", headers=headers)
 		except requests.ConnectionError:
-			print("Retrying...")
+			c+=1
+			if c==1: 
+				print("Retrying until the IDS goes online...")
 			time.sleep(2)
 			continue
-		print("Connected!")
+		print("Connected to IDS!")
 		break
 	# Save the response file
 	save_file(response_key, 'files/provKey.bin')
-	print("Circuit saved as: provKey.bin")
+	print("ZK Data saved")
 	
 	if 'Anonymized-Tree' in response_params.headers:
 		response_tree = requests.get("http://"+host+":5001/url-list", headers=headers)
@@ -77,7 +80,7 @@ def main():
 	#	print("Error, Client-Token not found")
 	
 	while True:
-		prompt=input("Setup done. Press enter to generate request or 'q' to quit: ")
+		prompt=input("Setup completed. Press enter to generate request or 'q' to quit: ")
 		if prompt.lower() == "":
 			function = "/function/run"
 		else: 
@@ -88,7 +91,7 @@ def main():
 		else:
 			keepalive = False
 			print("Sending HTTP request(s) to "+function)
-			(random_id, numPackets) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token, False)
+			(random_id, numPackets) = make_tls_connection(server, function, keepalive, circuit, list_path, url_wildcard, anon, client_token, False)
 			for pkt in numPackets:
 				print(pkt)
 				file_path = "files/proof"+random_id.hex()+pkt+".bin"
@@ -100,7 +103,10 @@ def main():
 	   
 
 if __name__=='__main__':
-	main()
+	if (len(sys.argv)>1 and sys.argv[1]=='docker'):
+		main("middlebox", "server")
+	else:
+		main("localhost", "localhost")
     
     
     

@@ -13,7 +13,7 @@ import json, time, subprocess
 from membership_proofs import *
 
 #SERVER = 'server'
-SERVER = 'localhost'
+#SERVER = 'localhost'
 pathstr = '/pippo'
 allowed = "/function"
 method = "GET"
@@ -160,7 +160,7 @@ def print_test(test_dict):
 	print("c ap key: " + test_dict['c_ap_key'])
 	print("c ap iv: " + test_dict['c_ap_iv'])
 	
-def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, anon, client_token, testing):
+def make_tls_connection(SERVER, pathstr, keepalive, circuitname, tree_path, allowed, anon, client_token, testing):
 	oursettings = HandshakeSettings()
 	oursettings.usePaddingExtension = False
 	#oursettings.method_flag_for_padding = "doh"
@@ -250,7 +250,7 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 
 		
 		#subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
-		subprocess.run(('rm files/'+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
+		#subprocess.run(('rm files/'+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
 		return(tls_conn._clientRandom, ['1'], out, mem, cpu_times)
 	
 	
@@ -272,8 +272,8 @@ def make_tls_connection(pathstr, keepalive, circuitname, tree_path, allowed, ano
 			print("Running Merkle Token circuit")
 			subprocess.run(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuitname+' run files/'+filename+" files/"+merkle_filename+" "+client_token+' '+ tls_conn._clientRandom.hex() + ' ' + str(packetNumber)).split())
 	print("PROOF COMPUTED!")
-	subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb '+circuitname+'.arith '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
-	subprocess.run(('rm '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
+	subprocess.run(('../libsnark/build/libsnark/jsnark_interface/run_zkmb files/'+circuitname+'.arith files/'+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in prove '+tls_conn._clientRandom.hex() + ' '+str(packetNumber)).split())
+	#subprocess.run(('rm '+circuitname+'_'+tls_conn._clientRandom.hex()+str(packetNumber)+'.in').split())
 
 	#print(output)
 

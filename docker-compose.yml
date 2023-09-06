@@ -6,7 +6,8 @@ services:
             dockerfile: middlebox.Dockerfile
         #direct startup of webserver
         working_dir: /home/Middlebox
-        command: "python init_mb.py"
+        command: bash -c "python capture.py &! python init_mb.py"
+        #command: "/bin/bash"
         #ports:
         #    - 9090:9090
         cap_add:
@@ -14,6 +15,13 @@ services:
             - NET_RAW
         stdin_open: true # docker run -i
         tty: true        # docker run -t
+        sysctls:
+            - net.ipv4.ip_forward=1
+            - net.ipv4.tcp_timestamps=0
+        networks:
+            default:
+                ipv4_address: 172.19.0.2
+
     #creare il dockerfile per il compilatore con i comandi di installazione    
     client:
         image: client
@@ -22,10 +30,14 @@ services:
             dockerfile: client.Dockerfile
         working_dir: /home/Client
         #command: "python init_cli.py"
-        command: "/bin/bash"
+        command: bash -c "ip route add 172.19.0.4 via 172.19.0.2 dev eth0 src 172.19.0.3 && python init_cli.py docker"
         stdin_open: true # docker run -i
         tty: true        # docker run -t
-
+        cap_add:
+            - NET_ADMIN
+        networks:
+            default:
+                ipv4_address: 172.19.0.3
     server:
         image: server
         build: 
@@ -33,5 +45,15 @@ services:
             dockerfile: server.Dockerfile
         stdin_open: true
         tty: true
-        command: "nginx -g 'daemon off;'"
+        command: bash -c "ip route add 172.19.0.3 via 172.19.0.2 dev eth0 src 172.19.0.4 && nginx -g 'daemon off;'"
+        cap_add:
+            - NET_ADMIN
+        networks:
+            default:
+                ipv4_address: 172.19.0.4
         
+networks:
+    default:
+        ipam:
+            config:
+                - subnet: 172.19.0.0/16
