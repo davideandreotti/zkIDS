@@ -8,6 +8,8 @@ tcp_streams={}
 transcripts={}
 threads = list()
 append=False
+interface=sys.argv[1] if len(sys.argv)>1 else 'lo'
+#interface='lo'
 now = str(datetime.timestamp(datetime.now())).split(".")[0]
 
 def parseApplicationData(tls_data):
@@ -158,7 +160,7 @@ def process_with_pyshark(fileName):
 	tls_session={"CH": False, "SH": False, "S_CS": False, "SF": False, "C_CS": False, "CF": False, "App": 0, "src": '', "dst": ''}
 	transcript={"RandomID": '', "Cx":'', "Cy":'', "Sx":'', "Sy":'', "ch_sh":'', "ch_sh_len":'',"H2":'',"ServExt_ct":'', "ServExt_ct_EncExt":'',"ServExt_ct_Cert":'',"ServExt_ct_CertVerify":'',"ServExt_ct_SF":'', "ServExt_ct_tail":'', "appl_ct":'', "PacketNumber": '' }
 	#pcap_data = pyshark.FileCapture(fileName)
-	capture=pyshark.LiveCapture(interface='lo', bpf_filter="tcp and not port 5001")
+	capture=pyshark.LiveCapture(interface, bpf_filter="tcp and not port 5001")
 
 	ch_sh = bytearray()
 

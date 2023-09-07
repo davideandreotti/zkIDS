@@ -6,7 +6,9 @@ services:
             dockerfile: middlebox.Dockerfile
         #direct startup of webserver
         working_dir: /home/Middlebox
-        command: bash -c "python capture.py &! python init_mb.py"
+        env_file: 
+            - vars.env
+        command: bash -c "python capture.py eth0 &! python init_mb$${TEST}.py $${MB_ARGS}"
         #command: "/bin/bash"
         #ports:
         #    - 9090:9090
@@ -29,8 +31,10 @@ services:
             context: ./
             dockerfile: client.Dockerfile
         working_dir: /home/Client
+        env_file: 
+            - vars.env
         #command: "python init_cli.py"
-        command: bash -c "ip route add 172.19.0.4 via 172.19.0.2 dev eth0 src 172.19.0.3 && python init_cli.py docker"
+        command: bash -c "ip route add 172.19.0.4 via 172.19.0.2 dev eth0 src 172.19.0.3 && python init_cli$${TEST}.py $${RUN} docker"
         stdin_open: true # docker run -i
         tty: true        # docker run -t
         cap_add:

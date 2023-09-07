@@ -1,7 +1,7 @@
 import requests, time
 
 from tls import *
-#client_id = '7000'
+client_id = '7000'
 #host = "middlebox"
 #host = 'localhost'
 circuit = ""

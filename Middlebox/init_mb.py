@@ -124,17 +124,17 @@ else:
 	jrun = (('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.'+circuit+' pub ../Middlebox/files/test.txt /function circuitgen 1').split())
 	lrun = (('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/'+circuit+'.arith setup').split())
 	
-if(not os.path.exists('files/'+circuit+'.arith')):
-	try:
-		subprocess.run(jrun).check_returncode()
-		#subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
-		#subprocess.run(('rm '+circuit+'_circuitgen1.pub.in').split()).check_returncode()
-		
-	except subprocess.CalledProcessError:
-		print("Wrong parameters, server not starting")
-		exit()
-else:
-	print("Circuit already generated!")
+#if(not os.path.exists('files/'+circuit+'.arith')):
+try:
+	subprocess.run(jrun).check_returncode()
+	#subprocess.run(('mv '+circuit+'.arith files/').split()).check_returncode()
+	#subprocess.run(('rm '+circuit+'_circuitgen1.pub.in').split()).check_returncode()
+	
+except subprocess.CalledProcessError:
+	print("Wrong parameters, server not starting")
+	exit()
+#else:
+#	print("Circuit already generated!")
 subprocess.run(lrun).check_returncode()
 print("Generation done. Starting Flask Server")
 app.run(host='0.0.0.0', port=5001)

@@ -27,7 +27,7 @@ def save_file(response, path):
 
 
 
-def main():
+def main(host, server):
 	global circuit 
 	global client_token 
 	global url_wildcard 
@@ -41,6 +41,7 @@ def main():
 	print("Connecting to middlebox as client "+client_id)
 	#url = "http://"+host+":5001/prover-key"
 	headers = {'Client-ID': client_id}
+	c=0
 	while True:
 		try:
 			start_time = time.time()
@@ -49,7 +50,9 @@ def main():
 			response_key = requests.get("http://"+host+":5001/prover-key", headers=headers)
 			response_params = requests.get("http://"+host+":5001/parameters", headers=headers)
 		except requests.ConnectionError:
-			print("Retrying...")
+			c+=1
+			if c==1: 
+				print("Retrying until the IDS goes online...")
 			time.sleep(2)
 			continue
 		print("Connected!")
@@ -102,13 +105,14 @@ def main():
 			print("Sending HTTP request(s) to "+function)
 			time_placeholder = time.time()-start_time
 			#mem += [[],[]]
-			(random_id, numPackets, out, mem, cpu_times) = make_tls_connection(function, keepalive, circuit, list_path, url_wildcard, anon, client_token, True)
+			(random_id, numPackets, out, mem, cpu_times) = make_tls_connection(server, function, keepalive, circuit, list_path, url_wildcard, anon, client_token, True)
 			for item in out:
 				item[1] += time_placeholder
 			for item in mem:
 				item[1] += time_placeholder
 			outputs += out
 			memory += mem
+			os.makedirs(os.path.dirname("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/"), exist_ok=True)
 			with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/cputime_"+circuit+"_libsnark_prove.json", 'w', encoding='utf-8') as f:
 				json.dump(cpu_times, f, ensure_ascii=False, indent=4)
 			with open("../Tests/outputs/full_simulations/"+circuit+"/run"+str(run)+"/prove_"+circuit+"_output.json", 'w', encoding='utf-8') as f:
@@ -126,7 +130,10 @@ def main():
 	   
 
 if __name__=='__main__':
-	main()
+	if (len(sys.argv)>2 and sys.argv[2]=='docker'):
+		main("middlebox", "server")
+	else:
+		main("localhost", "localhost")
     
     
     

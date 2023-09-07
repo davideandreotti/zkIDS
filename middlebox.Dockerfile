@@ -1,5 +1,5 @@
 ARG PARENT_VERSION=latest
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL maintainer="daviand"
 
 
@@ -11,7 +11,7 @@ ENV APT_DEPS git \
 			libgomp1 iproute2 
 			#nano iputils-ping
 
-ENV PIP_DEPS requests flask pyshark
+ENV PIP_DEPS requests flask pyshark psutil
 RUN apt-get update -qq && \
 	apt-get upgrade -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends $APT_DEPS
