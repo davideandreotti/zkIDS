@@ -39,7 +39,7 @@ services:
         tty: true        # docker run -t
         cap_add:
             - NET_ADMIN
-        networks:
+        networks:   
             default:
                 ipv4_address: 172.19.0.3
     server:
