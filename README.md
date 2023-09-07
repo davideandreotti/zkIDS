@@ -5,6 +5,7 @@
 ! Tested on Ubuntu 20.04
 - Clone the repository
 - Move to libsnark directory and create the build folder: ```cd libsnark && mkdir build && cd build```
+- Make sure that libsnark requisite packages are installed:  ```sudo apt install build-essential cmake git libgmp3-dev libprocps-dev python3-markdown libboost-program-options-dev libssl-dev python3 pkg-config```
 - Compile libsnark with the preferred compilation flags: ```cmake <flags> ..``` then ```make``` Tested flags: ```-DMULTICORE=ON``` and ```-DUSE_PT_COMPRESSION=OFF```
 
   Note: if compiled on a more recent Ubuntu version, set the same version in the dockerfiles
