@@ -4,14 +4,37 @@
 ! Make sure that Docker Compose is installed
 ! Tested on Ubuntu 20.04
 - Clone the repository
-- Move to libsnark directory and create the build folder: ```cd libsnark && mkdir build && cd build```
-- Make sure that libsnark requisite packages are installed:  ```sudo apt install build-essential cmake git libgmp3-dev libprocps-dev python3-markdown libboost-program-options-dev libssl-dev python3 pkg-config```
-- Compile libsnark with the preferred compilation flags: ```cmake <flags> ..``` then ```make``` Tested flags: ```-DMULTICORE=ON``` and ```-DUSE_PT_COMPRESSION=OFF```
+- Move to libsnark directory and create the build folder 
+```bash
+cd libsnark && mkdir build && cd build
+```
+- Make sure that libsnark requisite packages are installed and Ubuntu 20.04 is in use  
+```bash
+sudo apt install build-essential cmake git libgmp3-dev libprocps-dev python3-markdown libboost-program-options-dev libssl-dev python3 pkg-config
+```
+- Compile libsnark with the preferred compilation flags
+```bash
+cmake <flags> ..
+```
+then 
+```bash
+make
+``` 
+Tested flags: ```-DMULTICORE=ON``` and ```-DUSE_PT_COMPRESSION=OFF```
 
-  Note: if compiled on a more recent Ubuntu version, set the same version in the dockerfiles
-- Run ```docker compose build``` from the root repository directory to build the docker images
-- Run ```docker compose up``` to run the compose environment
-- To control the client TLS requests, in a new terminal do ```docker attach zkfw-client-1```. If setup is finished press enter or type the URI to make the request to.
+- Build the docker images from the repo root
+```bash
+cd ../.. && docker compose build
+```
+- Run the compose environment
+```bash
+docker compose up
+```
+- To control the client TLS requests, in a new terminal do 
+```bash
+docker attach zkids-client-1
+```
+If setup is finished press enter or type the URI to make the request to.
   
 # Run Benchmarks
 - Build the docker compose images
