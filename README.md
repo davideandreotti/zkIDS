@@ -40,7 +40,7 @@ If setup is finished press enter or type the URI to make the request to.
 - Build the docker compose images
 - In the ```vars.env``` file, set the environment variables such that TEST and RUN are set for tests, then choose the circuit to run.
 - Start everything up as before
-- Results are found in the ```/home/Tests``` folders of each container
+- Results are found in the ```/home/Tests``` mounted shared volume, also accessible from outside the containers and permanent.
 # Create Plots
 - Make sure that the generated results are in the same Tests folder as the interactive notebook 
 - Open ```Plots.ipynb```
