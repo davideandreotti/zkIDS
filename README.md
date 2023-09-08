@@ -4,6 +4,7 @@
 ! Make sure that Docker Compose is installed
 ! Tested on Ubuntu 20.04
 - Clone the repository
+- If your Ubuntu version is > 20.04, skip building libsnark (compose will automatically build it)
 - Move to libsnark directory and create the build folder 
 ```bash
 cd libsnark && mkdir build && cd build
