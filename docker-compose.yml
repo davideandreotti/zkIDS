@@ -23,7 +23,8 @@ services:
         networks:
             default:
                 ipv4_address: 172.19.0.2
-
+        volumes:
+            - tests:/home/Tests
     #creare il dockerfile per il compilatore con i comandi di installazione    
     client:
         image: client
@@ -42,6 +43,8 @@ services:
         networks:   
             default:
                 ipv4_address: 172.19.0.3
+        volumes:
+            - tests:/home/Tests
     server:
         image: server
         build: 
@@ -61,3 +64,6 @@ networks:
         ipam:
             config:
                 - subnet: 172.19.0.0/16
+volumes:
+    tests:
+    

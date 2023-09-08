@@ -24,8 +24,9 @@ RUN mkdir /etc/nginx/ssl/private
 RUN mkdir /etc/nginx/ssl/certs
 COPY Server/default /etc/nginx/sites-enabled/
 COPY Server/nginx.conf /etc/nginx/
-COPY Server/serverone_cert.crt /etc/ssl/certs/
-COPY Server/serverone_key.key /etc/ssl/private/
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/serverone_key.key -out /etc/ssl/certs/serverone_cert.crt -subj "/C=IT/ST=Denial/L=Milan/O=Polimi/CN=polimi.it"
+#COPY Server/serverone_cert.crt /etc/ssl/certs/
+#COPY Server/serverone_key.key /etc/ssl/private/
 #RUN  apt-get -y install tzdata
 #RUN ip route add 172.19.0.3 via 172.19.0.2 dev eth0 src 172.19.0.4
 
