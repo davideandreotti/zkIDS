@@ -54,5 +54,7 @@ If setup is finished press enter or type the URI to make the request to.
       - On the Common tab, select javaclasses on Add Model Root and select the folder containing the .class files of the xjsnark backend (should be in xjsnark_decompiled/backend_bin_mod), then remove the folder giving error
       - On the right side of the window select the just-added folder and click on Models
       - On the Java tab, add as library the same folder added in the previous step (as java_classes), then remove the folder giving error.
+    - xjsnark.sandbox: Right click -> module properties
+      - On the "Output Path" section, select any folder to put the java files. For example select the MPS Generated Code folder.
 - To edit policies, open the xjsnark.sandbox section on the left sidebar, under "PolicyCheck" you find the three String / Merkle / Merkle Token policies for HTTP traffic
 - To compile the policies, right click on either the whole xjsnark.sandbox or the single PolicyCheck module and select "Make Model" or "Make Solution". The generated java files should be in the "MPS Generated Code" folder.
