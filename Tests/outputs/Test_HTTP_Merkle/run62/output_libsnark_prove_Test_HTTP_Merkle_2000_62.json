@@ -1,0 +1,367 @@
+[
+    [
+        "Reset time counters for profiling\n",
+        0.004010200500488281,
+        0.0
+    ],
+    [
+        "Proof generation...\n",
+        0.004886150360107422,
+        0.0
+    ],
+    [
+        "files/proofrun20001.bin(enter) Parsing and Evaluating the circuit \t[             ]\t(0.0008s x1.00 from start)\n",
+        0.005690813064575195,
+        0.0
+    ],
+    [
+        "(leave) Parsing and Evaluating the circuit \t[16.1648s x0.98]\t(16.1656s x0.98 from start)\n",
+        16.168843984603882,
+        15.91
+    ],
+    [
+        "Translating Constraints ... \n",
+        16.176120281219482,
+        15.91
+    ],
+    [
+        "\tConstraint translation done\n",
+        54.33257246017456,
+        53.22
+    ],
+    [
+        "\tMemory usage for constraint translation: 3072 MB\n",
+        54.398022413253784,
+        53.29
+    ],
+    [
+        "Assignment of values done .. \n",
+        54.46719717979431,
+        53.4
+    ],
+    [
+        "Example created!\n",
+        54.53257131576538,
+        53.42
+    ],
+    [
+        "Reading key...\n",
+        56.11540484428406,
+        55.01
+    ],
+    [
+        "Generating proof...\n",
+        60.4870228767395,
+        58.239999999999995
+    ],
+    [
+        "(enter) Call to r1cs_gg_ppzksnark_prover   \t[             ]\t(60.4837s x0.96 from start)\n",
+        60.56871247291565,
+        58.269999999999996
+    ],
+    [
+        "  (enter) Compute the polynomial H           \t[             ]\t(60.4837s x0.96 from start)\n",
+        60.64731979370117,
+        58.29
+    ],
+    [
+        "    (enter) Call to r1cs_to_qap_witness_map    \t[             ]\t(60.4838s x0.96 from start)\n",
+        60.72906517982483,
+        58.370000000000005
+    ],
+    [
+        "      (enter) Compute evaluation of polynomials A, B on set S\t[             ]\t(60.5045s x0.96 from start)\n",
+        60.807966470718384,
+        58.45
+    ],
+    [
+        "      (leave) Compute evaluation of polynomials A, B on set S\t[1.1759s x0.91]\t(61.6805s x0.96 from start)\n",
+        61.6837682723999,
+        59.330000000000005
+    ],
+    [
+        "      (enter) Compute coefficients of polynomial A\t[             ]\t(61.6805s x0.96 from start)\n",
+        61.765216588974,
+        59.35
+    ],
+    [
+        "      (leave) Compute coefficients of polynomial A\t[1.6305s x3.09]\t(63.3110s x1.02 from start)\n",
+        63.31426954269409,
+        64.36
+    ],
+    [
+        "      (enter) Compute coefficients of polynomial B\t[             ]\t(63.3110s x1.02 from start)\n",
+        63.40338087081909,
+        64.39
+    ],
+    [
+        "      (leave) Compute coefficients of polynomial B\t[1.6712s x3.07]\t(64.9822s x1.07 from start)\n",
+        64.98554587364197,
+        69.47999999999999
+    ],
+    [
+        "      (enter) Compute ZK-patch                   \t[             ]\t(64.9823s x1.07 from start)\n",
+        65.08634829521179,
+        69.96000000000001
+    ],
+    [
+        "      (leave) Compute ZK-patch                   \t[0.0553s x6.81]\t(65.0376s x1.07 from start)\n",
+        65.16471219062805,
+        70.04
+    ],
+    [
+        "      (enter) Compute evaluation of polynomial A on set T\t[             ]\t(65.0376s x1.07 from start)\n",
+        65.24548721313477,
+        70.12
+    ],
+    [
+        "      (leave) Compute evaluation of polynomial A on set T\t[1.5796s x3.24]\t(66.6171s x1.13 from start)\n",
+        66.62041878700256,
+        74.98
+    ],
+    [
+        "      (enter) Compute evaluation of polynomial B on set T\t[             ]\t(66.6171s x1.13 from start)\n",
+        66.69839262962341,
+        75.06
+    ],
+    [
+        "      (leave) Compute evaluation of polynomial B on set T\t[1.5043s x3.35]\t(68.1214s x1.17 from start)\n",
+        68.12472724914551,
+        80.03
+    ],
+    [
+        "      (enter) Compute evaluation of polynomial H on set T\t[             ]\t(68.1214s x1.17 from start)\n",
+        68.21991753578186,
+        80.32
+    ],
+    [
+        "        (enter) Compute evaluation of polynomial C on set S\t[             ]\t(68.1671s x1.18 from start)\n",
+        68.29949712753296,
+        80.39999999999999
+    ],
+    [
+        "        (leave) Compute evaluation of polynomial C on set S\t[0.5573s x0.95]\t(68.7244s x1.18 from start)\n",
+        68.72771906852722,
+        80.83
+    ],
+    [
+        "        (enter) Compute coefficients of polynomial C\t[             ]\t(68.7244s x1.18 from start)\n",
+        68.82023406028748,
+        80.92999999999999
+    ],
+    [
+        "        (leave) Compute coefficients of polynomial C\t[1.5656s x3.25]\t(70.2900s x1.22 from start)\n",
+        70.29331588745117,
+        85.92
+    ],
+    [
+        "        (enter) Compute evaluation of polynomial C on set T\t[             ]\t(70.2900s x1.22 from start)\n",
+        70.37206625938416,
+        86.0
+    ],
+    [
+        "        (leave) Compute evaluation of polynomial C on set T\t[1.5847s x3.20]\t(71.8748s x1.27 from start)\n",
+        71.8781726360321,
+        91.17
+    ],
+    [
+        "        (enter) Divide by Z on set T               \t[             ]\t(71.8902s x1.27 from start)\n",
+        71.97629475593567,
+        91.25999999999999
+    ],
+    [
+        "        (leave) Divide by Z on set T               \t[1.7258s x1.03]\t(73.6160s x1.26 from start)\n",
+        73.61929678916931,
+        92.89999999999999
+    ],
+    [
+        "      (leave) Compute evaluation of polynomial H on set T\t[5.4946s x2.34]\t(73.6160s x1.26 from start)\n",
+        73.70787739753723,
+        92.92999999999999
+    ],
+    [
+        "      (enter) Compute coefficients of polynomial H\t[             ]\t(73.6160s x1.26 from start)\n",
+        73.79705572128296,
+        93.3
+    ],
+    [
+        "      (leave) Compute coefficients of polynomial H\t[1.7850s x2.97]\t(75.4010s x1.30 from start)\n",
+        75.40441513061523,
+        98.21000000000001
+    ],
+    [
+        "      (enter) Compute sum of H and ZK-patch      \t[             ]\t(75.4011s x1.30 from start)\n",
+        75.49461126327515,
+        98.42999999999999
+    ],
+    [
+        "      (leave) Compute sum of H and ZK-patch      \t[0.0148s x10.51]\t(75.4158s x1.30 from start)\n",
+        75.57102060317993,
+        98.42999999999999
+    ],
+    [
+        "    (leave) Call to r1cs_to_qap_witness_map    \t[14.9321s x2.69]\t(75.4158s x1.30 from start)\n",
+        75.65006852149963,
+        98.45
+    ],
+    [
+        "  (leave) Compute the polynomial H           \t[15.0855s x2.66]\t(75.5693s x1.30 from start)\n",
+        75.72928404808044,
+        98.53
+    ],
+    [
+        "  (enter) Compute the proof                  \t[             ]\t(75.5693s x1.30 from start)\n",
+        75.80726528167725,
+        98.61
+    ],
+    [
+        "    (enter) Compute evaluation to A-query      \t[             ]\t(75.5693s x1.30 from start)\n",
+        75.88583612442017,
+        98.69
+    ],
+    [
+        "    (enter) Process scalar vector              \t[             ]\t(75.6465s x1.30 from start)\n",
+        75.96536374092102,
+        98.77000000000001
+    ],
+    [
+        "      * Elements of w skipped: 1516713 (53.73%)\n",
+        76.04435563087463,
+        98.85000000000001
+    ],
+    [
+        "      * Elements of w processed with special addition: 1090900 (38.65%)\n",
+        76.14365291595459,
+        99.25
+    ],
+    [
+        "      * Elements of w remaining: 215036 (7.62%)\n",
+        76.2647123336792,
+        100.54
+    ],
+    [
+        "    (leave) Process scalar vector              \t[0.3775s x1.00]\t(76.0241s x1.30 from start)\n",
+        76.38118124008179,
+        101.5
+    ],
+    [
+        "    (leave) Compute evaluation to A-query      \t[0.8308s x3.80]\t(76.4001s x1.33 from start)\n",
+        76.46298432350159,
+        101.71000000000001
+    ],
+    [
+        "    (enter) Compute evaluation to B-query      \t[             ]\t(76.4001s x1.33 from start)\n",
+        76.54019355773926,
+        101.78
+    ],
+    [
+        "    (enter) Process scalar vector              \t[             ]\t(76.4001s x1.33 from start)\n",
+        76.6170916557312,
+        101.86
+    ],
+    [
+        "      * Elements of w skipped: 649580 (53.84%)\n",
+        77.0748462677002,
+        102.32000000000001
+    ],
+    [
+        "      * Elements of w processed with special addition: 503124 (41.70%)\n",
+        77.17171549797058,
+        102.87
+    ],
+    [
+        "      * Elements of w remaining: 53726 (4.45%)\n",
+        77.2508225440979,
+        103.03
+    ],
+    [
+        "    (leave) Process scalar vector              \t[0.6714s x1.08]\t(77.0715s x1.33 from start)\n",
+        77.35783863067627,
+        103.64
+    ],
+    [
+        "    (leave) Compute evaluation to B-query      \t[0.8397s x1.65]\t(77.2398s x1.33 from start)\n",
+        77.48038625717163,
+        105.72999999999999
+    ],
+    [
+        "    (enter) Compute evaluation to H-query      \t[             ]\t(77.2399s x1.33 from start)\n",
+        77.60373663902283,
+        106.22
+    ],
+    [
+        "    (leave) Compute evaluation to H-query      \t[3.7768s x11.28]\t(81.0167s x1.80 from start)\n",
+        81.01999592781067,
+        145.57
+    ],
+    [
+        "    (enter) Compute evaluation to L-query      \t[             ]\t(81.0167s x1.80 from start)\n",
+        81.10718441009521,
+        145.70999999999998
+    ],
+    [
+        "    (enter) Process scalar vector              \t[             ]\t(81.0167s x1.80 from start)\n",
+        81.18515396118164,
+        145.78
+    ],
+    [
+        "      * Elements of w skipped: 1514669 (53.70%)\n",
+        81.44146633148193,
+        146.04
+    ],
+    [
+        "      * Elements of w processed with special addition: 1090896 (38.68%)\n",
+        81.59466695785522,
+        147.73999999999998
+    ],
+    [
+        "      * Elements of w remaining: 214861 (7.62%)\n",
+        81.69376301765442,
+        148.73
+    ],
+    [
+        "    (leave) Process scalar vector              \t[0.4215s x1.13]\t(81.4382s x1.79 from start)\n",
+        81.77199292182922,
+        149.11
+    ],
+    [
+        "    (leave) Compute evaluation to L-query      \t[0.7168s x4.85]\t(81.7335s x1.82 from start)\n",
+        81.86875867843628,
+        149.20000000000002
+    ],
+    [
+        "  (leave) Compute the proof                  \t[6.1651s x8.21]\t(81.7344s x1.82 from start)\n",
+        81.96013569831848,
+        149.29000000000002
+    ],
+    [
+        "(leave) Call to r1cs_gg_ppzksnark_prover   \t[21.2507s x4.27]\t(81.7344s x1.82 from start)\n",
+        82.05200743675232,
+        149.39999999999998
+    ],
+    [
+        "* G1 elements in proof: 2\n",
+        82.18437123298645,
+        149.39999999999998
+    ],
+    [
+        "* G2 elements in proof: 1\n",
+        82.25794506072998,
+        149.43
+    ],
+    [
+        "* Proof size in bits: 1019\n",
+        82.34793901443481,
+        149.52
+    ],
+    [
+        "Writing proof to file...\n",
+        82.43375563621521,
+        149.6
+    ],
+    [
+        "Done",
+        85.32689452171326,
+        151.5
+    ]
+]

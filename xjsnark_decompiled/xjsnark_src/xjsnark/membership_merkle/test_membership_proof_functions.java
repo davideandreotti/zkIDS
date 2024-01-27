@@ -76,7 +76,7 @@ public class test_membership_proof_functions {
     // Prove that left_leaf is indead smaller than right_leaf 
     // This firstly checks left_index and right_index for exact matching and then checks the next is smaller 
     // check out the notes for the algorithm 
-    for (int i = 0; i < 255; i++) {
+    for (int i = 0; i < 200; i++) {
       {
         Bit bit_a0w0k = UnsignedInteger.instantiateFrom(8, i).isLessThan(leaf_length).copy();
         boolean c_a0w0k = CircuitGenerator.__getActiveCircuitGenerator().__checkConstantState(bit_a0w0k);
