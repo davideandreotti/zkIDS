@@ -331,8 +331,8 @@ if __name__=='__main__':
 	#trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/HTTP_String.arith setup').split(), "libsnark_setup_HTTP_String.json")
 	#trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.HTTP_String pub ../Middlebox/files/test.txt /function circuitgen 1').split(), "xjsnark_setup_HTTP_String.json")
 	#run_looped_tests("Test_HTTP_String", 2)
-	for i in range(54,64):
-		run_looped_tests_string("Test_HTTP_Merkle", i)
+	##for i in range(54,64):
+	##	run_looped_tests_string("Test_HTTP_Merkle", i)
 	'''circuit = "Test_HTTP_Merkle"
 	num = 2
 	i = 4
@@ -350,3 +350,14 @@ if __name__=='__main__':
 	#generate_list(5)
 	#for i in range(13,53):
 	#	run_looped_tests_merkle("Test_HTTP_Merkle", i)
+	if os.path.isfile("merkle_generation.txt") and os.stat("merkle_generation.txt").st_size != 0:
+		with open("merkle_generation.txt", 'w') as file:
+			file.truncate()
+	else:
+		with open("merkle_generation.txt", 'w') as file:
+			pass
+	for i in range(10, 21):
+		start_time=time.time()
+		generate_list(i)
+		with open("merkle_generation.txt", 'a') as file:
+			file.write(str(time.time()-start_time) + '\n') 
