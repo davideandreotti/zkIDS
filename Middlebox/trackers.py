@@ -144,7 +144,7 @@ def run_looped_tests_string(circuit, num):
 	else:
 		with open(pathj, 'w') as file:
 			pass
-	pathls = path+"/cputimes_libsnakr_setup_"+circuit+"_"+str(num)+".txt"
+	pathls = path+"/cputimes_libsnark_setup_"+circuit+"_"+str(num)+".txt"
 	if os.path.isfile(pathls) and os.stat(pathls).st_size != 0:
 		with open(pathls, 'w') as file:
 			file.truncate()
@@ -171,7 +171,7 @@ def run_looped_tests_string(circuit, num):
 	for i in [200, 400, 600, 800, 1000, 1500, 2000]:
 		start_time = time.time()
 
-		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run tls_data.txt merkle_data.txt asdfghc run"+str(i)+" 1 "+str(i)+" 20 4 5").split(), "", [start_time, 0])
+		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run ../Tests/tls_data.txt ../Tests/merkle_data.txt /pippo run"+str(i)+" 1 "+str(i)+" 20 4").split(), "", [start_time, 0])
 		with open(pathj, 'a') as file:
 			file.write(str(cpu_time) + '\n')
 		print("Tot CPU Time: ",cpu_time)
@@ -331,8 +331,8 @@ if __name__=='__main__':
 	#trackRun(('../libsnark/build/libsnark/jsnark_interface/run_zkmb ../Middlebox/files/HTTP_String.arith setup').split(), "libsnark_setup_HTTP_String.json")
 	#trackRun(('java -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck.HTTP_String pub ../Middlebox/files/test.txt /function circuitgen 1').split(), "xjsnark_setup_HTTP_String.json")
 	#run_looped_tests("Test_HTTP_String", 2)
-	for i in range(9,12):
-		run_looped_tests_string("Test_HTTP_Merkle_Token", i)
+	##for i in range(54,64):
+	##	run_looped_tests_string("Test_HTTP_Merkle", i)
 	'''circuit = "Test_HTTP_Merkle"
 	num = 2
 	i = 4
@@ -350,3 +350,14 @@ if __name__=='__main__':
 	#generate_list(5)
 	#for i in range(13,53):
 	#	run_looped_tests_merkle("Test_HTTP_Merkle", i)
+	if os.path.isfile("merkle_generation.txt") and os.stat("merkle_generation.txt").st_size != 0:
+		with open("merkle_generation.txt", 'w') as file:
+			file.truncate()
+	else:
+		with open("merkle_generation.txt", 'w') as file:
+			pass
+	for i in range(10, 21):
+		start_time=time.time()
+		generate_list(i)
+		with open("merkle_generation.txt", 'a') as file:
+			file.write(str(time.time()-start_time) + '\n') 
