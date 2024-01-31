@@ -171,7 +171,7 @@ def run_looped_tests_string(circuit, num):
 	for i in [200, 400, 600, 800, 1000, 1500, 2000]:
 		start_time = time.time()
 
-		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run ../Tests/tls_data.txt ../Tests/merkle_data.txt /pippo run"+str(i)+" 1 "+str(i)+" 20 4").split(), "", [start_time, 0])
+		(out, mem, cpu_time) = trackRun_cputime(("java -Xmx6G -cp ../xjsnark_decompiled/backend_bin_mod/:../xjsnark_decompiled/xjsnark_bin/ xjsnark.PolicyCheck."+circuit+" run ../Tests/tls_data.txt ../Tests/merkle_data.txt asdfghc run"+str(i)+" 1 "+str(i)+" 20 4 5").split(), "", [start_time, 0])
 		with open(pathj, 'a') as file:
 			file.write(str(cpu_time) + '\n')
 		print("Tot CPU Time: ",cpu_time)
@@ -346,10 +346,12 @@ if __name__=='__main__':
 	os.rename("files/allowlist_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/allowlist_"+str(i)+".txt")
 	os.rename("files/tree_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/tree_"+str(i)+".txt")
 	os.rename("files/proof_"+str(i)+".txt", "files/"+circuit+"/run"+str(num)+"/proof_"+str(i)+".txt")'''
-	#run_looped_tests_merkle("Test_HTTP_Merkle", 2)
+	run_looped_tests_string("Test_HTTP_Merkle_Token", 20)
 	#generate_list(5)
 	#for i in range(13,53):
 	#	run_looped_tests_merkle("Test_HTTP_Merkle", i)
+	
+	''' #Generate Merkle Tree Lists
 	if os.path.isfile("merkle_generation.txt") and os.stat("merkle_generation.txt").st_size != 0:
 		with open("merkle_generation.txt", 'w') as file:
 			file.truncate()
@@ -361,3 +363,4 @@ if __name__=='__main__':
 		generate_list(i)
 		with open("merkle_generation.txt", 'a') as file:
 			file.write(str(time.time()-start_time) + '\n') 
+			'''
