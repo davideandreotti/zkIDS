@@ -4,15 +4,25 @@
 ! Make sure that Docker Compose is installed
 ! Tested on Ubuntu 20.04
 - Clone the repository
-- If your Ubuntu version is > 20.04, skip building libsnark (compose will automatically build it)
+```bash
+  git clone [git@github.com:davideandreotti/zkIDS.git](https://github.com/davideandreotti/zkIDS.git)
+```
+- Make sure that libsnark requisite packages are installed:
+```bash
+sudo apt install build-essential gcc-9 g++-9 cmake git libgmp3-dev libprocps-dev python3-markdown libboost-program-options-dev libssl-dev python3 pkg-config
+```
+> **If building on Ubuntu >20.04** you must set GCC-9 and G++-9 as default versions:
+> ```bash
+> sudo ln -s -f /usr/bin/gcc-9 /usr/bin/gcc
+> sudo ln -s -f /usr/bin/g++-9 /usr/bin/g++
+> ```
+> After building, you can revert this change by linking back the previous default GCC and G++ versions.
+
 - Move to libsnark directory and create the build folder 
 ```bash
 cd libsnark && mkdir build && cd build
 ```
-- Make sure that libsnark requisite packages are installed and Ubuntu 20.04 is in use  
-```bash
-sudo apt install build-essential cmake git libgmp3-dev libprocps-dev python3-markdown libboost-program-options-dev libssl-dev python3 pkg-config
-```
+
 - Compile libsnark with the preferred compilation flags
 ```bash
 cmake <flags> ..
